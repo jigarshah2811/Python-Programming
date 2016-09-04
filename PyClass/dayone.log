@@ -1,0 +1,2335 @@
+Python 2.7.11 (v2.7.11:6d1b6a68f775, Dec  5 2015, 12:54:16) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> 39.0 == 39
+True
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/hash_homomorphism.py =====
+True
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/hash_homomorphism.py =====
+True
+>>> h(12)
+0
+>>> h(13)
+1
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/hash_homomorphism.py =====
+True
+True
+>>> sum(map(int, '    1   2   3   4    1   2  3   4   5 '.split()))
+25
+>>> 25 / 9.0
+2.7777777777777777
+>>> sum(map(int, ' 1  2   3  4    5   6   7   8  9'.split()))
+45
+>>> 45 / 9.0
+5.0
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/hash_homomorphism.py =====
+True
+True
+>>> x = 91;  print x in s
+True
+>>> x = 91;  print x in even_odd[h(x)]
+False
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/hash_homomorphism.py =====
+True
+True
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/hash_homomorphism.py =====
+True
+True
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/hash_homomorphism.py =====
+True
+False
+>>> x = 39.0
+>>> y = 39
+>>> 
+>>> type(x)
+<type 'float'>
+>>> type(y)
+<type 'int'>
+>>> x == y
+True
+>>> 'Raymond' == 'raymond'
+False
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/hash_homomorphism.py =====
+True
+True
+set(['RACHEL', 'Raymond', 'MATTHEW', 'rachel', 'Matthew', 'raymond'])
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/hash_homomorphism.py =====
+True
+True
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/hash_homomorphism.py", line 34, in <module>
+    class Str(str):
+  File "/Users/raymond/Dropbox/Public/sj144/hash_homomorphism.py", line 35, in Str
+    p
+NameError: name 'p' is not defined
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/hash_homomorphism.py =====
+True
+True
+set([5, 39, 41, 10, 7, 12, 18, 27, 30])
+>>> map(type, names)
+[<class '__main__.Str'>, <class '__main__.Str'>, <class '__main__.Str'>, <class '__main__.Str'>, <class '__main__.Str'>, <class '__main__.Str'>]
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/hash_homomorphism.py =====
+True
+True
+set([5, 39, 41, 10, 7, 12, 18, 27, 30])
+>>> Str('Raymond') == Str('raymond')
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/hash_homomorphism.py =====
+True
+False
+set([5, 39, 41, 10, 7, 12, 18, 27, 30])
+>>> Str('Raymond') == Str('raymond')
+True
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/hash_homomorphism.py =====
+True
+True
+set(['RACHEL', 'Raymond', 'MATTHEW', 'rachel', 'Matthew', 'raymond'])
+>>> Str('Raymond') == Str('raymond')
+True
+>>> hash(Str('Raymond')) == hash(Str('raymond'))
+False
+>>> hash(Str('Raymond')), hash(Str('raymond'))
+(9209434560778162597, 2729357497184525765)
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/hash_homomorphism.py =====
+True
+True
+set(['MATTHEW', 'rachel', 'Raymond'])
+>>> Str('Raymond') == Str('raymond')
+True
+>>> hash(Str('Raymond')) == hash(Str('raymond'))
+True
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/hash_homomorphism.py =====
+True
+True
+set(['MATTHEW', 'rachel', 'Raymond'])
+>>> 
+>>> 
+>>> 
+>>> l = [39.0, 39, 39+0j]
+>>> set(l)
+set([39.0])
+>>> 
+>>> map(hash, l)
+[39, 39, 39]
+>>> l = 'RAYMOND Raymond RAYmond raymond RaYmOnD'.split()
+>>> set(l)
+set(['RaYmOnD', 'raymond', 'RAYmond', 'RAYMOND', 'Raymond'])
+>>> map(hash, l)
+[-4030522862909397531, 9209434560778162597, 862581282909703525, 2729357497184525765, -7103379046082356603]
+>>> 
+>>> l = map(Str, l)
+>>> l
+['RAYMOND', 'Raymond', 'RAYmond', 'raymond', 'RaYmOnD']
+>>> set(l)
+set(['RAYMOND'])
+>>> map(hash, l)
+[2729357497184525765, 2729357497184525765, 2729357497184525765, 2729357497184525765, 2729357497184525765]
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/hash_homomorphism.py =====
+True
+True
+set(['MATTHEW', 'rachel', 'Raymond'])
+April Fool's Jooke:  Don't do this in real code
+set([10, 30, 40, 30, 10, 20, 20])
+>>> 
+>>> 
+>>> 
+>>> 10 < 20
+True
+>>> dir(int)
+['__abs__', '__add__', '__and__', '__class__', '__cmp__', '__coerce__', '__delattr__', '__div__', '__divmod__', '__doc__', '__float__', '__floordiv__', '__format__', '__getattribute__', '__getnewargs__', '__hash__', '__hex__', '__index__', '__init__', '__int__', '__invert__', '__long__', '__lshift__', '__mod__', '__mul__', '__neg__', '__new__', '__nonzero__', '__oct__', '__or__', '__pos__', '__pow__', '__radd__', '__rand__', '__rdiv__', '__rdivmod__', '__reduce__', '__reduce_ex__', '__repr__', '__rfloordiv__', '__rlshift__', '__rmod__', '__rmul__', '__ror__', '__rpow__', '__rrshift__', '__rshift__', '__rsub__', '__rtruediv__', '__rxor__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', '__truediv__', '__trunc__', '__xor__', 'bit_length', 'conjugate', 'denominator', 'imag', 'numerator', 'real']
+>>> # __cmp__(x, y) ->    -1 less than       0 for equal      1 for greater than
+>>> 
+>>> (10).__cmp__(20)
+-1
+>>> 10 < 20
+True
+>>> (10).__cmp__(20) == -1
+True
+>>> (20).__cmp__(20) == 0
+True
+>>> (30).__cmp__(20) == 1
+True
+>>> 'matthew' < 'raymond'
+True
+>>> dir(str)
+['__add__', '__class__', '__contains__', '__delattr__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__getslice__', '__gt__', '__hash__', '__init__', '__le__', '__len__', '__lt__', '__mod__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '_formatter_field_name_split', '_formatter_parser', 'capitalize', 'center', 'count', 'decode', 'encode', 'endswith', 'expandtabs', 'find', 'format', 'index', 'isalnum', 'isalpha', 'isdigit', 'islower', 'isspace', 'istitle', 'isupper', 'join', 'ljust', 'lower', 'lstrip', 'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+>>> 'matthew'.__lt__('raymond')
+True
+>>> 
+>>> # __cmp__(x, y) ->    -1 less than       0 for equal      1 for greater than
+>>> # __lt/le/eq/ne/gt/ge__ six rich comparisons  -> bool
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+>>> reset()
+>>> show()
+0 comparisons
+>>> Int(10) < Int(20)
+Comparing 10 to 20
+True
+>>> show()
+1 comparisons
+>>> x = 10; print x ** 2
+100
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+>>> type(a)
+<class '__main__.Int'>
+>>> type(b)
+<class '__main__.Int'>
+>>> type(c)
+<class '__main__.Int'>
+>>> a
+111
+>>> b
+20
+>>> c
+30
+>>> map(type, s)
+[<class '__main__.Int'>, <class '__main__.Int'>, <class '__main__.Int'>, <class '__main__.Int'>, <class '__main__.Int'>, <class '__main__.Int'>, <class '__main__.Int'>, <class '__main__.Int'>, <class '__main__.Int'>]
+>>> sum(s)
+180
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+9 comparisons
+>>> len(s)
+9
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+9 comparisons
+Comparing 20 to 10
+Comparing 20 to 20
+True
+2 comparisons
+>>> c
+30
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+9 comparisons
+Comparing 20 to 10
+Comparing 20 to 20
+True
+2 comparisons
+Comparing 30 to 10
+Comparing 30 to 20
+True
+2 comparisons
+>>> # O(1) O(log n)  O(n)  O(n log(n)) O(n**2)
+>>> n = len(s)
+>>> n
+9
+>>> from math import *
+>>> log(n, 2) * 9
+28.529325012980813
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+9 comparisons
+Comparing 20 to 10
+Comparing 20 to 20
+True
+2 comparisons
+Comparing 30 to 10
+Comparing 30 to 20
+True
+2 comparisons
+Comparing 20 to 10
+Comparing 30 to 20
+Comparing 50 to 30
+Comparing 20 to 50
+Comparing 20 to 30
+Comparing 20 to 20
+Comparing 5 to 20
+Comparing 5 to 20
+Comparing 5 to 10
+Comparing 10 to 20
+Comparing 10 to 10
+Comparing 10 to 20
+Comparing 15 to 20
+Comparing 15 to 10
+Comparing 15 to 10
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+18 comparisons
+>>> import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+9 comparisons
+Comparing 20 to 10
+Comparing 20 to 20
+True
+2 comparisons
+Comparing 30 to 10
+Comparing 30 to 20
+True
+2 comparisons
+Comparing 20 to 10
+Comparing 30 to 20
+Comparing 50 to 30
+Comparing 20 to 50
+Comparing 20 to 30
+Comparing 20 to 20
+Comparing 5 to 20
+Comparing 5 to 20
+Comparing 5 to 10
+Comparing 10 to 20
+Comparing 10 to 10
+Comparing 10 to 20
+Comparing 15 to 20
+Comparing 15 to 10
+Comparing 15 to 10
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+18 comparisons
+>>> 
+>>> 
+>>> 2 ** 20
+1048576
+>>> from bisect import *
+>>> cuts = [60, 70, 80, 90]
+>>> grades = 'FDCBA'
+>>> 
+>>> score = 75
+>>> bisect(cuts, score)
+2
+>>> grade[bisect(cuts, score)]
+
+Traceback (most recent call last):
+  File "<pyshell#91>", line 1, in <module>
+    grade[bisect(cuts, score)]
+NameError: name 'grade' is not defined
+>>> grades[bisect(cuts, score)]
+'C'
+>>> 
+>>> 
+>>> from bisect import *
+>>> cuts = [60, 70, 80, 90]
+>>> grades = 'FDCBA'
+>>> [grades[bisect(cuts, score)] for score in [55, 90, 97, 65, 80, 72, 95, 58, 83, 99]]
+['F', 'A', 'A', 'D', 'B', 'C', 'A', 'F', 'B', 'A']
+>>> log(9, 2)
+
+Traceback (most recent call last):
+  File "<pyshell#99>", line 1, in <module>
+    log(9, 2)
+NameError: name 'log' is not defined
+>>> math.log(9, 2)
+3.1699250014423126
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+9 comparisons
+Comparing 20 to 10
+Comparing 20 to 20
+True
+2 comparisons
+Comparing 30 to 10
+Comparing 30 to 20
+True
+2 comparisons
+Comparing 20 to 10
+Comparing 30 to 20
+Comparing 50 to 30
+Comparing 20 to 50
+Comparing 20 to 30
+Comparing 20 to 20
+Comparing 5 to 20
+Comparing 5 to 20
+Comparing 5 to 10
+Comparing 10 to 20
+Comparing 10 to 10
+Comparing 10 to 20
+Comparing 15 to 20
+Comparing 15 to 10
+Comparing 15 to 10
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+18 comparisons
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+9
+3 comparisons
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+9 comparisons
+Comparing 20 to 10
+Comparing 20 to 20
+True
+2 comparisons
+Comparing 30 to 10
+Comparing 30 to 20
+True
+2 comparisons
+Comparing 20 to 10
+Comparing 30 to 20
+Comparing 50 to 30
+Comparing 20 to 50
+Comparing 20 to 30
+Comparing 20 to 20
+Comparing 5 to 20
+Comparing 5 to 20
+Comparing 5 to 10
+Comparing 10 to 20
+Comparing 10 to 10
+Comparing 10 to 20
+Comparing 15 to 20
+Comparing 15 to 10
+Comparing 15 to 10
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+18 comparisons
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+9
+3 comparisons
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+7
+3 comparisons
+Comparing 30 to 20
+Comparing 30 to 30
+Comparing 30 to 50
+8
+3 comparisons
+>>> class A:
+	def __hash__(self):
+		return 42
+
+	
+>>> hash(A())
+42
+>>> hash(A())
+42
+>>> hash(30)
+30
+>>> hash(100)
+100
+>>> {1, 2, 3, 4, 5}
+set([1, 2, 3, 4, 5])
+>>> 
+>>> 
+>>> 'hello'.__hash__()
+840651671246116861
+>>> 'hellp'.__hash__()
+840651671246116834
+>>> 'hellq'.__hash__()
+840651671246116835
+>>> 
+>>> 
+>>> 
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/instrument.py", line 42, in <module>
+    reset(); print a in s; show()        # Linear search, from left-to-right. When there is no match, we take len(s) comparisons
+  File "/Users/raymond/Dropbox/Public/sj144/instrument.py", line 18, in show
+    print '%d comparisons and %d hashes' % (cmpcnt, hashcnt)
+NameError: global name 'hashcnt' is not defined
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+9 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 20 to 20
+True
+2 comparisons and 0 hashes
+Comparing 30 to 10
+Comparing 30 to 20
+True
+2 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 30 to 20
+Comparing 50 to 30
+Comparing 20 to 50
+Comparing 20 to 30
+Comparing 20 to 20
+Comparing 5 to 20
+Comparing 5 to 20
+Comparing 5 to 10
+Comparing 10 to 20
+Comparing 10 to 10
+Comparing 10 to 20
+Comparing 15 to 20
+Comparing 15 to 10
+Comparing 15 to 10
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+18 comparisons and 0 hashes
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+9
+3 comparisons and 0 hashes
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+7
+3 comparisons and 0 hashes
+Comparing 30 to 20
+Comparing 30 to 30
+Comparing 30 to 50
+8
+3 comparisons and 0 hashes
+>>> hash(Int(50))
+hashing 50
+50
+>>> show()
+3 comparisons and 1 hashes
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+9 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 20 to 20
+True
+2 comparisons and 0 hashes
+Comparing 30 to 10
+Comparing 30 to 20
+True
+2 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 30 to 20
+Comparing 50 to 30
+Comparing 20 to 50
+Comparing 20 to 30
+Comparing 20 to 20
+Comparing 5 to 20
+Comparing 5 to 20
+Comparing 5 to 10
+Comparing 10 to 20
+Comparing 10 to 10
+Comparing 10 to 20
+Comparing 15 to 20
+Comparing 15 to 10
+Comparing 15 to 10
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+18 comparisons and 0 hashes
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+9
+3 comparisons and 0 hashes
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+7
+3 comparisons and 0 hashes
+Comparing 30 to 20
+Comparing 30 to 30
+Comparing 30 to 50
+8
+3 comparisons and 0 hashes
+hashing 10
+hashing 20
+hashing 30
+hashing 50
+hashing 20
+Comparing 20 to 20
+hashing 5
+hashing 10
+Comparing 10 to 10
+hashing 15
+hashing 20
+Comparing 20 to 20
+3 comparisons and 9 hashes
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+9 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 20 to 20
+True
+2 comparisons and 0 hashes
+Comparing 30 to 10
+Comparing 30 to 20
+True
+2 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 30 to 20
+Comparing 50 to 30
+Comparing 20 to 50
+Comparing 20 to 30
+Comparing 20 to 20
+Comparing 5 to 20
+Comparing 5 to 20
+Comparing 5 to 10
+Comparing 10 to 20
+Comparing 10 to 10
+Comparing 10 to 20
+Comparing 15 to 20
+Comparing 15 to 10
+Comparing 15 to 10
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+18 comparisons and 0 hashes
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+9
+3 comparisons and 0 hashes
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+7
+3 comparisons and 0 hashes
+Comparing 30 to 20
+Comparing 30 to 30
+Comparing 30 to 50
+8
+3 comparisons and 0 hashes
+hashing 10
+hashing 20
+hashing 30
+hashing 50
+hashing 20
+Comparing 20 to 20
+hashing 5
+hashing 10
+Comparing 10 to 10
+hashing 15
+hashing 20
+Comparing 20 to 20
+3 comparisons and 9 hashes
+hashing 111
+False
+0 comparisons and 1 hashes
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+9 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 20 to 20
+True
+2 comparisons and 0 hashes
+Comparing 30 to 10
+Comparing 30 to 20
+True
+2 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 30 to 20
+Comparing 50 to 30
+Comparing 20 to 50
+Comparing 20 to 30
+Comparing 20 to 20
+Comparing 5 to 20
+Comparing 5 to 20
+Comparing 5 to 10
+Comparing 10 to 20
+Comparing 10 to 10
+Comparing 10 to 20
+Comparing 15 to 20
+Comparing 15 to 10
+Comparing 15 to 10
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+18 comparisons and 0 hashes
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+9
+3 comparisons and 0 hashes
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+7
+3 comparisons and 0 hashes
+Comparing 30 to 20
+Comparing 30 to 30
+Comparing 30 to 50
+8
+3 comparisons and 0 hashes
+hashing 10
+hashing 20
+hashing 30
+hashing 50
+hashing 20
+Comparing 20 to 20
+hashing 5
+hashing 10
+Comparing 10 to 10
+hashing 15
+hashing 20
+Comparing 20 to 20
+3 comparisons and 9 hashes
+hashing 111
+False
+0 comparisons and 1 hashes
+hashing 20
+Comparing 20 to 20
+True
+1 comparisons and 1 hashes
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+9 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 20 to 20
+True
+2 comparisons and 0 hashes
+Comparing 30 to 10
+Comparing 30 to 20
+True
+2 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 30 to 20
+Comparing 50 to 30
+Comparing 20 to 50
+Comparing 20 to 30
+Comparing 20 to 20
+Comparing 5 to 20
+Comparing 5 to 20
+Comparing 5 to 10
+Comparing 10 to 20
+Comparing 10 to 10
+Comparing 10 to 20
+Comparing 15 to 20
+Comparing 15 to 10
+Comparing 15 to 10
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+18 comparisons and 0 hashes
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+9
+3 comparisons and 0 hashes
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+7
+3 comparisons and 0 hashes
+Comparing 30 to 20
+Comparing 30 to 30
+Comparing 30 to 50
+8
+3 comparisons and 0 hashes
+hashing 10
+hashing 20
+hashing 30
+hashing 50
+hashing 20
+Comparing 20 to 20
+hashing 5
+hashing 10
+Comparing 10 to 10
+hashing 15
+hashing 20
+Comparing 20 to 20
+3 comparisons and 9 hashes
+hashing 111
+False
+0 comparisons and 1 hashes
+hashing 20
+Comparing 20 to 20
+True
+1 comparisons and 1 hashes
+hashing 30
+True
+0 comparisons and 1 hashes
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+9 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 20 to 20
+True
+2 comparisons and 0 hashes
+Comparing 30 to 10
+Comparing 30 to 20
+True
+2 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 30 to 20
+Comparing 50 to 30
+Comparing 20 to 50
+Comparing 20 to 30
+Comparing 20 to 20
+Comparing 5 to 20
+Comparing 5 to 20
+Comparing 5 to 10
+Comparing 10 to 20
+Comparing 10 to 10
+Comparing 10 to 20
+Comparing 15 to 20
+Comparing 15 to 10
+Comparing 15 to 10
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+18 comparisons and 0 hashes
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+9
+3 comparisons and 0 hashes
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+7
+3 comparisons and 0 hashes
+Comparing 30 to 20
+Comparing 30 to 30
+Comparing 30 to 50
+8
+3 comparisons and 0 hashes
+hashing 20
+hashing 30
+hashing 40
+hashing 300
+hashing 400
+hashing 500
+hashing 300
+Comparing 300 to 300
+hashing 400
+Comparing 400 to 400
+hashing 5
+hashing 10
+hashing 15
+hashing 20
+Comparing 20 to 20
+hashing 10
+hashing 20
+hashing 30
+hashing 50
+hashing 20
+Comparing 20 to 20
+hashing 5
+hashing 10
+Comparing 10 to 10
+hashing 15
+hashing 20
+Comparing 20 to 20
+3 comparisons and 9 hashes
+hashing 111
+False
+0 comparisons and 1 hashes
+hashing 20
+Comparing 20 to 20
+True
+1 comparisons and 1 hashes
+hashing 30
+True
+0 comparisons and 1 hashes
+>>> s
+set([5, 10, 15, 50, 20, 30])
+>>> u
+set([5, 40, 10, 300, 15, 400, 20, 500, 30])
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+9 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 20 to 20
+True
+2 comparisons and 0 hashes
+Comparing 30 to 10
+Comparing 30 to 20
+True
+2 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 30 to 20
+Comparing 50 to 30
+Comparing 20 to 50
+Comparing 20 to 30
+Comparing 20 to 20
+Comparing 5 to 20
+Comparing 5 to 20
+Comparing 5 to 10
+Comparing 10 to 20
+Comparing 10 to 10
+Comparing 10 to 20
+Comparing 15 to 20
+Comparing 15 to 10
+Comparing 15 to 10
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+18 comparisons and 0 hashes
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+9
+3 comparisons and 0 hashes
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+7
+3 comparisons and 0 hashes
+Comparing 30 to 20
+Comparing 30 to 30
+Comparing 30 to 50
+8
+3 comparisons and 0 hashes
+hashing 20
+hashing 30
+hashing 40
+hashing 300
+hashing 400
+hashing 500
+hashing 300
+Comparing 300 to 300
+hashing 400
+Comparing 400 to 400
+hashing 5
+hashing 10
+hashing 15
+hashing 20
+Comparing 20 to 20
+hashing 10
+hashing 20
+hashing 30
+hashing 50
+hashing 20
+Comparing 20 to 20
+hashing 5
+hashing 10
+Comparing 10 to 10
+hashing 15
+hashing 20
+Comparing 20 to 20
+3 comparisons and 9 hashes
+hashing 111
+False
+0 comparisons and 1 hashes
+hashing 20
+Comparing 20 to 20
+True
+1 comparisons and 1 hashes
+hashing 30
+True
+0 comparisons and 1 hashes
+Comparing 10 to 10
+Comparing 20 to 20
+Comparing 30 to 30
+set([10, 20, 5, 30, 15])
+3 comparisons and 0 hashes
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+9 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 20 to 20
+True
+2 comparisons and 0 hashes
+Comparing 30 to 10
+Comparing 30 to 20
+True
+2 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 30 to 20
+Comparing 50 to 30
+Comparing 20 to 50
+Comparing 20 to 30
+Comparing 20 to 20
+Comparing 5 to 20
+Comparing 5 to 20
+Comparing 5 to 10
+Comparing 10 to 20
+Comparing 10 to 10
+Comparing 10 to 20
+Comparing 15 to 20
+Comparing 15 to 10
+Comparing 15 to 10
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+18 comparisons and 0 hashes
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+9
+3 comparisons and 0 hashes
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+7
+3 comparisons and 0 hashes
+Comparing 30 to 20
+Comparing 30 to 30
+Comparing 30 to 50
+8
+3 comparisons and 0 hashes
+hashing 20
+hashing 30
+hashing 40
+hashing 300
+hashing 400
+hashing 500
+hashing 300
+Comparing 300 to 300
+hashing 400
+Comparing 400 to 400
+hashing 5
+hashing 10
+hashing 15
+hashing 20
+Comparing 20 to 20
+hashing 10
+hashing 20
+hashing 30
+hashing 50
+hashing 20
+Comparing 20 to 20
+hashing 5
+hashing 10
+Comparing 10 to 10
+hashing 15
+hashing 20
+Comparing 20 to 20
+3 comparisons and 9 hashes
+hashing 111
+False
+0 comparisons and 1 hashes
+hashing 20
+Comparing 20 to 20
+True
+1 comparisons and 1 hashes
+hashing 30
+True
+0 comparisons and 1 hashes
+Comparing 10 to 10
+Comparing 20 to 20
+Comparing 30 to 30
+set([10, 20, 5, 30, 15])
+3 comparisons and 0 hashes
+Comparing 10 to 10
+Comparing 20 to 20
+Comparing 30 to 30
+set([5, 40, 10, 300, 15, 400, 50, 20, 500, 30])
+3 comparisons and 0 hashes
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+9 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 20 to 20
+True
+2 comparisons and 0 hashes
+Comparing 30 to 10
+Comparing 30 to 20
+True
+2 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 30 to 20
+Comparing 50 to 30
+Comparing 20 to 50
+Comparing 20 to 30
+Comparing 20 to 20
+Comparing 5 to 20
+Comparing 5 to 20
+Comparing 5 to 10
+Comparing 10 to 20
+Comparing 10 to 10
+Comparing 10 to 20
+Comparing 15 to 20
+Comparing 15 to 10
+Comparing 15 to 10
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+18 comparisons and 0 hashes
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+9
+3 comparisons and 0 hashes
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+7
+3 comparisons and 0 hashes
+Comparing 30 to 20
+Comparing 30 to 30
+Comparing 30 to 50
+8
+3 comparisons and 0 hashes
+hashing 20
+hashing 30
+hashing 40
+hashing 300
+hashing 400
+hashing 500
+hashing 300
+Comparing 300 to 300
+hashing 400
+Comparing 400 to 400
+hashing 5
+hashing 10
+hashing 15
+hashing 20
+Comparing 20 to 20
+hashing 10
+hashing 20
+hashing 30
+hashing 50
+hashing 20
+Comparing 20 to 20
+hashing 5
+hashing 10
+Comparing 10 to 10
+hashing 15
+hashing 20
+Comparing 20 to 20
+3 comparisons and 9 hashes
+hashing 111
+False
+0 comparisons and 1 hashes
+hashing 20
+Comparing 20 to 20
+True
+1 comparisons and 1 hashes
+hashing 30
+True
+0 comparisons and 1 hashes
+Comparing 10 to 10
+Comparing 20 to 20
+Comparing 30 to 30
+set([10, 20, 5, 30, 15])
+3 comparisons and 0 hashes
+Comparing 10 to 10
+Comparing 20 to 20
+Comparing 30 to 30
+set([5, 40, 10, 300, 15, 400, 50, 20, 500, 30])
+3 comparisons and 0 hashes
+Comparing 10 to 10
+Comparing 20 to 20
+Comparing 30 to 30
+set([50])
+3 comparisons and 0 hashes
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+9 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 20 to 20
+True
+2 comparisons and 0 hashes
+Comparing 30 to 10
+Comparing 30 to 20
+True
+2 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 30 to 20
+Comparing 50 to 30
+Comparing 20 to 50
+Comparing 20 to 30
+Comparing 20 to 20
+Comparing 5 to 20
+Comparing 5 to 20
+Comparing 5 to 10
+Comparing 10 to 20
+Comparing 10 to 10
+Comparing 10 to 20
+Comparing 15 to 20
+Comparing 15 to 10
+Comparing 15 to 10
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+18 comparisons and 0 hashes
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+9
+3 comparisons and 0 hashes
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+7
+3 comparisons and 0 hashes
+Comparing 30 to 20
+Comparing 30 to 30
+Comparing 30 to 50
+8
+3 comparisons and 0 hashes
+hashing 20
+hashing 30
+hashing 40
+hashing 300
+hashing 400
+hashing 500
+hashing 300
+Comparing 300 to 300
+hashing 400
+Comparing 400 to 400
+hashing 5
+hashing 10
+hashing 15
+hashing 20
+Comparing 20 to 20
+hashing 10
+hashing 20
+hashing 30
+hashing 50
+hashing 20
+Comparing 20 to 20
+hashing 5
+hashing 10
+Comparing 10 to 10
+hashing 15
+hashing 20
+Comparing 20 to 20
+3 comparisons and 9 hashes
+hashing 111
+False
+0 comparisons and 1 hashes
+hashing 20
+Comparing 20 to 20
+True
+1 comparisons and 1 hashes
+hashing 30
+True
+0 comparisons and 1 hashes
+Comparing 10 to 10
+Comparing 20 to 20
+Comparing 30 to 30
+set([10, 20, 5, 30, 15])
+3 comparisons and 0 hashes
+Comparing 10 to 10
+Comparing 20 to 20
+Comparing 30 to 30
+set([5, 40, 10, 300, 15, 400, 50, 20, 500, 30])
+3 comparisons and 0 hashes
+Comparing 10 to 10
+Comparing 20 to 20
+Comparing 30 to 30
+set([50])
+3 comparisons and 0 hashes
+{50: None, 20: None, 5: None, 10: None, 30: None, 15: None}
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/instrument.py =========
+Comparing 111 to 10
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+Comparing 111 to 20
+Comparing 111 to 5
+Comparing 111 to 10
+Comparing 111 to 15
+Comparing 111 to 20
+False
+9 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 20 to 20
+True
+2 comparisons and 0 hashes
+Comparing 30 to 10
+Comparing 30 to 20
+True
+2 comparisons and 0 hashes
+Comparing 20 to 10
+Comparing 30 to 20
+Comparing 50 to 30
+Comparing 20 to 50
+Comparing 20 to 30
+Comparing 20 to 20
+Comparing 5 to 20
+Comparing 5 to 20
+Comparing 5 to 10
+Comparing 10 to 20
+Comparing 10 to 10
+Comparing 10 to 20
+Comparing 15 to 20
+Comparing 15 to 10
+Comparing 15 to 10
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+18 comparisons and 0 hashes
+Comparing 111 to 20
+Comparing 111 to 30
+Comparing 111 to 50
+9
+3 comparisons and 0 hashes
+Comparing 20 to 20
+Comparing 20 to 30
+Comparing 20 to 20
+7
+3 comparisons and 0 hashes
+Comparing 30 to 20
+Comparing 30 to 30
+Comparing 30 to 50
+8
+3 comparisons and 0 hashes
+hashing 20
+hashing 30
+hashing 40
+hashing 300
+hashing 400
+hashing 500
+hashing 300
+Comparing 300 to 300
+hashing 400
+Comparing 400 to 400
+hashing 5
+hashing 10
+hashing 15
+hashing 20
+Comparing 20 to 20
+hashing 10
+hashing 20
+hashing 30
+hashing 50
+hashing 20
+Comparing 20 to 20
+hashing 5
+hashing 10
+Comparing 10 to 10
+hashing 15
+hashing 20
+Comparing 20 to 20
+3 comparisons and 9 hashes
+hashing 111
+False
+0 comparisons and 1 hashes
+hashing 20
+Comparing 20 to 20
+True
+1 comparisons and 1 hashes
+hashing 30
+True
+0 comparisons and 1 hashes
+Fundamental rule of sets:  Using sets is *much* cheaper than building them
+Comparing 10 to 10
+Comparing 20 to 20
+Comparing 30 to 30
+set([10, 20, 5, 30, 15])
+3 comparisons and 0 hashes
+Comparing 10 to 10
+Comparing 20 to 20
+Comparing 30 to 30
+set([5, 40, 10, 300, 15, 400, 50, 20, 500, 30])
+3 comparisons and 0 hashes
+Comparing 10 to 10
+Comparing 20 to 20
+Comparing 30 to 30
+set([50])
+3 comparisons and 0 hashes
+{50: None, 20: None, 5: None, 10: None, 30: None, 15: None}
+0 comparisons and 0 hashes
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+['a',
+ 'aid',
+ 'all',
+ 'an',
+ 'army',
+ 'assistance',
+ 'bad',
+ 'be',
+ 'beautiful',
+ 'by',
+ 'child',
+ 'children',
+ 'come',
+ 'country',
+ 'flag',
+ 'for',
+ 'from',
+ 'go',
+ 'going',
+ 'good',
+ 'help',
+ 'is',
+ 'later',
+ 'man',
+ 'many',
+ 'men',
+ 'my',
+ 'no',
+ 'now',
+ 'of',
+ 'our',
+ 'some',
+ 'state',
+ 'the',
+ 'their',
+ 'to',
+ 'ugly',
+ 'was',
+ 'with',
+ 'woman',
+ 'women']
+>>> dir(list)
+['__add__', '__class__', '__contains__', '__delattr__', '__delitem__', '__delslice__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getitem__', '__getslice__', '__gt__', '__hash__', '__iadd__', '__imul__', '__init__', '__iter__', '__le__', '__len__', '__lt__', '__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__reversed__', '__rmul__', '__setattr__', '__setitem__', '__setslice__', '__sizeof__', '__str__', '__subclasshook__', 'append', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
+>>> 'ugly' in correct_words
+True
+>>> 'ugggggggly' in correct_words
+False
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+['a',
+ 'aid',
+ 'all',
+ 'an',
+ 'army',
+ 'assistance',
+ 'bad',
+ 'be',
+ 'beautiful',
+ 'by',
+ 'child',
+ 'children',
+ 'come',
+ 'country',
+ 'flag',
+ 'for',
+ 'from',
+ 'go',
+ 'going',
+ 'good',
+ 'help',
+ 'is',
+ 'later',
+ 'man',
+ 'many',
+ 'men',
+ 'my',
+ 'no',
+ 'now',
+ 'of',
+ 'our',
+ 'some',
+ 'state',
+ 'the',
+ 'their',
+ 'to',
+ 'ugly',
+ 'was',
+ 'with',
+ 'woman',
+ 'women']
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+['Now,',
+ 'iss',
+ 'the',
+ 'tymme',
+ 'for',
+ 'all',
+ 'guhd',
+ 'men',
+ 'tooo',
+ 'comee',
+ 'to',
+ 'the',
+ 'ayd',
+ 'of',
+ 'thur',
+ 'country',
+ 'and',
+ 'city.']
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+['now,',
+ 'iss',
+ 'the',
+ 'tymme',
+ 'for',
+ 'all',
+ 'guhd',
+ 'men',
+ 'tooo',
+ 'comee',
+ 'to',
+ 'the',
+ 'ayd',
+ 'of',
+ 'thur',
+ 'country',
+ 'and',
+ 'city.']
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+['n',
+ 'o',
+ 'w',
+ 'i',
+ 's',
+ 's',
+ 't',
+ 'h',
+ 'e',
+ 't',
+ 'y',
+ 'm',
+ 'm',
+ 'e',
+ 'f',
+ 'o',
+ 'r',
+ 'a',
+ 'l',
+ 'l',
+ 'g',
+ 'u',
+ 'h',
+ 'd',
+ 'm',
+ 'e',
+ 'n',
+ 't',
+ 'o',
+ 'o',
+ 'o',
+ 'c',
+ 'o',
+ 'm',
+ 'e',
+ 'e',
+ 't',
+ 'o',
+ 't',
+ 'h',
+ 'e',
+ 'a',
+ 'y',
+ 'd',
+ 'o',
+ 'f',
+ 't',
+ 'h',
+ 'u',
+ 'r',
+ 'c',
+ 'o',
+ 'u',
+ 'n',
+ 't',
+ 'r',
+ 'y',
+ 'a',
+ 'n',
+ 'd',
+ 'c',
+ 'i',
+ 't',
+ 'y']
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+['now',
+ 'iss',
+ 'the',
+ 'tymme',
+ 'for',
+ 'all',
+ 'guhd',
+ 'men',
+ 'tooo',
+ 'comee',
+ 'to',
+ 'the',
+ 'ayd',
+ 'of',
+ 'thur',
+ 'country',
+ 'and',
+ 'city']
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+['now',
+ 'iss',
+ 'the',
+ 'tymme',
+ 'for',
+ 'all',
+ 'guhd',
+ 'men',
+ 'tooo',
+ 'comee',
+ 'to',
+ 'the',
+ 'ayd',
+ 'of',
+ 'thur',
+ 'country',
+ 'and',
+ 'city']
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+iss
+tymme
+guhd
+tooo
+comee
+ayd
+thur
+and
+city
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/spell_check.py", line 32, in <module>
+    spell_check(test, correct_words)
+NameError: name 'test' is not defined
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+Misspelled:
+-----------
+iss
+tymme
+guhd
+tooo
+comee
+ayd
+thur
+and
+city
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+Misspelled:
+-----------
+iss
+tymme
+guhd
+tooo
+comee
+ayd
+thur
+>>> # regex over the input
+>>> # \--> number of words in the text
+>>> # read the word file
+>>> # \--> 235000 words
+>>> 
+>>> 17 * (250000 // 2)
+2125000
+>>> 
+>>> 10 * (250000 // 2) + 8 + 7 * 250000
+3000008
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+Misspelled:
+-----------
+iss
+tymme
+guhd
+tooo
+comee
+ayd
+thur
+>>> 17
+17
+>>> # 10 * (250000 // 2) + 8 + 7 * 250000
+>>> # --> 3000008 comparisons
+>>> 
+>>> # 250000 hashes
+>>> # 17 comparison
+>>> 
+>>> 
+>>> 
+>>> # word in checker
+>>> # checker.__contains__(word)
+>>> # list.__contains__       <== O(n)
+>>> # set.__contains__        <== O(1)
+>>> 
+>>> from random import *
+>>> random()
+0.9023670972953922
+>>> randrange(1000, 2000, 100)
+1500
+>>> range(1000, 2000, 100)
+[1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900]
+>>> xrange(1000, 2000, 100)
+xrange(1000, 2000, 100)
+>>> 
+>>> sample(range(1000), 10)
+[507, 29, 694, 948, 502, 352, 804, 117, 756, 79]
+>>> # sampling without replacement
+>>> sample(range(12), 10)
+[11, 2, 6, 0, 4, 5, 1, 8, 3, 9]
+>>> sample(xrange(1000), 10)
+[861, 274, 340, 476, 587, 111, 837, 86, 785, 578]
+>>> sample(xrange(1000000), 10)
+[889570, 689069, 400316, 91164, 27870, 642533, 255880, 710037, 6824, 792109]
+>>> range(1, 57)
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56]
+>>> sample(xrange(1, 57), 6)
+[55, 36, 4, 45, 47, 52]
+>>> sorted(sample(xrange(1, 57), 6))
+[8, 9, 17, 18, 41, 50]
+>>> 
+>>> 
+>>> from random import *
+>>> sorted(sample(xrange(1, 57), 6))
+[14, 26, 32, 40, 50, 53]
+>>> seed(8675309)
+>>> sorted(sample(xrange(1, 57), 6))
+[15, 23, 29, 33, 36, 46]
+>>> 
+>>> 
+>>> 
+>>> from random import *
+>>> seed(8675309)
+>>> sorted(sample(xrange(1, 57), 6))
+[15, 23, 29, 33, 36, 46]
+>>> seed('raymond')
+>>> sorted(sample(xrange(1, 57), 6))
+[11, 12, 16, 22, 23, 42]
+>>> names = 'raymond rachel matthew ramon gayle dennis sharon'.split()
+>>> for name in names:
+	seed(name)
+	lucky = sorted(sample(xrange(1, 57), 6))
+	print lucky, '<--', name
+
+	
+[11, 12, 16, 22, 23, 42] <-- raymond
+[9, 17, 30, 32, 45, 55] <-- rachel
+[5, 11, 14, 26, 31, 48] <-- matthew
+[7, 22, 33, 42, 47, 52] <-- ramon
+[5, 7, 20, 21, 34, 56] <-- gayle
+[10, 20, 24, 34, 39, 54] <-- dennis
+[13, 21, 33, 39, 42, 44] <-- sharon
+>>> 
+>>> 
+>>> names = 'raymond rachel matthew ramon gayle dennis sharon'.split()
+>>> for name in names:
+	seed(name)
+	lucky = sorted(sample(xrange(1, 57), 6))
+	print lucky, '<--', name
+
+	
+[11, 12, 16, 22, 23, 42] <-- raymond
+[9, 17, 30, 32, 45, 55] <-- rachel
+[5, 11, 14, 26, 31, 48] <-- matthew
+[7, 22, 33, 42, 47, 52] <-- ramon
+[5, 7, 20, 21, 34, 56] <-- gayle
+[10, 20, 24, 34, 39, 54] <-- dennis
+[13, 21, 33, 39, 42, 44] <-- sharon
+>>> 
+>>> hettingers = set()
+>>> for name in names:
+	seed(name)
+	lucky = sorted(sample(xrange(1, 57), 6))
+	hettingers.update(lucky)
+
+	
+>>> sorted(hettingers)
+[5, 7, 9, 10, 11, 12, 13, 14, 16, 17, 20, 21, 22, 23, 24, 26, 30, 31, 32, 33, 34, 39, 42, 44, 45, 47, 48, 52, 54, 55, 56]
+>>> len(hettingers)
+31
+>>> 
+>>> 
+>>> 
+>>> from random import *
+>>> hettingers = set()
+>>> for name in names:
+	seed(name)
+	lucky = sorted(sample(xrange(1, 57), 6))
+	hettingers.update(lucky)
+
+	
+>>> {10, 20, 30} <= {5, 10, 20, 30, 40}
+True
+>>> {10, 20, 30, 15} <= {5, 10, 20, 30, 40}
+False
+>>> 
+>>> 
+>>> del names
+>>> name = 'rachel'; lucky = sorted(sample(xrange(1, 57), 6)); set(lucky) <= hettingers
+False
+>>> seed('rachel'); lucky = sorted(sample(xrange(1, 57), 6)); set(lucky) <= hettingers
+True
+>>> hettingers
+set([5, 7, 9, 10, 11, 12, 13, 14, 16, 17, 20, 21, 22, 23, 24, 26, 30, 31, 32, 33, 34, 39, 42, 44, 45, 47, 48, 52, 54, 55, 56])
+>>> seed('monica'); lucky = sorted(sample(xrange(1, 57), 6)); set(lucky) <= hettingers
+False
+>>> seed('monica'); lucky = sorted(sample(xrange(1, 57), 6)); set(lucky) & hettingers
+set([42, 11, 13, 22, 7])
+>>> seed('kyle'); lucky = sorted(sample(xrange(1, 57), 6)); set(lucky) & hettingers
+set([48, 17, 7])
+>>> seed('kyle'); lucky = sorted(sample(xrange(1, 57), 6)); set(lucky) <= hettingers
+False
+>>> len(hettingers)
+31
+>>> (31 / 56.0)
+0.5535714285714286
+>>> (1 - (31 / 56.0)) ** 2
+0.19929846938775508
+>>> (1 - (31 / 56.0)) ** 6
+0.007916111268395636
+>>> 1 / (1 - (31 / 56.0)) ** 6
+126.32465185177605
+>>> 
+>>> hettingers = set()
+>>> for name in names:
+	seed(name)
+	lucky = sorted(sample(xrange(1, 100), 8))
+	hettingers.update(lucky)
+
+	
+
+Traceback (most recent call last):
+  File "<pyshell#219>", line 1, in <module>
+    for name in names:
+NameError: name 'names' is not defined
+>>> names = 'raymond rachel matthew ramon gayle dennis sharon'.split()
+>>> for name in names:
+	seed(name)
+	lucky = sorted(sample(xrange(1, 100), 8))
+	hettingers.update(lucky)
+
+	
+>>> hettingers
+set([4, 9, 12, 13, 15, 17, 18, 20, 23, 24, 25, 30, 31, 36, 37, 38, 39, 40, 41, 42, 44, 45, 48, 50, 52, 58, 59, 61, 62, 64, 66, 68, 72, 75, 77, 78, 83, 86, 88, 94])
+>>> len(_)
+40
+>>> 1 / (1 - (40 / 100.0)) ** 8
+59.53741807651275
+>>> 1 / (40 / 100.0) ** 8
+1525.8789062499993
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/bloomfilter.py ========
+>>> hettingers.population
+xrange(56)
+>>> hettingers.probes
+6
+>>> hettingers.data
+set([4, 6, 8, 9, 10, 11, 12, 13, 15, 16, 19, 20, 21, 22, 23, 25, 29, 30, 31, 32, 33, 38, 41, 43, 44, 46, 47, 51, 53, 54, 55])
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/bloomfilter.py ========
+>>> hettingers.population
+xrange(56)
+>>> hettingers.probes
+6
+>>> hettingers.data
+set([4, 6, 8, 9, 10, 11, 12, 13, 15, 16, 19, 20, 21, 22, 23, 25, 29, 30, 31, 32, 33, 38, 41, 43, 44, 46, 47, 51, 53, 54, 55])
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/bloomfilter.py ========
+True
+False
+>>> for c in 'abc:
+SyntaxError: EOL while scanning string literal
+>>> for c in 'abc':
+	print c
+
+	
+a
+b
+c
+>>> list('abc')
+['a', 'b', 'c']
+>>> tuple('abc')
+('a', 'b', 'c')
+>>> sorted('abracadabra')
+['a', 'a', 'a', 'a', 'a', 'b', 'b', 'c', 'd', 'r', 'r']
+>>> min('abracadabra')
+'a'
+>>> max('abracadabra')
+'r'
+>>> sum([10, 20, 5])
+35
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/bloomfilter.py ========
+True
+False
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/bloomfilter.py ========
+name [29, 8, 16, 54, 44, 31]
+set([4, 6, 8, 9, 10, 11, 12, 13, 15, 16, 19, 20, 21, 22, 23, 25, 29, 30, 31, 32, 33, 38, 41, 43, 44, 46, 47, 51, 53, 54, 55])
+True
+name [21, 7, 12, 41, 6, 10]
+set([4, 6, 8, 9, 10, 11, 12, 13, 15, 16, 19, 20, 21, 22, 23, 25, 29, 30, 31, 32, 33, 38, 41, 43, 44, 46, 47, 51, 53, 54, 55])
+False
+>>> [10, 20] <= {5, 10, 20, 30}
+True
+>>> [10, 20, 5] <= {5, 10, 20, 30}
+True
+>>> [10, 20, 7] <= {5, 10, 20, 30}
+True
+>>> 
+>>> 
+>>> 
+>>> '2' < 10
+False
+>>> '2' > 10
+True
+>>> '2' >= 10
+True
+>>> 
+>>> 
+>>> '20' < 10
+False
+>>> '20' < 30
+False
+>>> # 2.7.11
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/bloomfilter.py ========
+True
+False
+>>> len('raymond rachel matthew ramon gayle dennis sharon')
+48
+>>> 'rachel' in 'raymond rachel matthew ramon gayle dennis sharon'
+True
+>>> 
+>>> 
+>>> ping_result = '20 packets sent.  20 packets received.  0.0% percent lost.'
+>>> assert '0.0%' in ping_result
+>>> 
+>>> ping_result = '20 packets sent.  10 packets received.  50.0% percent lost.'
+>>> assert '0.0%' in ping_result
+>>> 
+>>> 
+>>> ping_result = '20 packets sent.  20 packets received.  0.0% percent lost.'
+>>> assert '0.0%' in ping_result.split()
+>>> ping_result = '20 packets sent.  10 packets received.  50.0% percent lost.'
+>>> assert '0.0%' in ping_result.split()
+
+Traceback (most recent call last):
+  File "<pyshell#271>", line 1, in <module>
+    assert '0.0%' in ping_result.split()
+AssertionError
+>>> ping_result.split()
+['20', 'packets', 'sent.', '10', 'packets', 'received.', '50.0%', 'percent', 'lost.']
+>>> 
+>>> 
+>>> 
+>>> dev_status = 'Device status:  connected'
+>>> assert 'connected' in dev_status
+>>> dev_status = 'Device status:  disconnected'
+>>> assert 'connected' in dev_status
+>>> 'he' in 'hello'
+True
+>>> 'he' in ['hello']
+False
+>>> 
+>>> 
+>>> print(30 + 40*2)
+110
+>>> print(30 + 40*2, 'is the answer')
+(110, 'is the answer')
+>>> # 2.7
+>>> # 99% are 2.7  1% are 3.0
+>>> # CPython 2.7/3.5    IronPython+2.7    PyPy 2.7/3.2   Jython 2.7 -        Cython 2.7   GAE 2.7
+>>> # Perl/CPAN 10,000   Ruby/Gem 2,000  Python/PyPI 90,000
+>>> # Py2  64bit int   long int arr of 64bit ints      ->  Py 3 only one 1 int type    32 reg int arr of 32
+>>> 2 ** 70
+1180591620717411303424L
+>>> type(_)
+<type 'long'>
+>>> 
+>>> type('hello')
+<type 'str'>
+>>> type(u'hello')
+<type 'unicode'>
+>>> 
+>>> import hashlib
+>>> hashlib.md5('hello')
+<md5 HASH object @ 0x10414cfb0>
+>>> hashlib.md5('hello').hexdigest()
+'5d41402abc4b2a76b9719d911017c592'
+>>> hashlib.md5('hello\n').hexdigest()
+'b1946ac92492d2347c6235b4d2611184'
+>>> # 90,000+ PyPI (15% run under Py3)
+>>> 
+>>> 
+>>> 
+>>> # 2 < 3 !
+>>> 
+>>> 
+>>> 
+>>> import sys
+>>> sys.getsizeof(10)
+24
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/bloomfilter.py ========
+True
+False
+>>> hettingers.data
+set([4, 6, 8, 9, 10, 11, 12, 13, 15, 16, 19, 20, 21, 22, 23, 25, 29, 30, 31, 32, 33, 38, 41, 43, 44, 46, 47, 51, 53, 54, 55])
+>>> 
+>>> s = [0] * 56
+>>> s
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+>>> 
+>>> s[4] = 1
+>>> s[6] = 1
+>>> s[8] = 1
+>>> s[9] = 1
+>>> s
+[0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+>>> s[7]
+0
+>>> s[9]
+1
+>>> 
+>>> s = [int(x in hettingers.data) for x in range(56)]
+>>> s
+[0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1]
+>>> s[7]
+0
+>>> s[9]
+1
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/bloomfilter.py ========
+True
+False
+>>> hettingers.population
+xrange(56)
+>>> hettingers.probes
+6
+>>> hettingers.data
+[0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1]
+>>> 'rachel' in hettingers
+True
+>>> 'monica' in hettingers
+False
+>>> 
+>>> all([True, True, True])
+True
+>>> all([True, False, True])
+False
+>>> any([True, False, True])
+True
+>>> any([False, False, False])
+False
+>>> [x**2 for x in range(10)]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> sum([x**2 for x in range(10)])
+285
+>>> g = (x**2 for x in xrange(10))
+>>> g
+<generator object <genexpr> at 0x102724140>
+>>> next(g)
+0
+>>> next(g)
+1
+>>> next(g)
+4
+>>> next(g)
+9
+>>> next(g)
+16
+>>> sum([x**2 for x in range(10)])
+285
+>>> sum(x**2 for x in xrange(10))
+285
+>>> sum([x**2 for x in range(10000)])
+333283335000
+>>> sum(x**2 for x in xrange(10000))
+333283335000
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/bloomfilter.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/bloomfilter.py", line 30, in <module>
+    print 'rachel' in hettingers
+  File "/Users/raymond/Dropbox/Public/sj144/bloomfilter.py", line 25, in __contains__
+    return all(i in self.data[i] for i in lucky)
+  File "/Users/raymond/Dropbox/Public/sj144/bloomfilter.py", line 25, in <genexpr>
+    return all(i in self.data[i] for i in lucky)
+TypeError: argument of type 'int' is not iterable
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/bloomfilter.py ========
+True
+False
+>>> hettingers
+<__main__.BloomFilter object at 0x103a39ad0>
+>>> hettingers.data
+[0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1]
+>>> [hettingers.data[i] for i in [5, 8, 10, 14, 20, 21]]
+[0, 1, 1, 0, 1, 1]
+>>> all([hettingers.data[i] for i in [5, 8, 10, 14, 20, 21]])
+False
+>>> all(hettingers.data[i] for i in [5, 8, 10, 14, 20, 21])
+False
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/bloomfilter.py ========
+True
+False
+>>> # byte is a number between 0 and 255
+>>> 
+>>> 
+>>> s = bytearray(20)
+>>> s[5] = 200
+>>> s[10] = 250
+>>> list(s)
+[0, 0, 0, 0, 0, 200, 0, 0, 0, 0, 250, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+>>> s[10]
+250
+>>> s[2]
+0
+>>> s[5] = 'hello'
+
+Traceback (most recent call last):
+  File "<pyshell#365>", line 1, in <module>
+    s[5] = 'hello'
+ValueError: string must be of size 1
+>>> s[5] = 2000
+
+Traceback (most recent call last):
+  File "<pyshell#366>", line 1, in <module>
+    s[5] = 2000
+ValueError: byte must be in range(0, 256)
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/bloomfilter.py ========
+True
+False
+>>> hettingers.population
+xrange(56)
+>>> hettingers.probes
+6
+>>> hettingers.data
+bytearray(b'\x00\x00\x00\x00\x01\x00\x01\x00\x01\x01\x01\x01\x01\x01\x00\x01\x01\x00\x00\x01\x01\x01\x01\x01\x00\x01\x00\x00\x00\x01\x01\x01\x01\x01\x00\x00\x00\x00\x01\x00\x00\x01\x00\x01\x01\x00\x01\x01\x00\x00\x00\x01\x00\x01\x01\x01')
+>>> list(hettingers.data)
+[0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1]
+>>> hettingers.data[1]
+0
+>>> hettingers.data[5]
+0
+>>> hettingers.data[4]
+1
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/bloomfilter.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/bloomfilter.py", line 29, in <module>
+    hettingers = BloomFilter('raymond rachel matthew ramon gayle dennis sharon'.split())
+  File "/Users/raymond/Dropbox/Public/sj144/bloomfilter.py", line 12, in __init__
+    self.data = bitarray(population)
+NameError: global name 'bitarray' is not defined
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+Misspelled:
+-----------
+iss
+tymme
+guhd
+tooo
+comee
+ayd
+thur
+>>> b = bytearray('hello')
+>>> list(b)
+[104, 101, 108, 108, 111]
+>>> b
+bytearray(b'hello')
+>>> 
+
+>>> 

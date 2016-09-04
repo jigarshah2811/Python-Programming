@@ -1,0 +1,3136 @@
+Python 2.7.11 (v2.7.11:6d1b6a68f775, Dec  5 2015, 12:54:16) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+>>> c['raymond']
+
+Traceback (most recent call last):
+  File "<pyshell#0>", line 1, in <module>
+    c['raymond']
+NameError: name 'c' is not defined
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+>>> d['RAYMOND']
+
+Traceback (most recent call last):
+  File "<pyshell#1>", line 1, in <module>
+    d['RAYMOND']
+  File "/Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py", line 4, in __getitem__
+    return dict.__getitem__(self, key)
+KeyError: 'raymond'
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+>>> d
+{'raymond': 'red'}
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+>>> d
+{'raymond': 'red'}
+>>> del d['RAYmond']
+>>> d
+{}
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+>>> d['rachel']
+
+Traceback (most recent call last):
+  File "<pyshell#6>", line 1, in <module>
+    d['rachel']
+  File "/Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py", line 5, in __getitem__
+    key = key.lower()
+KeyError: 'rachel'
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+>>> d['Rachel']
+
+Traceback (most recent call last):
+  File "<pyshell#7>", line 1, in <module>
+    d['Rachel']
+  File "/Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py", line 6, in __getitem__
+    return dict.__getitem__(self, key)
+  File "/Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py", line 9, in __missing__
+    raise KeyError('Missing key, could be any case variant of %r' % key)
+KeyError: "Missing key, could be any case variant of 'rachel'"
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py", line 28, in <module>
+    d[color] += 1
+KeyError: 'red'
+>>> d
+{}
+>>> d['red']
+
+Traceback (most recent call last):
+  File "<pyshell#9>", line 1, in <module>
+    d['red']
+KeyError: 'red'
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py", line 29, in <module>
+    d[color] += 1
+TypeError: __missing__() takes exactly 1 argument (2 given)
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+{'blue': 1, 'green': 2, 'red': 3}
+>>> 
+>>> 
+>>> d['orange']
+0
+>>> d['green']
+2
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+{'blue': 1, 'green': 2, 'red': 3}
+>>> c.x = 10
+>>> c.__dict__
+Looking up: '__dict__'
+{'x': 10}
+>>> 
+>>> c.x
+Looking up: 'x'
+10
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+{'blue': 1, 'green': 2, 'red': 3}
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+{'blue': 1, 'green': 2, 'red': 3}
+>>> a.x = 10
+
+Traceback (most recent call last):
+  File "<pyshell#18>", line 1, in <module>
+    a.x = 10
+NameError: name 'a' is not defined
+>>> 
+>>> 
+>>> c.x = 10
+Setting 'x' to 10
+>>> c.x
+Looking up: 'x'
+10
+>>> del c.x
+Deleting: 'x'
+>>> c.y
+Looking up: 'y'
+
+Traceback (most recent call last):
+  File "<pyshell#24>", line 1, in <module>
+    c.y
+  File "/Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py", line 36, in __getattribute__
+    return object.__getattribute__(self, attr)
+AttributeError: 'CDot' object has no attribute 'y'
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+{'blue': 1, 'green': 2, 'red': 3}
+>>> c.x = 10
+Setting 'x' to 10
+>>> c.x
+Looking up: 'x'
+10
+>>> del c.x
+Deleting: 'x'
+>>> c.y
+Looking up: 'y'
+Oh no, 'y' is missing
+
+Traceback (most recent call last):
+  File "<pyshell#28>", line 1, in <module>
+    c.y
+  File "/Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py", line 40, in __getattr__
+    raise AttributeError('Oops, I did it again')
+AttributeError: Oops, I did it again
+>>> 
+>>> 
+>>> 
+>>> d = dict()
+>>> 
+>>> 
+>>> d = {'x': 10}
+>>> var = 'x'
+>>> d['x']
+10
+>>> d[var]
+10
+>>> 
+>>> class A(object):
+	pass
+
+>>> a = A()
+>>> a.x
+
+Traceback (most recent call last):
+  File "<pyshell#45>", line 1, in <module>
+    a.x
+AttributeError: 'A' object has no attribute 'x'
+
+>>> a.x = 10
+>>> var = 'x'
+>>> a.x
+10
+>>> a.var
+
+Traceback (most recent call last):
+  File "<pyshell#49>", line 1, in <module>
+    a.var
+AttributeError: 'A' object has no attribute 'var'
+>>> getattr(a, var)
+10
+>>> getattr(a, 'x')
+10
+>>> 
+>>> a.var = 20
+>>> a.__dict__
+{'var': 20, 'x': 10}
+>>> 
+>>> setattr(a, var, 20)
+>>> a.__dict__
+{'var': 20, 'x': 20}
+>>> delattr(a, var, 20)
+
+Traceback (most recent call last):
+  File "<pyshell#58>", line 1, in <module>
+    delattr(a, var, 20)
+TypeError: delattr expected 2 arguments, got 3
+>>> delattr(a, var)
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+{'blue': 1, 'green': 2, 'red': 3}
+>>> 
+>>> 
+>>> 
+>>> c.x = 10
+Setting 'x' to 10
+>>> c.x
+Looking up: 'x'
+10
+>>> c.y
+Looking up: 'y'
+Oh no, 'y' is missing
+
+Traceback (most recent call last):
+  File "<pyshell#65>", line 1, in <module>
+    c.y
+  File "/Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py", line 40, in __getattr__
+    raise AttributeError('Oops, I did it again')
+AttributeError: Oops, I did it again
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+{'blue': 1, 'green': 2, 'red': 3}
+>>> Looking up: '__dict__'
+Looking up: '__members__'
+Oh no, '__members__' is missing
+Looking up: '__methods__'
+Oh no, '__methods__' is missing
+Looking up: '__class__'
+
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+{'blue': 1, 'green': 2, 'red': 3}
+10
+>>> c.__dict__
+{'x': 10}
+>>> c.X
+10
+>>> 
+>>> 
+>>> class D(dict):
+	pass
+
+>>> d = D()
+>>> d['x'] = 10
+>>> d
+{'x': 10}
+>>> d.y = 20
+>>> d
+{'x': 10}
+>>> d.__dict__
+{'y': 20}
+>>> 
+>>> 
+>>> 
+>>> class D(dict):
+	pass
+
+>>> d = D()
+>>> d['x'] = 10
+>>> d.y = 20
+>>> 
+>>> d
+{'x': 10}
+>>> d.__dict__
+{'y': 20}
+>>> d['x']
+10
+>>> d.y
+20
+>>> 
+>>> 
+>>> 
+=============================== RESTART: Shell ===============================
+>>> 30 + 40*2
+110
+>>> # printf("%d\n", 30 + 40*2);
+>>> 
+>>> choice = raw_input('Choose a game: ')
+Choose a game: GlobalThermonuclearWar
+>>> choice
+'GlobalThermonuclearWar'
+>>> 
+>>> expr = raw_input('Enter an expression: ')
+Enter an expression: 30 + 40*2
+>>> expr
+'30 + 40*2'
+>>> eval(expr)
+110
+>>> 
+=============================== RESTART: Shell ===============================
+>>> x = 10
+>>> # Assignments always go into locals (unless explicitly declared as global)
+>>> locals()['x']
+10
+>>> globals()['x']
+10
+>>> # At the module level, locals and globals are the SAME dictionary
+>>> 
+>>> 
+>>> # Assignments always go into locals (unless explicitly declared as global)
+>>> # At the module level, locals and globals are the SAME dictionary
+>>> 
+>>> eval('x = 15')
+
+Traceback (most recent call last):
+  File "<pyshell#113>", line 1, in <module>
+    eval('x = 15')
+  File "<string>", line 1
+    x = 15
+      ^
+SyntaxError: invalid syntax
+>>> 
+>>> exec 'x = 30'
+>>> x
+30
+>>> x
+30
+>>> 
+>>> 
+>>> exec 'x = len("hello")'
+>>> x
+5
+>>> y = 50
+>>> exec 'x = y ** 2'
+>>> xyz
+
+Traceback (most recent call last):
+  File "<pyshell#124>", line 1, in <module>
+    xyz
+NameError: name 'xyz' is not defined
+>>> 
+>>> 
+>>> 
+>>> # At the module level, locals and globals are the SAME dictionary
+>>> # Assignments always go into locals (unless explicitly declared as global)
+>>> # Variable lookups:   locals  ->  globals  ->  builtins  ->  NameError
+>>> 
+>>> def len(obj):
+	return 42
+
+>>> len('hello')
+42
+>>> __builtins__.len('hello')
+5
+>>> del len
+>>> len('hello')
+5
+>>> 
+>>> # At the module level, locals and globals are the SAME dictionary
+>>> # Assignments always go into locals (unless explicitly declared as global)
+>>> # Variable lookups:   locals  ->  globals  ->  builtins  ->  NameError
+>>> # The first in the chain wins.
+>>> 
+>>> globals().keys()
+['__builtins__', '__package__', 'x', 'y', '__name__', '__doc__']
+>>> 
+>>> 
+>>> # At the module level, locals and globals are the SAME dictionary
+>>> # Assignments always go into locals (unless explicitly declared as global)
+>>> # Variable lookups:   locals  ->  globals  ->  builtins  ->  NameError
+>>> # The first in the chain wins.
+>>> # And, if __builtins__ is missing from globals, it gets added automatically
+>>> 
+>>> import xml.etree.ElementTree
+>>> xml.etree.ElementTree.__name__
+'xml.etree.ElementTree'
+>>> xml.etree.ElementTree.__package__
+'xml.etree'
+>>> import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+>>> 
+>>> 
+>>> print '''
+>>> # At the module level, locals and globals are the SAME dictionary
+>>> # Assignments always go into locals (unless explicitly declared as global)
+>>> # Variable lookups:   locals  ->  globals  ->  builtins  ->  NameError
+>>> # The first in the chain wins.
+>>> # And, if __builtins__ is missing from globals, it gets added automatically
+'''
+
+>>> # At the module level, locals and globals are the SAME dictionary
+>>> # Assignments always go into locals (unless explicitly declared as global)
+>>> # Variable lookups:   locals  ->  globals  ->  builtins  ->  NameError
+>>> # The first in the chain wins.
+>>> # And, if __builtins__ is missing from globals, it gets added automatically
+
+>>> 
+>>> 
+>>> # Exec by default uses globals() and locals()
+>>> 
+>>> g = {'x': 10, 'y': 15}
+>>> l = {'y': 20, 'z': 25}
+>>> exec 'print z' in g, l
+25
+>>> exec 'print x' in g, l
+10
+>>> exec 'print y' in g, l
+20
+>>> g.keys()
+['y', 'x', '__builtins__']
+>>> exec 'print len("hello")' in g, l
+5
+>>> 
+>>> g = {'x': 10, 'y': 15}
+>>> l = {'y': 20, 'z': 25}
+>>> exec 'w = 35' in g, l
+>>> l
+{'y': 20, 'z': 25, 'w': 35}
+>>> 
+>>> 
+>>> g = {'x': 10, 'y': 15}
+>>> exec 'w = 40' in g, g
+>>> g.keys()
+['y', 'x', '__builtins__', 'w']
+>>> 
+>>> 
+>>> g = {'x': 10, 'y': 15}
+>>> exec 'w = 40' in g
+>>> g.keys()
+['y', 'x', '__builtins__', 'w']
+>>> 
+>>> # exec somestring in global_dict, local_dict
+>>> # exec somestring in gl_and_loc_dict
+>>> # exec somestring                                   globals(), locals()
+>>> 
+=============================== RESTART: Shell ===============================
+>>> import sample
+The sum of squares is 2470
+
+Traceback (most recent call last):
+  File "<pyshell#193>", line 1, in <module>
+    import sample
+  File "sample.py", line 12, in <module>
+    print map(cube, range(n))
+  File "sample.py", line 10, in cube
+    return x ** 3
+NameError: global name 'x' is not defined
+>>> 
+=========== RESTART: /Users/raymond/Dropbox/Public/sj144/sample.py ===========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+>>> 
+=============================== RESTART: Shell ===============================
+>>> 
+>>> 
+>>> 
+
+
+
+>>> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>> 
+
+
+>>> 
+
+>>> import sample
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+>>> sample.__name__
+'sample'
+>>> sample.__doc__
+'A simple demonstration of Python'
+>>> sample.n
+20
+>>> sample.squares
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361]
+>>> sample.cube
+<function cube at 0x1006ef488>
+>>> sample.cube(11)
+1331
+>>> dir(sample)
+['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'cube', 'i', 'n', 'squares']
+>>> sample.__file__
+'sample.py'
+>>> 
+>>> 
+>>> # __name__ __package__ __doc__ __file__
+>>> # __builtins__
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+'A simple demonstration of Python'
+
+n = 20
+
+squares = [i**2 for i in xrange(n)]
+
+print 'The sum of squares is %d' % sum(squares)
+
+def cube(x):
+    return x ** 3
+
+print map(cube, range(n))
+
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+>>> namespace
+{'squares': [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361], 'i': 19, '__file__': 'sample.py', 'n': 20, 'cube': <function cube at 0x1006ef488>, '__name__': 'sample', '__package__': None, '__doc__': 'A simple demonstration of Python'}
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+{'__doc__': 'A simple demonstration of Python',
+ '__file__': 'sample.py',
+ '__name__': 'sample',
+ '__package__': None,
+ 'cube': <function cube at 0x10413fe60>,
+ 'i': 19,
+ 'n': 20,
+ 'squares': [0,
+             1,
+             4,
+             9,
+             16,
+             25,
+             36,
+             49,
+             64,
+             81,
+             100,
+             121,
+             144,
+             169,
+             196,
+             225,
+             256,
+             289,
+             324,
+             361]}
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> import sample
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+>>> sample.n
+20
+>>> sample.cube(12)
+1728
+>>> type(namespace)
+<type 'dict'>
+>>> type(sample)
+<type 'module'>
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> sample
+<__main__.Module object at 0x10393acd0>
+>>> import sample
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+>>> sample.n
+20
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 25, in <module>
+    print sample.m
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+KeyError: 'm'
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> 
+>>> 
+>>> sample
+<__main__.Module object at 0x103963d10>
+>>> sample.n
+20
+>>> sample.cube(11)
+1331
+>>> 
+>>> sample.__dict__
+{'namespace': {'squares': [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361], 'i': 19, '__file__': 'sample.py', 'n': 20, 'cube': <function cube at 0x103968e60>, '__name__': 'sample', '__package__': None, '__doc__': 'A simple demonstration of Python'}}
+>>> sample.__dict__.keys()
+['namespace']
+>>> sample.__dict__['namespace']
+{'squares': [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361], 'i': 19, '__file__': 'sample.py', 'n': 20, 'cube': <function cube at 0x103968e60>, '__name__': 'sample', '__package__': None, '__doc__': 'A simple demonstration of Python'}
+>>> 
+>>> # inst dict has:  namespace
+>>> # namespace dict:  n cube square ...
+>>> sample.n
+20
+>>> sample.namespace
+{'squares': [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361], 'i': 19, '__file__': 'sample.py', 'n': 20, 'cube': <function cube at 0x103968e60>, '__name__': 'sample', '__package__': None, '__doc__': 'A simple demonstration of Python'}
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 25, in <module>
+    print sample.n
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattribute__
+    return self.namespace[attr]
+
+=============================== RESTART: Shell ===============================
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 26, in <module>
+    sample = Module(namespace)
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 8, in __init__
+    self.namespace = namespace
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 14, in __setattr__
+    self.namespace[attr] = value
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+
+=============================== RESTART: Shell ===============================
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> class Object:
+	pass
+
+>>> class Module(Object):
+	def __init__(self, ns):
+		Object.ns = ns
+
+		
+>>> m = Module(dict(raymond='red'))
+>>> m.__dict__
+{}
+>>> Object.raymond
+
+Traceback (most recent call last):
+  File "<pyshell#246>", line 1, in <module>
+    Object.raymond
+AttributeError: class Object has no attribute 'raymond'
+>>> Object.ns
+{'raymond': 'red'}
+>>> class Module(object):
+	def __init__(self, ns):
+		object.ns = ns
+
+		
+>>> m = Module(dict(raymond='red'))
+
+Traceback (most recent call last):
+  File "<pyshell#250>", line 1, in <module>
+    m = Module(dict(raymond='red'))
+  File "<pyshell#249>", line 3, in __init__
+    object.ns = ns
+TypeError: can't set attributes of built-in/extension type 'object'
+>>> object.xzy= 1
+
+Traceback (most recent call last):
+  File "<pyshell#251>", line 1, in <module>
+    object.xzy= 1
+TypeError: can't set attributes of built-in/extension type 'object'
+>>> 
+>>> dir(object)
+['__class__', '__delattr__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__']
+>>> 
+>>> 
+>>> class A(object):
+	pass
+
+>>> dir(A)
+['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__']
+>>> 
+>>> a = A()
+>>> a.x = 10
+>>> a.__dict__
+{'x': 10}
+>>> class A(object):
+	pass
+
+>>> class A(object):
+	def __setattr__(self, attr, value):
+		return RuntimeError('I refuse!')
+
+	
+>>> a = A()
+>>> a.x = 10
+>>> a.x
+
+Traceback (most recent call last):
+  File "<pyshell#271>", line 1, in <module>
+    a.x
+AttributeError: 'A' object has no attribute 'x'
+>>> class A(object):
+	def __setattr__(self, attr, value):
+		raise RuntimeError('I refuse!')
+
+	
+>>> 
+>>> 
+>>> 
+>>> 
+>>> class A(object):
+	def __setattr__(self, attr, value):
+		raise RuntimeError('I refuse!')
+
+	
+>>> a = A()
+>>> a.x = 10
+
+Traceback (most recent call last):
+  File "<pyshell#281>", line 1, in <module>
+    a.x = 10
+  File "<pyshell#279>", line 3, in __setattr__
+    raise RuntimeError('I refuse!')
+RuntimeError: I refuse!
+>>> class A(object):
+	def __init__(self, x):
+		self.x = x
+	def __setattr__(self, attr, value):
+		raise RuntimeError('I refuse!')
+
+	
+>>> a = A(10)
+
+Traceback (most recent call last):
+  File "<pyshell#284>", line 1, in <module>
+    a = A(10)
+  File "<pyshell#283>", line 3, in __init__
+    self.x = x
+  File "<pyshell#283>", line 5, in __setattr__
+    raise RuntimeError('I refuse!')
+RuntimeError: I refuse!
+>>> class A(object):
+	def __init__(self, x):
+		object.__setattr__(self, 'x', x)
+	def __setattr__(self, attr, value):
+		raise RuntimeError('I refuse!')
+
+	
+>>> a = A(10)
+>>> a.x
+10
+>>> a.y = 15
+
+Traceback (most recent call last):
+  File "<pyshell#289>", line 1, in <module>
+    a.y = 15
+  File "<pyshell#286>", line 5, in __setattr__
+    raise RuntimeError('I refuse!')
+RuntimeError: I refuse!
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> sample.q
+
+Traceback (most recent call last):
+  File "<pyshell#290>", line 1, in <module>
+    sample.q
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 11, in __getattr__
+    return self.namespace[attr]
+KeyError: 'q'
+>>> import sample
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+>>> sample.q
+
+Traceback (most recent call last):
+  File "<pyshell#292>", line 1, in <module>
+    sample.q
+AttributeError: 'module' object has no attribute 'q'
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> sample.q
+
+Traceback (most recent call last):
+  File "<pyshell#293>", line 1, in <module>
+    sample.q
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 14, in __getattr__
+    raise AttributeError(attr)
+AttributeError: q
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> del sample.q
+
+Traceback (most recent call last):
+  File "<pyshell#294>", line 1, in <module>
+    del sample.q
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 23, in __delattr__
+    raise AttributeError(attr)
+AttributeError: q
+>>> import sample
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+>>> del sample.q
+
+Traceback (most recent call last):
+  File "<pyshell#296>", line 1, in <module>
+    del sample.q
+AttributeError: q
+>>> import sample
+>>> dir(sample)
+['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'cube', 'i', 'n', 'squares']
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> dir(sample)
+['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'namespace']
+>>> 
+>>> len('hello')
+5
+>>> 'hello'.__len__()
+5
+>>> def mydir(obj):
+	if hasattr(obj, '__dir__'):
+		return obj.__dir__()
+	return sorted(obj.__dict__.keys())
+
+>>> 
+>>> import sample
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+>>> dir(sample)
+['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'cube', 'i', 'n', 'squares']
+>>> mydir(sample)
+['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'cube', 'i', 'n', 'squares']
+>>> sample.__dict__
+{'squares': [0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, 361], '__builtins__': {'bytearray': <type 'bytearray'>, 'IndexError': <type 'exceptions.IndexError'>, 'all': <built-in function all>, 'help': Type help() for interactive help, or help(object) for help about object., 'vars': <built-in function vars>, 'SyntaxError': <type 'exceptions.SyntaxError'>, 'unicode': <type 'unicode'>, 'UnicodeDecodeError': <type 'exceptions.UnicodeDecodeError'>, 'memoryview': <type 'memoryview'>, 'isinstance': <built-in function isinstance>, 'copyright': Copyright (c) 2001-2015 Python Software Foundation.
+All Rights Reserved.
+
+Copyright (c) 2000 BeOpen.com.
+All Rights Reserved.
+
+Copyright (c) 1995-2001 Corporation for National Research Initiatives.
+All Rights Reserved.
+
+Copyright (c) 1991-1995 Stichting Mathematisch Centrum, Amsterdam.
+All Rights Reserved., 'NameError': <type 'exceptions.NameError'>, 'BytesWarning': <type 'exceptions.BytesWarning'>, 'dict': <type 'dict'>, 'input': <built-in function input>, 'oct': <built-in function oct>, 'bin': <built-in function bin>, 'SystemExit': <type 'exceptions.SystemExit'>, 'StandardError': <type 'exceptions.StandardError'>, 'format': <built-in function format>, 'repr': <built-in function repr>, 'sorted': <built-in function sorted>, 'False': False, 'RuntimeWarning': <type 'exceptions.RuntimeWarning'>, 'list': <type 'list'>, 'iter': <built-in function iter>, 'reload': <built-in function reload>, 'Warning': <type 'exceptions.Warning'>, '__package__': None, 'round': <built-in function round>, 'dir': <built-in function dir>, 'cmp': <built-in function cmp>, 'set': <type 'set'>, 'bytes': <type 'str'>, 'reduce': <built-in function reduce>, 'intern': <built-in function intern>, 'issubclass': <built-in function issubclass>, 'Ellipsis': Ellipsis, 'EOFError': <type 'exceptions.EOFError'>, 'locals': <built-in function locals>, 'BufferError': <type 'exceptions.BufferError'>, 'slice': <type 'slice'>, 'FloatingPointError': <type 'exceptions.FloatingPointError'>, 'sum': <built-in function sum>, 'getattr': <built-in function getattr>, 'abs': <built-in function abs>, 'exit': Use exit() or Ctrl-D (i.e. EOF) to exit, 'print': <built-in function print>, 'True': True, 'FutureWarning': <type 'exceptions.FutureWarning'>, 'ImportWarning': <type 'exceptions.ImportWarning'>, 'None': None, 'hash': <built-in function hash>, 'ReferenceError': <type 'exceptions.ReferenceError'>, 'len': <built-in function len>, 'credits':     Thanks to CWI, CNRI, BeOpen.com, Zope Corporation and a cast of thousands
+    for supporting Python development.  See www.python.org for more information., 'frozenset': <type 'frozenset'>, '__name__': '__builtin__', 'ord': <built-in function ord>, 'super': <type 'super'>, '_': None, 'TypeError': <type 'exceptions.TypeError'>, 'license': Type license() to see the full license text, 'KeyboardInterrupt': <type 'exceptions.KeyboardInterrupt'>, 'UserWarning': <type 'exceptions.UserWarning'>, 'filter': <built-in function filter>, 'range': <built-in function range>, 'staticmethod': <type 'staticmethod'>, 'SystemError': <type 'exceptions.SystemError'>, 'BaseException': <type 'exceptions.BaseException'>, 'pow': <built-in function pow>, 'RuntimeError': <type 'exceptions.RuntimeError'>, 'float': <type 'float'>, 'MemoryError': <type 'exceptions.MemoryError'>, 'StopIteration': <type 'exceptions.StopIteration'>, 'globals': <built-in function globals>, 'divmod': <built-in function divmod>, 'enumerate': <type 'enumerate'>, 'apply': <built-in function apply>, 'LookupError': <type 'exceptions.LookupError'>, 'open': <built-in function open>, 'quit': Use quit() or Ctrl-D (i.e. EOF) to exit, 'basestring': <type 'basestring'>, 'UnicodeError': <type 'exceptions.UnicodeError'>, 'zip': <built-in function zip>, 'hex': <built-in function hex>, 'long': <type 'long'>, 'next': <built-in function next>, 'ImportError': <type 'exceptions.ImportError'>, 'chr': <built-in function chr>, 'xrange': <type 'xrange'>, 'type': <type 'type'>, '__doc__': "Built-in functions, exceptions, and other objects.\n\nNoteworthy: None is the `nil' object; Ellipsis represents `...' in slices.", 'Exception': <type 'exceptions.Exception'>, 'tuple': <type 'tuple'>, 'UnicodeTranslateError': <type 'exceptions.UnicodeTranslateError'>, 'reversed': <type 'reversed'>, 'UnicodeEncodeError': <type 'exceptions.UnicodeEncodeError'>, 'IOError': <type 'exceptions.IOError'>, 'hasattr': <built-in function hasattr>, 'delattr': <built-in function delattr>, 'setattr': <built-in function setattr>, 'raw_input': <built-in function raw_input>, 'SyntaxWarning': <type 'exceptions.SyntaxWarning'>, 'compile': <built-in function compile>, 'ArithmeticError': <type 'exceptions.ArithmeticError'>, 'str': <type 'str'>, 'property': <type 'property'>, 'GeneratorExit': <type 'exceptions.GeneratorExit'>, 'int': <type 'int'>, '__import__': <built-in function __import__>, 'KeyError': <type 'exceptions.KeyError'>, 'coerce': <built-in function coerce>, 'PendingDeprecationWarning': <type 'exceptions.PendingDeprecationWarning'>, 'file': <type 'file'>, 'EnvironmentError': <type 'exceptions.EnvironmentError'>, 'unichr': <built-in function unichr>, 'id': <built-in function id>, 'OSError': <type 'exceptions.OSError'>, 'DeprecationWarning': <type 'exceptions.DeprecationWarning'>, 'min': <built-in function min>, 'UnicodeWarning': <type 'exceptions.UnicodeWarning'>, 'execfile': <built-in function execfile>, 'any': <built-in function any>, 'complex': <type 'complex'>, 'bool': <type 'bool'>, 'ValueError': <type 'exceptions.ValueError'>, 'NotImplemented': NotImplemented, 'map': <built-in function map>, 'buffer': <type 'buffer'>, 'max': <built-in function max>, 'object': <type 'object'>, 'TabError': <type 'exceptions.TabError'>, 'callable': <built-in function callable>, 'ZeroDivisionError': <type 'exceptions.ZeroDivisionError'>, 'eval': <built-in function eval>, '__debug__': True, 'IndentationError': <type 'exceptions.IndentationError'>, 'AssertionError': <type 'exceptions.AssertionError'>, 'classmethod': <type 'classmethod'>, 'UnboundLocalError': <type 'exceptions.UnboundLocalError'>, 'NotImplementedError': <type 'exceptions.NotImplementedError'>, 'AttributeError': <type 'exceptions.AttributeError'>, 'OverflowError': <type 'exceptions.OverflowError'>}, '__file__': '/Users/raymond/Dropbox/Public/sj144/sample.pyc', 'n': 20, 'i': 19, 'cube': <function cube at 0x104c601b8>, '__name__': 'sample', '__package__': None, '__doc__': 'A simple demonstration of Python'}
+>>> sample.__dict__.keys()
+['squares', '__builtins__', '__file__', 'n', 'i', 'cube', '__name__', '__package__', '__doc__']
+>>> sorted(sample.__dict__.keys())
+['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'cube', 'i', 'n', 'squares']
+>>> 
+>>> 
+>>> def mydir(obj):
+	if hasattr(obj, '__dir__'):
+		return obj.__dir__()
+	return sorted(obj.__dict__.keys())
+
+>>> dir(sample)
+['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'cube', 'i', 'n', 'squares']
+>>> 
+>>> class A:
+	def __dir__(self):
+		return ['hello', 'world']
+
+	
+>>> a = A()
+>>> dir(a)
+['hello', 'world']
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> dir(sample)
+['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattr__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'namespace']
+>>> # __dict__                namespace
+>>> #  "namespace" & object   n cube squares
+>>> #  ^--- dir()
+>>> #                           ^--- want this
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> dir(sample)
+['__doc__', '__file__', '__name__', '__package__', 'cube', 'i', 'n', 'squares']
+>>> import sample
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+>>> dir(sample)
+['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'cube', 'i', 'n', 'squares']
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> dir(sample)
+['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'cube', 'i', 'n', 'squares']
+>>> import sample
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+>>> 
+dir(sample)
+['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'cube', 'i', 'n', 'squares']
+>>> 
+>>> 
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> sample
+<__main__.Module object at 0x104239d90>
+>>> import sample
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+>>> sample
+<module 'sample' from '/Users/raymond/Dropbox/Public/sj144/sample.pyc'>
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> sample
+<Module 'sample' from 'sample.py'>
+>>> exec raw_input('Enter code: ')
+Enter code: x = 10
+>>> x
+10
+>>> raw_input('Enter code: ')
+Enter code: 
+''
+>>> import sample
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> import sample
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> 
+>>> 
+>>> import sample
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+>>> import sample
+>>> del sample
+>>> import sample
+>>> import sys
+>>> type(sys.modules)
+<type 'dict'>
+>>> sys.modules['sample']
+<module 'sample' from '/Users/raymond/Dropbox/Public/sj144/sample.pyc'>
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> myimport('sample')
+>>> modules.keys()
+['sample']
+>>> 
+=============================== RESTART: Shell ===============================
+>>> import sample
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+>>> import sample
+>>> import sys
+>>> del sys.modules['sample']
+>>> import sample
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+>>> 
+>>> reload(sample)
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+<module 'sample' from 'sample.pyc'>
+>>> reload(sample)
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+<module 'sample' from 'sample.pyc'>
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+>>> myreload(sample)
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+<Module 'sample' from 'sample.py'>
+>>> myreload(sample)
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+<Module 'sample' from 'sample.py'>
+>>> myimport('sample')
+>>> import this
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+>>> import this
+>>> reload(this)
+The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+<module 'this' from '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/this.pyc'>
+>>> 
+>>> 
+>>> import random
+>>> random.randrange(10000)
+8972
+>>> myimport('random')
+
+Traceback (most recent call last):
+  File "<pyshell#378>", line 1, in <module>
+    myimport('random')
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 40, in myimport
+    with open(filename) as f:
+IOError: [Errno 2] No such file or directory: 'random.py'
+>>> from pprint import pprint
+>>> import sys
+>>> pprint(sys.path)
+['/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7',
+ '/Users/raymond/Dropbox/Public/sj144',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/readline-6.2.4.1-py2.7-macosx-10.7-intel.egg',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/ats_py2-1.0.4-py2.7.egg',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python27.zip',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-darwin',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-mac',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-mac/lib-scriptpackages',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-tk',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-old',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-dynload',
+ '/Users/raymond/Library/Python/2.7/lib/python/site-packages',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages',
+ '/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/PIL',
+ '/Library/Python/2.7/site-packages']
+>>> import sysx
+
+Traceback (most recent call last):
+  File "<pyshell#382>", line 1, in <module>
+    import sysx
+ImportError: No module named sysx
+>>> 
+>>> 
+>>> # In loops with a "break" statement, and "else" clause is used to determine
+>>> # whether the loop exited normally or with a "break"
+>>> 
+>>> # Essentially, "else" means "no break was encountered, the loop finished normally"
+>>> for x in [10, 20, 30, 40, 50]:
+	print x
+	if x == 40:
+		print 'Found 40'
+		break
+
+	
+10
+20
+30
+40
+Found 40
+>>> for x in [10, 20, 30, 40, 50]:
+	print x
+	if x == 60:
+		print 'Found 40'
+		break
+
+	
+10
+20
+30
+40
+50
+>>> for x in [10, 20, 30, 40, 50]:
+	print x
+	if x == 60:
+		print 'Found 60'
+		break
+else:
+	print 'Did not find 60. Finished normally'
+
+	
+10
+20
+30
+40
+50
+Did not find 60. Finished normally
+>>> for x in [10, 20, 30, 40, 50]:
+	print x
+	if x == 40:
+		print 'Found 40'
+		break
+else:
+	print 'Did not find 40. Finished normally'
+
+	
+10
+20
+30
+40
+Found 40
+>>> # Rule:  don't use normal string methods on dirnames and filenames
+>>> 
+>>> 
+>>> import os.path
+>>> dirname = 'class/notes'
+>>> filename = 'dayone.log'
+>>> 
+>>> os.path.join(dirname, filename)
+'class/notes/dayone.log'
+>>> fullname = os.path.join(dirname, filename)
+>>> os.path.join(dirname, 'backup', filename)
+'class/notes/backup/dayone.log'
+>>> 
+>>> import os.path
+>>> dirname = 'class/notes'
+>>> filename = 'dayone.log'
+>>> fullname = os.path.join(dirname, filename)
+>>> os.path.dirname(fullname)
+'class/notes'
+>>> os.path.basename(fullname)
+'dayone.log'
+>>> os.path.split(fullname)
+('class/notes', 'dayone.log')
+>>> os.path.splitext(fullname)
+('class/notes/dayone', '.log')
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 69, in <module>
+    myimport('sample')
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 42, in myimport
+    fullname = os.path.join(dirname, filename)
+NameError: name 'os' is not defined
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+2825
+>>> 
+>>> random.__file__
+'/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.py'
+>>> sample.__file__
+'/Users/raymond/Dropbox/Public/sj144/sample.py'
+>>> sys.path[-1]
+'/Library/Python/2.7/site-packages'
+>>> import sample
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+>>> sample.__file__
+'/Users/raymond/Dropbox/Public/sj144/sample.pyc'
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> code = '''
+def square(x):
+    return x ** 2
+'''
+>>> exec code
+>>> square(10)
+100
+>>> 
+>>> c = compile(code, 'nofile', 'exec')
+>>> c
+<code object <module> at 0x10387b830, file "nofile", line 2>
+>>> dir(c)
+['__class__', '__cmp__', '__delattr__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__le__', '__lt__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'co_argcount', 'co_cellvars', 'co_code', 'co_consts', 'co_filename', 'co_firstlineno', 'co_flags', 'co_freevars', 'co_lnotab', 'co_name', 'co_names', 'co_nlocals', 'co_stacksize', 'co_varnames']
+>>> c.co_varnames
+()
+>>> c.co_names
+('square',)
+>>> co.co_nlocals
+
+Traceback (most recent call last):
+  File "<pyshell#446>", line 1, in <module>
+    co.co_nlocals
+NameError: name 'co' is not defined
+>>> c.co_nlocals
+0
+>>> c.co_filename
+'nofile'
+>>> c.co_firstlineno
+2
+>>> c.co_code
+'d\x00\x00\x84\x00\x00Z\x00\x00d\x01\x00S'
+>>> map(ord, c.co_code)
+[100, 0, 0, 132, 0, 0, 90, 0, 0, 100, 1, 0, 83]
+>>> from dis import dis
+>>> dis(code)
+          0 UNARY_POSITIVE 
+          1 LOAD_CONST      26213 (26213)
+          4 SLICE+2        
+          5 POP_JUMP_IF_TRUE 30065
+          8 STORE_GLOBAL    25970 (25970)
+         11 STORE_SLICE+0  
+         12 SETUP_LOOP      14889 (to 14904)
+         15 UNARY_POSITIVE 
+         16 SLICE+2        
+         17 SLICE+2        
+         18 SLICE+2        
+         19 SLICE+2        
+         20 POP_JUMP_IF_FALSE 29797
+         23 <117>           28274
+         26 SLICE+2        
+         27 SETUP_LOOP      10784 (to 10814)
+         30 STORE_SLICE+2  
+         31 SLICE+2        
+         32 DELETE_SLICE+0 
+         33 UNARY_POSITIVE 
+>>> dis(square)
+  3           0 LOAD_FAST                0 (x)
+              3 LOAD_CONST               1 (2)
+              6 BINARY_POWER        
+              7 RETURN_VALUE        
+>>> # string ---(compile)---> code
+>>> exec code
+>>> # string ---(compile)---> code ---(exec)---> runs the opcodes
+>>> 
+>>> code_string = 'print "Howdy!"
+SyntaxError: EOL while scanning string literal
+>>> code_string = 'print "Howdy!"'
+>>> 
+>>> 
+
+
+>>> 
+
+
+
+
+
+
+
+
+
+
+
+>>> 
+
+
+>>> 
+
+
+>>> 
+
+
+>>> code_string = 'print "Howdy!"'
+>>> code = compile(code_string, 'nofile', 'exec')
+>>> exec code
+Howdy!
+>>> exec code
+Howdy!
+>>> exec code
+Howdy!
+>>> exec code_string
+Howdy!
+>>> exec code_string
+Howdy!
+>>> exec code_string
+Howdy!
+>>> 
+>>> import marshal
+>>> 
+>>> 
+>>> code_string = 'print "Howdy!"'
+>>> code = compile(code_string, 'nofile', 'exec')
+>>> s = marshal.dumps(code)
+>>> del code
+>>> del code_string
+>>> type(s)
+<type 'str'>
+>>> code = marshal.loads(s)
+>>> exec code
+Howdy!
+>>> # PYC file:  (magic_number: version_of_python, timestamp, marshal.dumps(code))
+>>> import puzzle
+
+Traceback (most recent call last):
+  File "<pyshell#488>", line 1, in <module>
+    import puzzle
+ImportError: No module named puzzle
+>>> 'hello'.startswith('he')
+True
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+9242
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 78, in <module>
+    myimport('http://users.rcn.com/python/download/puzzle')
+  File "/Users/raymond/Dropbox/Public/sj144/module_demo.py", line 52, in myimport
+    raise ImportError('Cannot find %r on sys.path' % modname)
+ImportError: Cannot find 'http://users.rcn.com/python/download/puzzle' on sys.path
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+8428
+>>> dir(sample)
+['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'cube', 'i', 'n', 'squares']
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+6587
+>>> dir(sample)
+['__builtins__', '__doc__', '__file__', '__name__', '__package__', 'cube', 'i', 'n', 'squares']
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/module_demo.py ========
+The sum of squares is 2470
+[0, 1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, 1331, 1728, 2197, 2744, 3375, 4096, 4913, 5832, 6859]
+20
+1728
+1495
+Starting modname: http://users.rcn.com/python/download/puzzle
+Code: from __future__ import generators
+
+''' Generic Puzzle Solving Framework
+    Designed for Python 2.2 or later
+    License:  Public Domain
+    Author:   Raymond Hettinger
+    Updates:  http://users.rcn.com/python/download/python.htm
+'''
+
+#  Revision In Use:  'File %n, Ver %v, Date %f'
+version = 'File PUZZLE.PY, Ver 9, Date 27-Mar-2002,3:17:34'
+
+''' Simple Instructions:
+
+Create your puzzle as a subclass of Puzzle().
+The first step is to choose a representation of the problem
+state preferably stored as a string.  Set 'pos' to the starting
+position and 'goal' to the ending position.  Create a genmoves()
+method that computes all possible new puzzle states reachable from
+the current state.  Call the .solve() method to solve the puzzle.
+
+Important Note:
+
+The genmoves() method must return a list of puzzle instances, not
+their representations.  It should be written as a generator, returning
+its results through yield.
+
+Advanced Instructions:
+
+1. .solve(depthFirst=1) will override the default breadth first search.
+Use depth first when the puzzle known to be solved in a fixed number
+of moves (for example, the eight queens problem is solved only when
+the eighth queen is placed on the board; also, the triangle tee problem
+removes one tee on each move until all tees are removed).  Breadth first
+is ideal when the shortest path solution needs to be found or when
+some paths have a potential to wander around infinitely (i.e. you can
+randomly twist a Rubik's cube all day and never come near a solution).
+
+2. Define __repr__ for a pretty printed version of the current position.
+The state for the Tee puzzle looks best when the full triangle is drawn.
+
+3. If the goal state can't be defined as a string, override the isgoal()
+method.  For instance, the block puzzle is solved whenever block 1 is
+in the lower left, it doesn't matter where the other pieces are; hence,
+isgoal() is defined to check the lower left corner and return a boolean.
+
+4. Some puzzle's can be simplified by treating symmetric positions as
+equal.  Override the .canonical() method to pick one of the equilavent
+positions as a representative.  This allows the solver to recognize paths
+similar ones aleady explored.  In tic-tac-toe an upper left corner on
+the first move is symmetrically equivalent to a move on the upper right;
+hence there are only three possible first moves (a corner, a midde side,
+or in the center).
+'''
+
+class Puzzle:
+    pos = ""                    # default starting position
+    goal = ""                   # ending position used by isgoal()
+    def __init__( self, pos=None ):
+        if pos: self.pos = pos
+    def __repr__(self):         # returns a string representation of the position for printing the object
+        return repr(self.pos)
+    def canonical(self):        # returns a string representation after adjusting for symmetry
+        return repr(self)
+    def isgoal(self):
+        return self.pos == self.goal
+    def __iter__(self):         # returns list of objects of this class
+        if 0: yield self
+    def solve( pos, depthFirst=0 ):
+        queue, trail, solution = [pos], {intern(pos.canonical()):None}, []
+        load = depthFirst and queue.append or (lambda m: queue.insert(0,m))
+        while not pos.isgoal():
+            for m in pos:
+                c = m.canonical()
+                if c in trail: continue
+                trail[intern(c)] = pos
+                load(m)
+            pos = queue.pop()
+        while pos:
+            solution.insert(0, pos)
+            pos = trail[pos.canonical()]
+        return solution
+
+# Sample Puzzles start here
+if __name__ == '__main__':
+
+    class JugFill( Puzzle ):
+        '''Given a two empty jugs with 3 and 5 liter capacities and a full
+           jug with 8 liters, find a sequence of pours leaving four liters
+           in the two largest jugs'''
+        pos = (0,0,8)
+        capacity = (3,5,8)
+        goal = (0,4,4)
+        def __iter__(self):
+            for i in range(len(self.pos)):
+                for j in range(len(self.pos)):
+                    if i==j: continue
+                    qty = min( self.pos[i], self.capacity[j] - self.pos[j] )
+                    if not qty: continue
+                    dup = list( self.pos )
+                    dup[i] -= qty
+                    dup[j] += qty
+                    yield JugFill(tuple(dup))
+
+    class EightQueens( Puzzle ):
+        ' Place 8 queens on chess board such that no two queens attack each other'
+        def isgoal(self):
+            return len(self.pos) == 8
+        def __iter__( self ):
+            x = len(str(self))
+            for y in range(8):
+                if str(y) in self.pos: continue
+                for xp in range(len(self.pos)):
+                    yp = int(self.pos[xp])
+                    if abs(x-xp) == abs(y-yp):
+                        break
+                else:
+                    yield EightQueens(self.pos + str(y))
+
+    class TriPuzzle( Puzzle ):
+        ''' Triangle Tee Puzzle
+        Tees are arranged in holes on a 5x5 equalateral triangle except for the
+        top center which left open.  A move consist of a checker style jump of
+        one tee over the next into an open hole and removed the jumped tee. Find
+        a sequence of jumps leaving the last tee in the top center position.
+        '''
+        pos = '011111111111111'
+        goal = '100000000000000'
+        triples = [[0,1,3], [1,3,6], [3,6,10], [2,4,7], [4,7,11], [5,8,12],
+                   [10,11,12], [11,12,13], [12,13,14], [6,7,8], [7,8,9], [3,4,5],
+                   [0,2,5], [2,5,9], [5,9,14], [1,4,8], [4,8,13], [3,7,12]]
+        def __iter__( self ):
+            for t in self.triples:
+                if self.pos[t[0]]=='1' and self.pos[t[1]]=='1' and self.pos[t[2]]=='0':
+                    yield TriPuzzle(self.produce(t,'001'))
+                if self.pos[t[0]]=='0' and self.pos[t[1]]=='1' and self.pos[t[2]]=='1':
+                    yield TriPuzzle(self.produce(t,'100'))
+        def produce( self, t, sub ):
+            return self.pos[:t[0]] + sub[0] + self.pos[t[0]+1:t[1]] + sub[1] + self.pos[t[1]+1:t[2]] + sub[2] + self.pos[t[2]+1:]
+        def canonical( self ):
+            return self.pos
+        def __repr__( self ):
+            return '\n        %s\n      %s   %s\n    %s   %s   %s\n  %s   %s   %s   %s\n%s   %s   %s   %s   %s\n' % tuple(self.pos)
+
+    class MarblePuzzle( Puzzle ):
+        ''' Black/White Marble
+        Given eleven slots in a line with four white marbles in the leftmost
+        slots and four black marbles in the rightmost, make moves to put the
+        white ones on the right and the black on the left.  A valid move for
+        a while marble isto shift right into an empty space or hop over a single
+        adjacent black marble into an adjacent empty space -- don't hop over
+        your own color, don't hop into an occupied space, don't hop over more
+        than one marble.  The valid black moves are in the opposite direction.
+        Alternate moves between black and white marbles.
+
+        In the tuple representation below, zeros are open holes, ones are whites,
+        negative ones are blacks, and the outer tuple tracks whether it is
+        whites move or blacks.
+        '''
+        pos = (1,(1,1,1,1,0,0,0,-1,-1,-1,-1))
+        goal =  (-1,-1,-1,-1,0,0,0,1,1,1,1)
+        def isgoal( self ):
+            return self.pos[1] == self.goal
+        def __iter__( self ):
+            (m,b) = self.pos
+            for i in range(len(b)):
+                if b[i] != m: continue
+                if 0<=i+m+m<len(b) and b[i+m] == 0:
+                    newmove = list(b)
+                    newmove[i] = 0
+                    newmove[i+m] = m
+                    yield MarblePuzzle((-m,tuple(newmove)))
+                    continue
+                if 0<=i+m+m<len(b) and b[i+m]==-m and b[i+m+m]==0:
+                    newmove = list(b)
+                    newmove[i] = 0
+                    newmove[i+m+m] = m
+                    yield MarblePuzzle((-m,tuple(newmove)))
+                    continue
+        def __repr__( self ):
+            s = ''
+            for p in self.pos[1]:
+                if p==1: s='b'+s
+                elif p==0: s='.'+s
+                else: s='w'+s
+            return s
+
+    class RowboatPuzzle( Puzzle ):
+        ''' Rowboat problem:  Man, Dog, Cat, Squirrel
+        Cross the river two at a time, don't leave the dog alone with the
+        cat or the cat alone with the squirrel.
+
+        The bitmap representation shows who is on the opposite side.
+        Bit 1 is the squirrel, bit 2 is the cat, bit 3 is the dog, bit 4 is the man.
+        Genmoves takes the current position and flips any two bits which is the
+        same as moving those two creatures to the opposite shore.  It then
+        filters out any moves which leave the dog and cat together or the
+        cat and squirrel.
+        '''
+        pos = 0
+        goal = 15
+        def __iter__( self ):
+            for m in [8,12,10,9]:
+                n = self.pos ^ m
+                if ((n>>1)&1 == (n>>3)&1) or ( (n>>2)&1 != (n>>1)&1 != (n&1) ):
+                    yield RowboatPuzzle(n)
+        def __repr__( self ):
+            v = ','
+            if self.pos&8: v=v+'M'
+            else: v='M'+v
+            if self.pos&4: v=v+'D'
+            else: v='D'+v
+            if self.pos&2: v=v+'C'
+            else: v='C'+v
+            if self.pos&1: v=v+'S'
+            else: v='S'+v
+            return v
+
+    import re
+    import string
+    class PaPuzzle( Puzzle ):
+        ''' PaPuzzle
+        This sliding block puzzle has 9 blocks of varying sizes:
+        one 2x2, four 1x2, two 2x1, and two 1x1.  The blocks are
+        on a 5x4 grid with two empty 1x1 spaces.  Starting from
+        the position shown, slide the blocks around until the
+        2x2 is in the lower left:
+
+            1122
+            1133
+            45
+            6788
+            6799
+        '''
+        pos = '11221133450067886799'
+        goal = re.compile( r'................1...' )
+        def isgoal(self):
+            return self.goal.search(self.pos) != None
+        def __repr__( self ):
+            ans = '\n'
+            pos = self.pos.replace( '0', '.' )
+            for i in [0,4,8,12,16]:
+                ans = ans + pos[i:i+4] + '\n'
+            return ans
+        xlat = string.maketrans('38975','22264')
+        def canonical( self ):
+            return self.pos.translate( self.xlat )
+        block = { (0,-4):None, (1,-4):None, (2,-4):None, (3,-4):None,
+                  (16,4):None, (17,4):None, (18,4):None, (19,4):None,
+                  (0,-1):None, (4,-1):None, (8,-1):None, (12,-1):None, (16,-1):None,
+                  (3,1):None, (7,1):None, (11,1):None, (15,1):None, (19,1):None, }
+        def __iter__( self ):
+            dsone = self.pos.find('0')
+            dstwo = self.pos.find('0',dsone+1)
+            for dest in [dsone, dstwo]:
+                for adj in [-4,-1,1,4]:
+                    if (dest,adj) in self.block: continue
+                    piece = self.pos[dest+adj]
+                    if piece == '0': continue
+                    newmove = self.pos.replace(piece, '0')
+                    for i in range(20):
+                        if 0 <= i+adj < 20 and self.pos[i+adj]==piece:
+                            newmove = newmove[:i] + piece + newmove[i+1:]
+                    if newmove.count('0') != 2: continue
+                    yield PaPuzzle(newmove)
+
+    print Puzzle().solve()
+    print JugFill().solve()
+    print EightQueens().solve( depthFirst=1 )
+    print TriPuzzle().solve()
+    print MarblePuzzle().solve(depthFirst=1)
+    print RowboatPuzzle().solve()
+    print PaPuzzle().solve()
+
+
+Fullname: http://users.rcn.com/python/download/puzzle.py
+Modname: puzzle
+>>> 
+>>> 
+>>> puzzle
+<Module 'puzzle' from 'http://users.rcn.com/python/download/puzzle.py'>
+>>> puzzle.__name__
+'puzzle'
+>>> puzzle.__file__
+'http://users.rcn.com/python/download/puzzle.py'
+>>> dir(puzzle)
+['Puzzle', '__builtins__', '__file__', '__name__', '__package__', 'generators', 'version']
+>>> 
+=========== RESTART: /Users/raymond/Dropbox/Public/sj144/puzzle.py ===========
+>>> p = Puzzle()
+>>> p.pos
+''
+>>> p.goal
+''
+>>> list(p)
+[]
+>>> p.solve()
+['']
+>>> p = JugFill()
+>>> p.pos
+(0, 0, 8)
+>>> p.goal
+(0, 4, 4)
+>>> list(p)
+[(3, 0, 5), (0, 5, 3)]
+>>> p.solve()
+[(0, 0, 8), (0, 5, 3), (3, 2, 3), (0, 2, 6), (2, 0, 6), (2, 5, 1), (3, 4, 1), (0, 4, 4)]
+>>> p = TriPuzzle()
+>>> print p
+
+        0
+      1   1
+    1   1   1
+  1   1   1   1
+1   1   1   1   1
+
+>>> for n in p:
+	print n
+
+	
+
+        1
+      0   1
+    0   1   1
+  1   1   1   1
+1   1   1   1   1
+
+
+        1
+      1   0
+    1   1   0
+  1   1   1   1
+1   1   1   1   1
+
+>>> 
+>>> 
+>>> p.solve()
+[
+        0
+      1   1
+    1   1   1
+  1   1   1   1
+1   1   1   1   1
+, 
+        1
+      0   1
+    0   1   1
+  1   1   1   1
+1   1   1   1   1
+, 
+        1
+      0   1
+    1   0   0
+  1   1   1   1
+1   1   1   1   1
+, 
+        1
+      1   1
+    0   0   0
+  0   1   1   1
+1   1   1   1   1
+, 
+        0
+      0   1
+    1   0   0
+  0   1   1   1
+1   1   1   1   1
+, 
+        0
+      0   1
+    1   1   0
+  0   0   1   1
+1   0   1   1   1
+, 
+        0
+      0   1
+    1   1   0
+  0   0   1   1
+1   1   0   0   1
+, 
+        0
+      0   1
+    1   1   0
+  0   0   1   1
+0   0   1   0   1
+, 
+        0
+      0   1
+    1   1   1
+  0   0   1   0
+0   0   1   0   0
+, 
+        0
+      0   0
+    1   1   0
+  0   0   1   1
+0   0   1   0   0
+, 
+        0
+      0   0
+    1   1   1
+  0   0   0   1
+0   0   0   0   0
+, 
+        0
+      0   1
+    1   1   0
+  0   0   0   0
+0   0   0   0   0
+, 
+        0
+      0   1
+    0   0   1
+  0   0   0   0
+0   0   0   0   0
+, 
+        1
+      0   0
+    0   0   0
+  0   0   0   0
+0   0   0   0   0
+]
+>>> p = MarblePuzzle()
+>>> print p
+wwww...bbbb
+>>> for n in p:
+	print n
+
+	
+wwww..b.bbb
+>>> p.solve()
+[wwww...bbbb, wwww..b.bbb, www.w.b.bbb, www.w.bb.bb, www..wbb.bb, www..wbbb.b, ww.w.wbbb.b, ww.wbw.bb.b, ww.wb.wbb.b, wwbw..wbb.b, wwb.w.wbb.b, wwb.w.wbbb., w.bww.wbbb., w.bwwbw.bb., .wbwwbw.bb., .wbwwbwb.b., .wbwwb.bwb., bw.wwb.bwb., bw.w.bwbwb., bw.wb.wbwb., bw.wb.wb.bw, bw.wbbw..bw, bw.wbb.w.bw, bw.wbb.wb.w, bw.wbb..bww, bwbw.b..bww, bwb.wb..bww, bwb.wb.b.ww, bwb..bwb.ww, bwb.b.wb.ww, b.bwb.wb.ww, bb.wb.wb.ww, bb.wb..bwww, bbbw...bwww, bbb.w..bwww, bbb.w.b.www, bbb..wb.www, bbb.bw..www, bbb.b.w.www, bbbb..w.www, bbbb...wwww]
+>>> p = PaPuzzle()
+>>> p.solve()
+[
+1122
+1133
+45..
+6788
+6799
+, 
+1122
+1133
+4.5.
+6788
+6799
+, 
+1122
+1133
+.45.
+6788
+6799
+, 
+1122
+1133
+.4.5
+6788
+6799
+, 
+1122
+1133
+..45
+6788
+6799
+, 
+..22
+1133
+1145
+6788
+6799
+, 
+.22.
+1133
+1145
+6788
+6799
+, 
+22..
+1133
+1145
+6788
+6799
+, 
+2233
+11..
+1145
+6788
+6799
+, 
+2233
+114.
+11.5
+6788
+6799
+, 
+2233
+11.4
+11.5
+6788
+6799
+, 
+2233
+.114
+.115
+6788
+6799
+, 
+2233
+.114
+6115
+6788
+.799
+, 
+2233
+6114
+6115
+.788
+.799
+, 
+2233
+6114
+6115
+7.88
+7.99
+, 
+2233
+6114
+6115
+788.
+7.99
+, 
+2233
+6114
+611.
+7885
+7.99
+, 
+2233
+611.
+6114
+7885
+7.99
+, 
+2233
+611.
+6114
+7885
+799.
+, 
+2233
+611.
+6114
+788.
+7995
+, 
+2233
+611.
+611.
+7884
+7995
+, 
+2233
+6.11
+6.11
+7884
+7995
+, 
+2233
+.611
+.611
+7884
+7995
+, 
+2233
+.611
+7611
+7884
+.995
+, 
+2233
+7611
+7611
+.884
+.995
+, 
+2233
+7611
+7611
+88.4
+.995
+, 
+2233
+7611
+7611
+884.
+.995
+, 
+2233
+7611
+7611
+8845
+.99.
+, 
+2233
+7611
+7611
+8845
+..99
+, 
+2233
+7611
+7611
+..45
+8899
+, 
+2233
+7611
+7611
+.4.5
+8899
+, 
+2233
+7611
+7611
+4..5
+8899
+, 
+2233
+7611
+7611
+4.5.
+8899
+, 
+2233
+7611
+7611
+45..
+8899
+, 
+2233
+76..
+7611
+4511
+8899
+, 
+22..
+7633
+7611
+4511
+8899
+, 
+.22.
+7633
+7611
+4511
+8899
+, 
+722.
+7633
+.611
+4511
+8899
+, 
+7.22
+7633
+.611
+4511
+8899
+, 
+7.22
+7633
+4611
+.511
+8899
+, 
+7.22
+7633
+4611
+5.11
+8899
+, 
+7.22
+7.33
+4611
+5611
+8899
+, 
+.722
+.733
+4611
+5611
+8899
+, 
+.722
+4733
+.611
+5611
+8899
+, 
+4722
+.733
+.611
+5611
+8899
+, 
+4722
+.733
+5611
+.611
+8899
+, 
+4722
+5733
+.611
+.611
+8899
+, 
+4722
+5733
+6.11
+6.11
+8899
+, 
+4.22
+5733
+6711
+6.11
+8899
+, 
+.422
+5733
+6711
+6.11
+8899
+, 
+5422
+.733
+6711
+6.11
+8899
+, 
+5422
+..33
+6711
+6711
+8899
+, 
+5422
+.33.
+6711
+6711
+8899
+, 
+5422
+33..
+6711
+6711
+8899
+, 
+54..
+3322
+6711
+6711
+8899
+, 
+5.4.
+3322
+6711
+6711
+8899
+, 
+.54.
+3322
+6711
+6711
+8899
+, 
+.5.4
+3322
+6711
+6711
+8899
+, 
+..54
+3322
+6711
+6711
+8899
+, 
+3354
+..22
+6711
+6711
+8899
+, 
+3354
+6.22
+6711
+.711
+8899
+, 
+3354
+622.
+6711
+.711
+8899
+, 
+335.
+6224
+6711
+.711
+8899
+, 
+33.5
+6224
+6711
+.711
+8899
+, 
+.335
+6224
+6711
+.711
+8899
+, 
+6335
+6224
+.711
+.711
+8899
+, 
+6335
+6224
+7.11
+7.11
+8899
+, 
+6335
+6224
+711.
+711.
+8899
+, 
+6335
+622.
+7114
+711.
+8899
+, 
+633.
+6225
+7114
+711.
+8899
+, 
+6.33
+6225
+7114
+711.
+8899
+, 
+6.33
+6225
+711.
+7114
+8899
+, 
+6.33
+622.
+7115
+7114
+8899
+, 
+6.33
+6.22
+7115
+7114
+8899
+, 
+.633
+.622
+7115
+7114
+8899
+, 
+.633
+7622
+7115
+.114
+8899
+, 
+7633
+7622
+.115
+.114
+8899
+, 
+7633
+7622
+11.5
+11.4
+8899
+, 
+7633
+7622
+115.
+11.4
+8899
+, 
+7633
+7622
+1154
+11..
+8899
+, 
+7633
+7622
+1154
+1199
+88..
+, 
+7633
+7622
+1154
+1199
+.88.
+, 
+7633
+7622
+1154
+1199
+..88
+, 
+7633
+7622
+..54
+1199
+1188
+]
+>>> 
+>>> 
+>>> print 'The answer is %d today but was %d yesterday' % (10, 20)
+The answer is 10 today but was 20 yesterday
+>>> print 'The answer is %d today but was %d yesterday' % [10, 20]
+
+Traceback (most recent call last):
+  File "<pyshell#527>", line 1, in <module>
+    print 'The answer is %d today but was %d yesterday' % [10, 20]
+TypeError: %d format: a number is required, not list
+>>> print 'The answer is %s today' % [10, 20]
+The answer is [10, 20] today
+>>> d = dict(new=20, old=10)
+>>> print 'The answer is %(new)d today but was %(old)d yesterday' % d
+The answer is 20 today but was 10 yesterday
+>>> print 'The answer is %s today' % 10
+The answer is 10 today
+>>> print 'The answer is %s today' % 2 ** 5
+The answer is 32 today
+>>> print 'The answer is %s today' % 2 * 5
+The answer is 2 todayThe answer is 2 todayThe answer is 2 todayThe answer is 2 todayThe answer is 2 today
+>>> print 'The answer is %s today' % 2 + 5
+
+Traceback (most recent call last):
+  File "<pyshell#534>", line 1, in <module>
+    print 'The answer is %s today' % 2 + 5
+TypeError: cannot concatenate 'str' and 'int' objects
+>>> print 'The answer is %s today' % (2 * 5)
+The answer is 10 today
+>>> data  = [32, 'hello', (10, 20)]
+>>> for s in data:
+	print 'The answer is %s today' % s
+
+	
+The answer is 32 today
+The answer is hello today
+
+Traceback (most recent call last):
+  File "<pyshell#540>", line 2, in <module>
+    print 'The answer is %s today' % s
+TypeError: not all arguments converted during string formatting
+>>> for s in data:
+	print 'The answer is %s today' % (s,)
+
+	
+The answer is 32 today
+The answer is hello today
+The answer is (10, 20) today
+>>> 
+>>> print 'The answer is {0} today but was {1} yesterday'.format(10, 20)
+The answer is 10 today but was 20 yesterday
+>>> print 'The answer is {1} today but was {1} yesterday'.format(10, 20)
+The answer is 20 today but was 20 yesterday
+>>> print 'The answer is {1} today but was {0} yesterday'.format(10, 20)
+The answer is 20 today but was 10 yesterday
+>>> print 'The answer is {new} today but was {old} yesterday'.format(new=20, old=10)
+The answer is 20 today but was 10 yesterday
+>>> print 'The answer is %8d today but was %d yesterday' % (10, 20)
+The answer is       10 today but was 20 yesterday
+>>> print 'The answer is %08d today but was %d yesterday' % (10, 20)
+The answer is 00000010 today but was 20 yesterday
+>>> print 'The answer is %-8d today but was %d yesterday' % (10, 20)
+The answer is 10       today but was 20 yesterday
+>>> #    < ^ >
+>>> 'The answer is {new:8d} today but was {old} yesterday'.format(new=20, old=10)
+'The answer is       20 today but was 10 yesterday'
+>>> 'The answer is {new:<8d} today but was {old} yesterday'.format(new=20, old=10)
+'The answer is 20       today but was 10 yesterday'
+>>> 'The answer is {new:>8d} today but was {old} yesterday'.format(new=20, old=10)
+'The answer is       20 today but was 10 yesterday'
+>>> 'The answer is {new:^8d} today but was {old} yesterday'.format(new=20, old=10)
+'The answer is    20    today but was 10 yesterday'
+>>> 'The answer is {new:08d} today but was {old} yesterday'.format(new=20, old=10)
+'The answer is 00000020 today but was 10 yesterday'
+>>> 'The answer is {new:#8d} today but was {old} yesterday'.format(new=20, old=10)
+'The answer is       20 today but was 10 yesterday'
+>>> 'The answer is {new:8%d} today but was {old} yesterday'.format(new=20, old=10)
+
+Traceback (most recent call last):
+  File "<pyshell#558>", line 1, in <module>
+    'The answer is {new:8%d} today but was {old} yesterday'.format(new=20, old=10)
+ValueError: Invalid conversion specification
+>>> 'The answer is {new:%8d} today but was {old} yesterday'.format(new=20, old=10)
+
+Traceback (most recent call last):
+  File "<pyshell#559>", line 1, in <module>
+    'The answer is {new:%8d} today but was {old} yesterday'.format(new=20, old=10)
+ValueError: Invalid conversion specification
+>>> 'The answer is {new:%f} today'.format(new=1234567.89)
+
+Traceback (most recent call last):
+  File "<pyshell#560>", line 1, in <module>
+    'The answer is {new:%f} today'.format(new=1234567.89)
+ValueError: Invalid conversion specification
+>>> 'The answer is {new:f} today'.format(new=1234567.89)
+'The answer is 1234567.890000 today'
+>>> 'The answer is {new:.2f} today'.format(new=1234567.89)
+'The answer is 1234567.89 today'
+>>> 'The answer is {new:,.2f} today'.format(new=1234567.89)
+'The answer is 1,234,567.89 today'
+>>> 
+>>> 'The answer is {new} today'.format(new='Howdy')
+'The answer is Howdy today'
+>>> 'The answer is {new!s} today'.format(new='Howdy')
+'The answer is Howdy today'
+>>> 'The answer is {new!r} today'.format(new='Howdy')
+"The answer is 'Howdy' today"
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/custom_formatting.py =====
+(171, 0, 1, 15)
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/custom_formatting.py =====
+(171, 0, 1, 15)
+IPAddr((171, 0, 1, 15))
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/custom_formatting.py =====
+(171, 0, 1, 15)
+IPAddr(171, 0, 1, 15)
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/custom_formatting.py =====
+(171, 0, 1, 15)
+IPAddr(171, 0, 1, 15)
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/custom_formatting.py =====
+(171, 0, 1, 15)
+IPAddr(171, 0, 1, 15)
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/custom_formatting.py =====
+(171, 0, 1, 15)
+IPAddr(171, 0, 1, 15)
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/custom_formatting.py =====
+(171, 0, 1, 15)
+IPAddr(171, 0, 1, 15)
+>>> print 'The ipaddress is {0}'.format(a)
+The ipaddress is 
+>>> print 'The ipaddress is {0:,.2f}'.format(a)
+The ipaddress is ,.2f
+>>> 
+>>> 
+>>> 
+>>> format(51, 'd')
+'51'
+>>> format(51, 'x')
+'33'
+>>> format(51, '4x')
+'  33'
+>>> format(51, '04x')
+'0033'
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/custom_formatting.py =====
+(171, 0, 1, 15)
+IPAddr(171, 0, 1, 15)
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/custom_formatting.py =====
+(171, 0, 1, 15)
+The ipaddress is 171.0.1.15
+>>> 
+>>> 
+>>> a
+IPAddr(171, 0, 1, 15)
+>>> format(a, '')
+'171.0.1.15'
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/custom_formatting.py =====
+(171, 0, 1, 15)
+The ipaddress is 171.0.1.15
+The ipaddress is ab.00.01.0f
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/custom_formatting.py =====
+(171, 0, 1, 15)
+IPAddr(171, 0, 1, 15)
+The ipaddress is 171.0.1.15
+The ipaddress is ab.00.01.0f
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/custom_formatting.py =====
+(171, 0, 1, 15)
+IPAddr(171, 0, 1, 15)
+The ipaddress is 171.0.1.15
+The ipaddress is ab.00.01.0f
+>>> print 'The ipaddress is {0:a}'.format(a)
+
+Traceback (most recent call last):
+  File "<pyshell#581>", line 1, in <module>
+    print 'The ipaddress is {0:a}'.format(a)
+  File "/Users/raymond/Dropbox/Public/sj144/custom_formatting.py", line 14, in __format__
+    raise ValueError('Unknown format code: %r' % fmt)
+ValueError: Unknown format code: 'a'
+>>> 
+>>> 
+>>> 
+>>> from datetime import *
+>>> n = datetime.now()
+>>> n
+datetime.datetime(2016, 5, 25, 16, 51, 21, 687231)
+>>> # RDH
+>>> 
+>>> format(datetime.now(), '')
+'2016-05-25 16:52:20.421497'
+>>> format(datetime.now(), '%A')
+'Wednesday'
+>>> format(datetime.now(), '%a')
+'Wed'
+>>> format(datetime.now(), '%b')
+'May'
+>>> format(datetime.now(), '%B')
+'May'
+>>> format(datetime.now(), '%b')
+'May'
+>>> format(datetime.now(), '%H')
+'16'
+>>> format(datetime.now(), '%I')
+'04'
+>>> format(datetime.now(), '%p')
+'PM'
+>>> format(datetime.now(), 'It is %I %p')
+'It is 04 PM'
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/custom_formatting.py =====
+(171, 0, 1, 15)
+IPAddr(171, 0, 1, 15)
+The ipaddress is 171.0.1.15
+The ipaddress is ab.00.01.0f
+>>> template = '''
+def twopow(exp):
+    return 2 ** exp
+'''
+>>> 
+>>> exec template
+>>> twopow(5)
+32
+>>> template = '''
+def {name}pow(exp):
+    return {base} ** exp
+'''
+>>> exec template.format(name='three', base=3)
+>>> exec template.format(name='four', base=4)
+>>> twopow(5)
+32
+>>> threepow(5)
+243
+>>> fourpow(5)
+1024
+>>> powspecs = [
+	('two', 2),
+	('three', 3),
+	('four', 4),
+	('five', 5),
+]
+>>> for name, base in powspecs:
+	exec template.format(name=name, base=base)
+
+	
+>>> fivepow(3)
+125
+>>> for name, base in powspecs:
+	exec template.format(name=name, base=base)
+
+	
+>>> 
+>>> 
+>>> 
+============ RESTART: /Users/raymond/Dropbox/Public/sj144/tmp.py ============
+11
+111
+1111
+>>> 
+============ RESTART: /Users/raymond/Dropbox/Public/sj144/tmp.py ============
+>>> y = f(1)
+>>> y
+11
+>>> y ** 2
+121
+>>> 
+============ RESTART: /Users/raymond/Dropbox/Public/sj144/tmp.py ============
+>>> g = f(1)
+>>> g
+<generator object f at 0x104e1e320>
+>>> next(g)
+11
+>>> next(g)
+111
+>>> next(g)
+1111
+>>> next(g)
+
+Traceback (most recent call last):
+  File "<pyshell#633>", line 1, in <module>
+    next(g)
+StopIteration
+>>> 
+=========== RESTART: /Users/raymond/Dropbox/Public/sj144/family.py ===========
+The stark Family
+>>> 
+=========== RESTART: /Users/raymond/Dropbox/Public/sj144/family.py ===========
+The Stark Family
+>>> 
+=========== RESTART: /Users/raymond/Dropbox/Public/sj144/family.py ===========
+The Stark Family
+==========
+>>> 
+=========== RESTART: /Users/raymond/Dropbox/Public/sj144/family.py ===========
+The Stark Family
+===========
+>>> 
+=========== RESTART: /Users/raymond/Dropbox/Public/sj144/family.py ===========
+The Stark Family
+================
+>>> 
+=========== RESTART: /Users/raymond/Dropbox/Public/sj144/family.py ===========
+The Stark Family
+================
+* eddard
+* catelyn
+* robb
+* johnsnow
+* arya
+* sansa
+* bran
+>>> 
+=========== RESTART: /Users/raymond/Dropbox/Public/sj144/family.py ===========
+The Stark Family
+================
+* Eddard
+* Catelyn
+* Robb
+* Johnsnow
+* Arya
+* Sansa
+* Bran
+>>> 
+=========== RESTART: /Users/raymond/Dropbox/Public/sj144/family.py ===========
+The Stark Family
+================
+* Eddard
+* Catelyn
+* Robb
+* Johnsnow
+* Arya
+* Sansa
+* Bran
+
+>>> 
+=========== RESTART: /Users/raymond/Dropbox/Public/sj144/family.py ===========
+The Stark Family
+================
+* Eddard
+* Catelyn
+* Robb
+* Johnsnow
+* Arya
+* Sansa
+* Bran
+
+>>> 
+=========== RESTART: /Users/raymond/Dropbox/Public/sj144/family.py ===========
+The Stark Family
+================
+* Eddard
+* Catelyn
+* Robb
+* Johnsnow
+* Arya
+* Sansa
+* Bran
+
+>>> 
+=========== RESTART: /Users/raymond/Dropbox/Public/sj144/family.py ===========
+>>> next(g)
+'The Stark Family'
+>>> s = next(g)
+>>> s
+'================'
+>>> s = next(g)
+>>> s.upper()
+'* EDDARD'
+>>> 
+=========== RESTART: /Users/raymond/Dropbox/Public/sj144/family.py ===========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/family.py", line 15, in <module>
+    print '\n'.join(g)
+TypeError: sequence item 9: expected string, NoneType found
+>>> 
+=========== RESTART: /Users/raymond/Dropbox/Public/sj144/family.py ===========
+The Stark Family
+================
+* Eddard
+* Catelyn
+* Robb
+* Johnsnow
+* Arya
+* Sansa
+* Bran
+
+>>> 
+=========== RESTART: /Users/raymond/Dropbox/Public/sj144/family.py ===========
+THE STARK FAMILY
+================
+* EDDARD
+* CATELYN
+* ROBB
+* JOHNSNOW
+* ARYA
+* SANSA
+* BRAN
+
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/codegen.py ==========
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+>>> 
+>>> 
+>>> print '''One
+Two
+Three
+'''
+One
+Two
+Three
+
+>>> print '''\
+One
+Two
+Three
+'''
+One
+Two
+Three
+
+>>> print '''
+One
+Two
+Three
+'''
+
+One
+Two
+Three
+
+>>> print '''<html>
+</hmtl>
+'''
+<html>
+</hmtl>
+
+>>> print '''
+<html>
+</hmtl>
+'''
+
+<html>
+</hmtl>
+
+>>> print '''\
+<html>
+</hmtl>
+'''
+<html>
+</hmtl>
+
+>>> # :40           :15min hw           :15 watch
+>>> # I                II                 II
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/codegen.py ==========
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+
+
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/codegen.py ==========
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/codegen.py", line 57, in <module>
+    print other_line.format(fname=fname, ftype=ftype, fwidth=fwidth)
+NameError: name 'ftype' is not defined
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/codegen.py ==========
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+            age = <type 'int'>(data[i:i+4])
+            i += 4
+
+
+            age = int(data[i:i+4])
+            i += 4
+
+>>> int
+<type 'int'>
+>>> int.__name__
+'int'
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/codegen.py ==========
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+            age = int(data[i:i+4])
+            i += 4
+
+
+            age = int(data[i:i+4])
+            i += 4
+
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/codegen.py ==========
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+
+            age = int(data[i:i+4])
+            i += 4
+
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/codegen.py ==========
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+            station_name = str(data[i:i+13]).rstrip()
+            i += 13
+
+            station_number = int(data[i:i+5])
+            i += 5
+
+            response_time = float(data[i:i+8])
+            i += 8
+
+>>> from collections import *
+>>> Person = namedtuple('Person', ['fname', 'lname', 'age', 'email'])
+>>> p = Person('Raymond', 'Hettinger', 51, 'python@rcn.com')
+>>> len(p)
+4
+>>> p[:2]
+('Raymond', 'Hettinger')
+>>> p[3]
+'python@rcn.com'
+>>> a, b, c, d = p
+>>> p
+Person(fname='Raymond', lname='Hettinger', age=51, email='python@rcn.com')
+>>> p.age
+51
+>>> p.email
+'python@rcn.com'
+>>> 
+>>> p._asdict()
+OrderedDict([('fname', 'Raymond'), ('lname', 'Hettinger'), ('age', 51), ('email', 'python@rcn.com')])
+>>> 
+>>> p._replace(fname='Matthew', age='4')
+Person(fname='Matthew', lname='Hettinger', age='4', email='python@rcn.com')
+>>> 
+>>> p._fields
+('fname', 'lname', 'age', 'email')
+>>> 
+>>> 
+>>> Person = namedtuple('Person', ['fname', 'lname', 'age', 'email'], verbose=True)
+class Person(tuple):
+    'Person(fname, lname, age, email)'
+
+    __slots__ = ()
+
+    _fields = ('fname', 'lname', 'age', 'email')
+
+    def __new__(_cls, fname, lname, age, email):
+        'Create new instance of Person(fname, lname, age, email)'
+        return _tuple.__new__(_cls, (fname, lname, age, email))
+
+    @classmethod
+    def _make(cls, iterable, new=tuple.__new__, len=len):
+        'Make a new Person object from a sequence or iterable'
+        result = new(cls, iterable)
+        if len(result) != 4:
+            raise TypeError('Expected 4 arguments, got %d' % len(result))
+        return result
+
+    def __repr__(self):
+        'Return a nicely formatted representation string'
+        return 'Person(fname=%r, lname=%r, age=%r, email=%r)' % self
+
+    def _asdict(self):
+        'Return a new OrderedDict which maps field names to their values'
+        return OrderedDict(zip(self._fields, self))
+
+    def _replace(_self, **kwds):
+        'Return a new Person object replacing specified fields with new values'
+        result = _self._make(map(kwds.pop, ('fname', 'lname', 'age', 'email'), _self))
+        if kwds:
+            raise ValueError('Got unexpected field names: %r' % kwds.keys())
+        return result
+
+    def __getnewargs__(self):
+        'Return self as a plain tuple.  Used by copy and pickle.'
+        return tuple(self)
+
+    __dict__ = _property(_asdict)
+
+    def __getstate__(self):
+        'Exclude the OrderedDict from pickling'
+        pass
+
+    fname = _property(_itemgetter(0), doc='Alias for field number 0')
+
+    lname = _property(_itemgetter(1), doc='Alias for field number 1')
+
+    age = _property(_itemgetter(2), doc='Alias for field number 2')
+
+    email = _property(_itemgetter(3), doc='Alias for field number 3')
+
+
+>>> 
+
+>>> 

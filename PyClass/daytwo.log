@@ -1,0 +1,1068 @@
+﻿Python 2.7.11 (v2.7.11:6d1b6a68f775, Dec  5 2015, 12:54:16) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> 235000 * 10
+2350000
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+Misspelled:
+-----------
+iss
+tymme
+guhd
+tooo
+comee
+ayd
+thur
+>>> correct_words
+<bloomfilter.BloomFilter object at 0x10523c490>
+>>> dir(correct_words)
+['__class__', '__contains__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'add', 'data', 'population', 'probes']
+>>> correct_words.population
+xrange(4000000)
+>>> correct_words.probes
+10
+>>> list(correct_words.data[:20])
+[1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0]
+>>> sum(correct_words.data)
+1773548
+>>> sum(correct_words.data) / 4000000
+0
+>>> sum(correct_words.data) / 4000000.
+0.443387
+>>> 
+>>> 
+>>> # Bit-flipping
+>>> format(57, '08b')
+'00111001'
+>>> format(1, '08b')
+'00000001'
+>>> format(1 << 0, '08b')
+'00000001'
+>>> format(1 << 6, '08b')
+'01000000'
+>>> format(57 >> 2, '08b')
+'00001110'
+>>> format(57 << 2, '08b')
+'11100100'
+>>> format(-57, '08b')
+'-0111001'
+>>> 
+>>> format(57, '08b')
+'00111001'
+>>> format(35, '08b')
+'00100011'
+>>> format(35 & 57, '08b')
+'00100001'
+>>> format(35 | 57, '08b')
+'00111011'
+>>> # all()    &
+>>> # any()    |
+>>> format(~35 & 57, '08b')
+'00011000'
+>>> format(35 ^ 57, '08b')
+'00011010'
+>>> format(57, '08b')
+'00111001'
+>>> b = 4
+>>> format(57 >> b, '08b')
+'00000011'
+>>> format((57 >> b) & 1, '08b')
+'00000001'
+>>> b = 6
+>>> format(1, '08b')
+'00000001'
+>>> format(1 << b, '08b')
+'01000000'
+>>> format((1 << b) | 57, '08b')
+'01111001'
+>>> format(57, '08b')
+'00111001'
+>>> b = 4
+>>> format((~(1 << b)) , '08b')
+'-0010001'
+>>> format((~(1 << b) & 57) , '08b')
+'00101001'
+>>> # To set:  or on to a number the mask   00100000
+>>> # To unset:  and the inverse of mask    11011111
+>>> 
+>>> divmod(37, 5)
+(7, 2)
+>>> 37 // 5
+7
+>>> 37 % 5
+2
+>>> 37 // 5     # floor division
+7
+>>> 37.0 / 5.0
+7.4
+>>> -37 // 5
+-8
+>>> -(-37 // 5)
+8
+>>> -(-35 // 5)
+7
+>>> n = 6
+>>> 6 // 8
+0
+>>> 
+>>> -(-n // 8)
+1
+>>> n = 8
+>>> -(-n // 8)
+1
+>>> n = 9
+>>> -(-n // 8)
+2
+>>> n = 13
+>>> -(-n // 12)
+2
+>>> sum([0.1] * 10)
+0.9999999999999999
+>>> sum([0.1] * 10) == 1.0
+False
+>>> 
+>>> import math
+>>> math.ceil(13 / 12)
+1.0
+>>> math.ceil(13.0 / 12.0)
+2.0
+>>> int(sum([0.1] * 10))
+0
+>>> 
+>>> 
+>>> b = bytearray(20)
+>>> len(b)
+20
+>>> list(b)
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+>>> b
+bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+>>> b[5] = 200
+>>> b[5] = 400
+
+Traceback (most recent call last):
+  File "<pyshell#75>", line 1, in <module>
+    b[5] = 400
+ValueError: byte must be in range(0, 256)
+>>> b[5] = None
+
+Traceback (most recent call last):
+  File "<pyshell#76>", line 1, in <module>
+    b[5] = None
+TypeError: an integer or string of size 1 is required
+>>> b[100] = 50
+
+Traceback (most recent call last):
+  File "<pyshell#77>", line 1, in <module>
+    b[100] = 50
+IndexError: bytearray index out of range
+
+>>> 
+>>> b[5] = 200
+>>> b.__setitem__(5, 200)
+>>> 
+>>> b[5]
+200
+>>> b.__getitem__(5)
+200
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/bitarray.py ==========
+>>> b.numbits
+20
+>>> b.data
+bytearray(b'\x00\x00\x00')
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/bitarray.py ==========
+20
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/bitarray.py ==========
+20
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/bitarray.py", line 17, in <module>
+    b[11] = 1
+AttributeError: BitArray instance has no attribute '__setitem__'
+>>> d = {}
+>>> d['raymond'] = 10
+>>> #   key --^    ^-- value
+>>> # def __setitem__(self, key, value)
+>>> 
+>>> s = [0]
+>>> s[0] = 10
+>>> # ^- index  ^-- value
+>>> # def __setitem__(self, index, value)
+>>> divmod(11, 8)
+(1, 3)
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/bitarray.py ==========
+20
+>>> b.data
+bytearray(b'\x80H\x00')
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/bitarray.py ==========
+20
+>>> b.data
+bytearray(b'\x80@\x00')
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/bitarray.py ==========
+20
+>>> b[0]
+0
+>>> b[11]
+0
+>>> b[15]
+0
+>>> b[14]
+1
+>>> b[7]
+1
+>>> # An object that is a sequence is
+>>> # automatically iterable
+>>> 
+>>> # A sequence: len(s)
+>>> # s[0], s[1], s[2], ..., s[len(s) - 1], IndexError
+>>> 
+>>> s = 'abc'
+>>> len(s)
+3
+>>> s[0]
+'a'
+>>> s[1]
+'b'
+>>> s[2]
+'c'
+>>> s[3]
+
+Traceback (most recent call last):
+  File "<pyshell#114>", line 1, in <module>
+    s[3]
+IndexError: string index out of range
+>>> list(s)
+['a', 'b', 'c']
+>>> type(s)
+<type 'str'>
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/bitarray.py ==========
+20
+[0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+>>> b[0]
+0
+>>> b[1]
+0
+>>> b[2]
+0
+>>> 
+>>> 
+>>> index = 11
+>>> divmod(index, 8)
+(1, 3)
+>>> format(57, '08b')
+'00111001'
+>>> bit = 5
+>>> format(57 >> bit, '08b')
+'00000001'
+>>> bit = 4
+>>> format(57 >> bit, '08b')
+'00000011'
+>>> format((57 >> bit) & 1, '08b')
+'00000001'
+>>> bit = 6
+>>> format(1 << bit, '08b')
+'01000000'
+>>> format((1 << bit) | 57, '08b')
+'01111001'
+>>> 
+>>> list(b)
+[0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+>>> type(b[5])
+<type 'int'>
+>>> str(b[5])
+'0'
+>>> map(str, b)
+['0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0']
+>>> ''.join(map(str, b))
+'00000001000000100000'
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/bitarray.py ==========
+20
+[0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+>>> b
+BitArray('00000001000000100000')
+>>> b[2] = 1
+>>> b
+BitArray('00100001000000100000')
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/bitarray.py ==========
+20
+[0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+>>> b
+BitArray('00000001000000100000')
+>>> b = bitarray(1000)
+
+Traceback (most recent call last):
+  File "<pyshell#143>", line 1, in <module>
+    b = bitarray(1000)
+NameError: name 'bitarray' is not defined
+>>> b = BitArray(1000)
+>>> b
+BitArray('...')
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/bloomfilter.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/bloomfilter.py", line 6, in <module>
+    from bitarray import BitArraay
+ImportError: cannot import name BitArraay
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/bloomfilter.py ========
+True
+False
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+Misspelled:
+-----------
+iss
+tymme
+guhd
+tooo
+comee
+ayd
+thur
+>>> w = 235000
+>>> # List of correct words
+>>> import sys
+>>> sys.getsizeof('abcdefg')
+44
+>>> w * 44 + w * 8
+12220000
+>>> # List of correct words takes 12Mb
+>>> 
+>>> 
+>>> 2 ** 16
+65536
+>>> 2 ** 18
+262144
+>>> # Set of correct
+>>> 2 ** 19
+524288
+>>> 2 ** 19 * 0.66
+346030.08
+>>> 524288 * 16
+8388608
+>>> 524288 * 16 + w * 44
+18728608
+>>> # Set of correct words takes 19Mb
+>>> 
+>>> # BloomFilter
+>>> 4000000 // 8
+500000
+>>> # BloomFilter  0.5 Mb
+>>> 
+>>> # Original word list:
+>>> # A big string
+>>> # O(n)   but risks a substring match
+>>> # 2.5
+>>> 
+>>> 
+======= RESTART: /Users/raymond/Dropbox/Public/sj144/how_sets_work.py =======
+['a', 'a', 'b']
+>>> 
+======= RESTART: /Users/raymond/Dropbox/Public/sj144/how_sets_work.py =======
+[30, 40, 50]
+>>> # sf. ss
+>>> # 0 calls to hash
+>>> #     overlapping item    30               [15, 30]
+>>> #                                           h!=  ==
+>>> # sf is the number of iteration
+>>> # ov is the number of equality test
+>>> # 0  is the number of hashes
+>>> 
+======= RESTART: /Users/raymond/Dropbox/Public/sj144/how_sets_work.py =======
+[30, 40, 50]
+[30, 40, 50, 60, 70, 10, 20]
+>>> # sf is the number of iteration
+>>> # ov is the number of equality test
+>>> # 0  is the number of hashes
+>>> 
+>>> 
+>>> 
+>>> hansolo = dict(
+	ship = 'falcon',
+	friends = ('luke', 'leia', 'chewy'),
+	status = 'wanted by jabba the hut',
+	occupation = 'smuggler',
+)
+>>> len(hansolo)
+4
+>>> hansolo.keys()
+['status', 'ship', 'friends', 'occupation']
+>>> hansolo['ship']
+'falcon'
+>>> for friend in hansolo['friends']:
+	print "Don't worry Han, %s is here to save you" % friend.title()
+
+	
+Don't worry Han, Luke is here to save you
+Don't worry Han, Leia is here to save you
+Don't worry Han, Chewy is here to save you
+>>> 
+>>> 
+>>> import pickle
+>>> s = pickle.dumps(hansolo)
+>>> del hansolo
+>>> type(s)
+<type 'str'>
+>>> s.keys()
+
+Traceback (most recent call last):
+  File "<pyshell#204>", line 1, in <module>
+    s.keys()
+AttributeError: 'str' object has no attribute 'keys'
+>>> hansolo['ship']
+
+Traceback (most recent call last):
+  File "<pyshell#205>", line 1, in <module>
+    hansolo['ship']
+NameError: name 'hansolo' is not defined
+>>> 
+>>> 
+>>> hansolo = pickle.dumps(s)
+>>> type(hansolo)
+<type 'str'>
+>>> hansolo = dict(
+	ship = 'falcon',
+	friends = ('luke', 'leia', 'chewy'),
+	status = 'wanted by jabba the hut',
+	occupation = 'smuggler',
+)
+>>> s = pickle.dumps(hansolo)
+>>> type(s)
+<type 'str'>
+>>> hansolo = pickle.loads(s)
+>>> type(hansolo)
+<type 'dict'>
+>>> hansolo
+{'status': 'wanted by jabba the hut', 'ship': 'falcon', 'friends': ('luke', 'leia', 'chewy'), 'occupation': 'smuggler'}
+>>> for friend in hansolo['friends']:
+	print "Don't worry Han, %s is here to save you" % friend.title()
+
+	
+Don't worry Han, Luke is here to save you
+Don't worry Han, Leia is here to save you
+Don't worry Han, Chewy is here to save you
+>>> len(hansolo)
+4
+>>> s
+"(dp0\nS'status'\np1\nS'wanted by jabba the hut'\np2\nsS'ship'\np3\nS'falcon'\np4\nsS'friends'\np5\n(S'luke'\np6\nS'leia'\np7\nS'chewy'\np8\ntp9\nsS'occupation'\np10\nS'smuggler'\np11\ns."
+>>> s = pickle.dumps(hansolo, 2)
+>>> s
+'\x80\x02}q\x00(U\x06statusq\x01U\x17wanted by jabba the hutq\x02U\x04shipq\x03U\x06falconq\x04U\x07friendsq\x05U\x04lukeq\x06U\x04leiaq\x07U\x05chewyq\x08\x87q\tU\noccupationq\nU\x08smugglerq\x0bu.'
+>>> print s
+ﾀ}q
+>>> 
+=============================== RESTART: Shell ===============================
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+>>> 
+Python 2.7.11 (v2.7.11:6d1b6a68f775, Dec  5 2015, 12:54:16) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> hansolo = dict(
+    ship = 'falcon',
+    friends = ('luke', 'leia', 'chewy'),
+    status = 'wanted by jabba the hut',
+    occupation = 'smuggler',
+)
+>>> 
+
+>>> import pickle
+>>> import json
+>>> 
+>>> # live object ---------(serialization)--->  s   ----------(deserialize)-------->   live object
+>>> # voice as numbers   (mp3 au aiff wav)     string         (mp3 au aiff wav)        sound
+>>> # dict/strings/tuples  (pickle json)       string         (pickle json)            dict/string/tuples
+>>> #                       encoding                            decoding
+>>> # coder~decoder -> codec
+>>> #                     (jpeg, ...)
+>>> # unicode   (utf-8 latin-1 window)
+>>> 
+>>> # mojibake
+>>> 
+>>> # pickle is lossless and handles a wide variety of inputs including most python classes
+>>> #   0, 1, 2
+>>> # disad:   It is python specific
+>>> 
+>>> s = json.dumps(hansolo)
+>>> print s
+{"status": "wanted by jabba the hut", "ship": "falcon", "friends": ["luke", "leia", "chewy"], "occupation": "smuggler"}
+>>> # Prints strings with double quotes always
+>>> {"status": "wanted by jabba the hut", "ship": "falcon", "friends": ["luke", "leia", "chewy"], "occupation": "smuggler"}
+{'status': 'wanted by jabba the hut', 'ship': 'falcon', 'friends': ['luke', 'leia', 'chewy'], 'occupation': 'smuggler'}
+>>> # Restricted to:   dict list None bool int decimal -> obj array null true false
+>>> 
+>>> .123
+0.123
+>>> # JSON is very similar to Python in its looks but not indentical
+>>> # Restricted to:   dict list None bool int decimal -> obj array null true false
+>>> #                   ^-- MUST have a string key
+>>> 
+>>> # Restricted to:   unicode dict list None bool int decimal -> obj array null true false
+>>> 
+>>> print json.loads(s)
+{u'status': u'wanted by jabba the hut', u'ship': u'falcon', u'friends': [u'luke', u'leia', u'chewy'], u'occupation': u'smuggler'}
+>>> royalty = {('princess', 'leia'): {'love': 'han', 'hairdo': 'twisty'}}
+>>> json.dumps(royalty)
+
+Traceback (most recent call last):
+  File "<pyshell#34>", line 1, in <module>
+    json.dumps(royalty)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/__init__.py", line 244, in dumps
+    return _default_encoder.encode(obj)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+TypeError: keys must be a string
+>>> s = pickle.dumps(royalty)
+>>> pickle.loads(s)
+{('princess', 'leia'): {'hairdo': 'twisty', 'love': 'han'}}
+>>> 
+>>> 
+>>> # JSON's advantage is that it is cross-languge
+>>> # Pickle's advantage is that it is lossless and handles arbitrary types including user defined types.
+>>> 
+>>> 
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+Misspelled:
+-----------
+iss
+tymme
+guhd
+tooo
+comee
+ayd
+thur
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+Misspelled:
+-----------
+iss
+tymme
+guhd
+tooo
+comee
+ayd
+thur
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/spell_check.py", line 40, in <module>
+    correct_words = make_checker()
+  File "/Users/raymond/Dropbox/Public/sj144/spell_check.py", line 7, in make_checker
+    with open('words.pcl', 'rb') as f:
+IOError: [Errno 2] No such file or directory: 'words.pcl'
+>>> 6.026 / 0.037
+162.86486486486487
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+Successfully opened
+Misspelled:
+-----------
+iss
+tymme
+guhd
+tooo
+comee
+ayd
+thur
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+Misspelled:
+-----------
+iss
+tymme
+guhd
+tooo
+comee
+ayd
+thur
+>>> import xyzpqdq
+
+Traceback (most recent call last):
+  File "<pyshell#44>", line 1, in <module>
+    import xyzpqdq
+ImportError: No module named xyzpqdq
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/spell_check.py", line 48, in <module>
+    correct_words = make_checker()
+  File "/Users/raymond/Dropbox/Public/sj144/spell_check.py", line 13, in make_checker
+    return pickle.load(s)
+NameError: global name 's' is not defined
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/spell_check.py ========
+Misspelled:
+-----------
+iss
+tymme
+guhd
+tooo
+comee
+ayd
+thur
+>>> 
+==== RESTART: /Users/raymond/Dropbox/Public/sj144/multiprocessing_demo.py ====
+http://www.cnn.com
+>>> 
+==== RESTART: /Users/raymond/Dropbox/Public/sj144/multiprocessing_demo.py ====
+103021 http://www.cnn.com
+>>> 
+==== RESTART: /Users/raymond/Dropbox/Public/sj144/multiprocessing_demo.py ====
+>>> 
+>>> 
+>>> map(ord, 'Raymond')
+[82, 97, 121, 109, 111, 110, 100]
+>>> [ord('R'), ord('a'), ord('y')]
+[82, 97, 121]
+>>> map(pow, [2, 3, 4, 5], [5, 4, 4, 3])
+[32, 81, 256, 125]
+>>> [pow(2, 5), pow(3, 4), pow(4, 4), pow(5, 3)]
+[32, 81, 256, 125]
+>>> 
+==== RESTART: /Users/raymond/Dropbox/Public/sj144/multiprocessing_demo.py ====
+[103048, 47371, 19210, 5985, 14041, 87825, 58537, 255190, 162527, 101968, 142448, 152571, 354588, 354587, 486153]
+>>> 
+>>> zip('abc', range(10))
+[('a', 0), ('b', 1), ('c', 2)]
+>>> 
+==== RESTART: /Users/raymond/Dropbox/Public/sj144/multiprocessing_demo.py ====
+[('http://www.cnn.com', 103048),
+ ('http://www.python.org', 47371),
+ ('http://www.jython.org', 19210),
+ ('http://www.pypy.org', 5985),
+ ('http://www.perl.org', 14041),
+ ('http://www.cisco.com', 87825),
+ ('http://www.facebook.com', 58614),
+ ('http://www.twitter.com', 255186),
+ ('http://www.macrumors.com/', 162527),
+ ('http://arstechnica.com/', 101968),
+ ('http://www.reuters.com/', 142448),
+ ('http://abcnews.go.com/', 152547),
+ ('http://www.cnbc.com/', 354631),
+ ('http://www.cnbc.com/', 354589),
+ ('https://www.yahoo.com/', 487870)]
+>>> 
+==== RESTART: /Users/raymond/Dropbox/Public/sj144/multiprocessing_demo.py ====
+[('http://www.cnn.com', 104508),
+ ('http://www.python.org', 47371),
+ ('http://www.jython.org', 19210),
+ ('http://www.pypy.org', 5985),
+ ('http://www.perl.org', 14041),
+ ('http://www.cisco.com', 87825),
+ ('http://www.facebook.com', 58272),
+ ('http://www.twitter.com', 254252),
+ ('http://www.macrumors.com/', 162522),
+ ('http://arstechnica.com/', 102000),
+ ('http://www.reuters.com/', 142441),
+ ('http://abcnews.go.com/', 152533),
+ ('http://www.cnbc.com/', 354588),
+ ('http://www.cnbc.com/', 354588),
+ ('https://www.yahoo.com/', 493152)]
+>>> range(20)
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+>>> xrange(20)
+xrange(20)
+>>> [x**2 for x in range(10)]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> g = (x**2 for x in xrange(10))
+>>> g
+<generator object <genexpr> at 0x104024140>
+>>> next(g)
+0
+>>> next(g)
+1
+>>> next(g)
+4
+>>> next(g)
+9
+>>> sum(x**2 for x in xrange(10))
+285
+>>> import itertools
+>>> map(ord, 'Raymond')
+[82, 97, 121, 109, 111, 110, 100]
+>>> g = itertools.imap(ord, 'Raymond')
+>>> next(g)
+82
+>>> next(g)
+97
+>>> g
+<itertools.imap object at 0x105c1cc50>
+>>> 
+==== RESTART: /Users/raymond/Dropbox/Public/sj144/multiprocessing_demo.py ====
+[('http://www.cnn.com', 104492),
+ ('http://www.python.org', 47371),
+ ('http://www.jython.org', 19210),
+ ('http://www.pypy.org', 5985),
+ ('http://www.perl.org', 14041),
+ ('http://www.cisco.com', 87825),
+ ('http://www.facebook.com', 58287),
+ ('http://www.twitter.com', 254867),
+ ('http://www.macrumors.com/', 162589),
+ ('http://arstechnica.com/', 102000),
+ ('http://www.reuters.com/', 142441),
+ ('http://abcnews.go.com/', 152479),
+ ('http://www.cnbc.com/', 354633),
+ ('http://www.cnbc.com/', 354633),
+ ('https://www.yahoo.com/', 488316)]
+>>> 
+==== RESTART: /Users/raymond/Dropbox/Public/sj144/multiprocessing_demo.py ====
+Fetching http://www.cnn.com
+Fetching http://www.python.org
+Fetching http://www.jython.org
+Fetching http://www.pypy.org
+Fetching http://www.perl.org
+Fetching http://www.cisco.com
+Fetching http://www.facebook.com
+Fetching http://www.twitter.com
+Fetching http://www.macrumors.com/
+Fetching http://arstechnica.com/
+Fetching http://www.reuters.com/
+Fetching http://abcnews.go.com/
+Fetching http://www.cnbc.com/
+Fetching http://www.cnbc.com/
+Fetching https://www.yahoo.com/
+[('http://www.cnn.com', 104492),
+ ('http://www.python.org', 47371),
+ ('http://www.jython.org', 19210),
+ ('http://www.pypy.org', 5985),
+ ('http://www.perl.org', 14041),
+ ('http://www.cisco.com', 87825),
+ ('http://www.facebook.com', 58569),
+ ('http://www.twitter.com', 254867),
+ ('http://www.macrumors.com/', 162589),
+ ('http://arstechnica.com/', 102000),
+ ('http://www.reuters.com/', 142441),
+ ('http://abcnews.go.com/', 152516),
+ ('http://www.cnbc.com/', 354632),
+ ('http://www.cnbc.com/', 354632),
+ ('https://www.yahoo.com/', 489220)]
+>>> 
+==== RESTART: /Users/raymond/Dropbox/Public/sj144/multiprocessing_demo.py ====
+Fetching http://www.cnn.com
+Fetching http://www.python.org
+Fetching http://www.jython.org
+Fetching http://www.pypy.org
+Fetching http://www.perl.org
+Fetching http://www.cisco.com
+Fetching http://www.facebook.com
+Fetching http://www.twitter.com
+Fetching http://www.macrumors.com/
+Fetching http://arstechnica.com/
+Fetching http://www.reuters.com/
+Fetching http://abcnews.go.com/
+Fetching http://www.cnbc.com/
+Fetching http://www.cnbc.com/
+Fetching https://www.yahoo.com/
+[('http://www.cnn.com', 104492),
+ ('http://www.python.org', 47371),
+ ('http://www.jython.org', 19210),
+ ('http://www.pypy.org', 5985),
+ ('http://www.perl.org', 14041),
+ ('http://www.cisco.com', 87825),
+ ('http://www.facebook.com', 58595),
+ ('http://www.twitter.com', 254865),
+ ('http://www.macrumors.com/', 162522),
+ ('http://arstechnica.com/', 102000),
+ ('http://www.reuters.com/', 142441),
+ ('http://abcnews.go.com/', 152516),
+ ('http://www.cnbc.com/', 354632),
+ ('http://www.cnbc.com/', 354632),
+ ('https://www.yahoo.com/', 487511)]
+>>> 
+==== RESTART: /Users/raymond/Dropbox/Public/sj144/multiprocessing_demo.py ====
+Fetching http://www.cnn.com
+Fetching http://www.python.org
+Fetching http://www.jython.org
+Fetching http://www.pypy.org
+Fetching http://www.perl.org
+Fetching http://www.cisco.com
+Fetching http://www.facebook.com
+Fetching http://www.twitter.com
+Fetching http://www.macrumors.com/
+Fetching http://arstechnica.com/
+Fetching http://www.reuters.com/
+Fetching http://abcnews.go.com/
+Fetching http://www.cnbc.com/
+Fetching http://www.cnbc.com/
+Fetching https://www.yahoo.com/
+103350 http://www.cnn.com
+47371 http://www.python.org
+19210 http://www.jython.org
+5985 http://www.pypy.org
+14041 http://www.perl.org
+87825 http://www.cisco.com
+58550 http://www.facebook.com
+256470 http://www.twitter.com
+162522 http://www.macrumors.com/
+102000 http://arstechnica.com/
+142455 http://www.reuters.com/
+152528 http://abcnews.go.com/
+354673 http://www.cnbc.com/
+354630 http://www.cnbc.com/
+487241 https://www.yahoo.com/
+>>> 
+==== RESTART: /Users/raymond/Dropbox/Public/sj144/multiprocessing_demo.py ====
+Fetching http://www.cnn.com
+103350 http://www.cnn.com
+Fetching http://www.python.org
+47371 http://www.python.org
+Fetching http://www.jython.org
+19210 http://www.jython.org
+Fetching http://www.pypy.org
+5985 http://www.pypy.org
+Fetching http://www.perl.org
+14041 http://www.perl.org
+Fetching http://www.cisco.com
+87825 http://www.cisco.com
+Fetching http://www.facebook.com
+58290 http://www.facebook.com
+Fetching http://www.twitter.com
+256914 http://www.twitter.com
+Fetching http://www.macrumors.com/
+162522 http://www.macrumors.com/
+Fetching http://arstechnica.com/
+102000 http://arstechnica.com/
+Fetching http://www.reuters.com/
+142455 http://www.reuters.com/
+Fetching http://abcnews.go.com/
+152529 http://abcnews.go.com/
+Fetching http://www.cnbc.com/
+354625 http://www.cnbc.com/
+Fetching http://www.cnbc.com/
+354632 http://www.cnbc.com/
+Fetching https://www.yahoo.com/
+485772 https://www.yahoo.com/
+>>> 
+==== RESTART: /Users/raymond/Dropbox/Public/sj144/multiprocessing_demo.py ====
+Fetching http://www.cnn.com
+103350 http://www.cnn.com
+Fetching http://www.python.org
+47371 http://www.python.org
+Fetching http://www.jython.org
+19210 http://www.jython.org
+Fetching http://www.pypy.org
+5985 http://www.pypy.org
+Fetching http://www.perl.org
+14041 http://www.perl.org
+Fetching http://www.cisco.com
+87825 http://www.cisco.com
+Fetching http://www.facebook.com
+58321 http://www.facebook.com
+Fetching http://www.twitter.com
+256964 http://www.twitter.com
+Fetching http://www.macrumors.com/
+162522 http://www.macrumors.com/
+Fetching http://arstechnica.com/
+102000 http://arstechnica.com/
+Fetching http://www.reuters.com/
+142457 http://www.reuters.com/
+Fetching http://abcnews.go.com/
+152527 http://abcnews.go.com/
+Fetching http://www.cnbc.com/
+354632 http://www.cnbc.com/
+Fetching http://www.cnbc.com/
+355679 http://www.cnbc.com/
+Fetching http://www.yahoo.com/
+485344 http://www.yahoo.com/
+>>> s = [10, 20, 30]
+>>> it = iter(s)
+>>> it
+<listiterator object at 0x1041b27d0>
+>>> dir(it)
+['__class__', '__delattr__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__iter__', '__length_hint__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'next']
+>>> 
+==== RESTART: /Users/raymond/Dropbox/Public/sj144/multiprocessing_demo.py ====
+Fetching http://www.cnn.com
+103350 http://www.cnn.com
+Fetching http://www.python.org
+47371 http://www.python.org
+Fetching http://www.jython.org
+19210 http://www.jython.org
+Fetching http://www.pypy.org
+5985 http://www.pypy.org
+Fetching http://www.perl.org
+14041 http://www.perl.org
+Fetching http://www.cisco.com
+87825 http://www.cisco.com
+Fetching http://www.facebook.com
+58568 http://www.facebook.com
+Fetching http://www.twitter.com
+256964 http://www.twitter.com
+Fetching http://www.macrumors.com/
+162522 http://www.macrumors.com/
+Fetching http://arstechnica.com/
+102000 http://arstechnica.com/
+Fetching http://www.reuters.com/
+142457 http://www.reuters.com/
+Fetching http://abcnews.go.com/
+152522 http://abcnews.go.com/
+Fetching http://www.cnbc.com/
+354634 http://www.cnbc.com/
+Fetching http://www.cnbc.com/
+354634 http://www.cnbc.com/
+Fetching http://www.yahoo.com/
+478707 http://www.yahoo.com/
+>>> import random
+>>> shuffle(sites)
+
+Traceback (most recent call last):
+  File "<pyshell#74>", line 1, in <module>
+    shuffle(sites)
+NameError: name 'shuffle' is not defined
+>>> random.shuffle(sites)
+>>> sites
+['http://www.twitter.com', 'http://arstechnica.com/', 'http://www.macrumors.com/', 'http://www.cisco.com', 'http://www.cnn.com', 'http://www.perl.org', 'http://www.pypy.org', 'http://www.python.org', 'http://www.facebook.com', 'http://www.yahoo.com/', 'http://abcnews.go.com/', 'http://www.reuters.com/', 'http://www.cnbc.com/', 'http://www.jython.org', 'http://www.cnbc.com/']
+>>> 
+==== RESTART: /Users/raymond/Dropbox/Public/sj144/multiprocessing_demo.py ====
+Fetching http://arstechnica.com/
+102001 http://arstechnica.com/
+Fetching http://www.perl.org
+14041 http://www.perl.org
+Fetching http://www.cnbc.com/
+354637 http://www.cnbc.com/
+Fetching http://www.twitter.com
+256342 http://www.twitter.com
+Fetching http://abcnews.go.com/
+152568 http://abcnews.go.com/
+Fetching http://www.cnn.com
+103349 http://www.cnn.com
+Fetching http://www.python.org
+47371 http://www.python.org
+Fetching http://www.reuters.com/
+142425 http://www.reuters.com/
+Fetching http://www.cisco.com
+87825 http://www.cisco.com
+Fetching http://www.jython.org
+19210 http://www.jython.org
+Fetching http://www.macrumors.com/
+162626 http://www.macrumors.com/
+Fetching http://www.yahoo.com/
+465446 http://www.yahoo.com/
+Fetching http://www.cnbc.com/
+354637 http://www.cnbc.com/
+Fetching http://www.pypy.org
+5985 http://www.pypy.org
+Fetching http://www.facebook.com
+58287 http://www.facebook.com
+>>> 
+>>> 
+>>> mymap(ord, 'Raymond')
+[82, 97, 121, 109, 111, 110, 100]
+>>> myimap(ord, 'Raymond')
+<generator object <genexpr> at 0x103849320>
+>>> g = myimap(ord, 'Raymond')
+>>> next(g)
+82
+>>> g = myimap_unordered(ord, 'Raymond')
+>>> g
+<generator object <genexpr> at 0x1038e4280>
+>>> next(g)
+121
+>>> next(g)
+100
+>>> next(g)
+97
+>>> 
+>>> def square(x):
+	return x * x
+
+>>> map(square, range(10))
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> 
+>>> 
+>>> 
+====== RESTART: /Users/raymond/Dropbox/Public/sj144/parallel_squares.py ======
+333332833333500000
+>>> 
+====== RESTART: /Users/raymond/Dropbox/Public/sj144/parallel_squares.py ======
+333333283333335000000
+>>> n * (24 + 8)
+320000000
+>>> 
+====== RESTART: /Users/raymond/Dropbox/Public/sj144/parallel_squares.py ======
+333333283333335000000
+>>> 
+====== RESTART: /Users/raymond/Dropbox/Public/sj144/parallel_squares.py ======
+333333283333335000000
+333333283333335000000
+>>> 
+====== RESTART: /Users/raymond/Dropbox/Public/sj144/parallel_squares.py ======
+>>> sum_of_squares(0, 10)
+285
+>>> sum_of_squares(10, 20)
+2185
+>>> 285 + 2185
+2470
+>>> sum_of_squares(0, 20)
+2470
+>>> 
+====== RESTART: /Users/raymond/Dropbox/Public/sj144/parallel_squares.py ======
+>>> i=0; print cs*i, cs*(i+1)
+0 25000000
+>>> i=1; print cs*i, cs*(i+1)
+25000000 50000000
+>>> i=2; print cs*i, cs*(i+1)
+50000000 75000000
+>>> i=3; print cs*i, cs*(i+1)
+75000000 100000000
+>>> 
+====== RESTART: /Users/raymond/Dropbox/Public/sj144/parallel_squares.py ======
+>>> lows
+[0, 25000000, 50000000, 75000000]
+>>> 
+====== RESTART: /Users/raymond/Dropbox/Public/sj144/parallel_squares.py ======
+>>> ranges
+[(0, 25000000), (25000000, 50000000), (50000000, 75000000), (75000000, 100000000)]
+>>> 
+====== RESTART: /Users/raymond/Dropbox/Public/sj144/parallel_squares.py ======
+>>> sum_of_squares((0, 10))
+285
+>>> 
+>>> sum_of_squares(0, n)
+
+Traceback (most recent call last):
+  File "<pyshell#108>", line 1, in <module>
+    sum_of_squares(0, n)
+TypeError: sum_of_squares() takes exactly 1 argument (2 given)
+>>> sum_of_squares((0, n))
+333333328333333350000000L
+>>> map(sum_of_squares, ranges)
+[5208333020833337500000L, 36458332395833337500000L, 98958331770833337500000L, 192708331145833337500000L]
+>>> sum(_)
+333333328333333350000000L
+>>> 
+====== RESTART: /Users/raymond/Dropbox/Public/sj144/parallel_squares.py ======
+333333328333333350000000
+>>> 
+====== RESTART: /Users/raymond/Dropbox/Public/sj144/parallel_squares.py ======
+333333328333333350000000
+>>> 
+=== RESTART: /Users/raymond/Dropbox/Public/sj144/concurrency_discussion.py ===
+>>> 
+>>> 

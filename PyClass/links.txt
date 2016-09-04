@@ -1,0 +1,611 @@
+﻿Advanced Python
+Cisco -- San Jose
+May 23, 2016
+==================
+
+Taught by:  Raymond Hettinger
+            python@rcn.com
+            @raymondh
+
+Suggested readings:
+-------------------
+* http://nbviewer.jupyter.org/url/norvig.com/ipython/Probability.ipynb
+* http://norvig.com/lispy.html
+* http://norvig.com/lispy2.html
+* http://norvig.com/spell-correct.html
+* http://www.cameronius.com/research/mcts/about/index.html
+
+
+Code to Study:
+--------------
+bottle          (microwebframework)
+dexml           (xml orm)
+peewee          (database orm)
+collections     (regular module in the standard library)
+
+
+Course evaluations:
+    http://www.metricsthatmatter.com/student/evaluation.asp?k=16324&i=ILT00388407
+
+This file:
+http://dl.dropbox.com/u/3967849/sj144/links.txt
+
+Download tool:
+http://dl.dropbox.com/u/3967849/sj144/download.py
+
+Writing assignments:
+ http://dl.dropbox.com/u/3967849/sj144/writing_assignment.txt
+
+Course Objectives:
+==================
+
+* Develop skills with Python's most advanced tools:
+    descriptors, decorators, metaclasses, optimizations,
+    custom string formatting, specialized containers, namedtuples
+    Python internals, and new-style classes.
+
+* Form an understanding of Python's mechanics with an aim to being
+  able to understand what any piece of code is doing
+
+* Learn Pythonic code styles and API design with an aim to being
+  able to use the language effectively.
+
+
+===================================================
+How to Cythonize a file
+---------------------------------------------------
+
+1. Start with working Python code such as bitarray.py
+2. Copy the py file to a pyx such as cbitarray.pyx
+3. Add type annotations:
+      int             <-- For parameters that need to be unboxed
+      cdef int        <-- The internal variables that are never boxed
+4. Create a setup file such as cbitarray_setup.py
+      from Cython.Distutils import build_ext
+         ...
+      cmdclass = {'build_ext': build_ext},
+      ext_modules = [Extension("cbitarray", ["cbitarray.pyx"])]
+5. Install it:
+      python cbitarray_setup.py install
+6. Load it:
+      $ python
+      >>> import cbitarray
+      >>> ba = cbitarray.BitArray(50)
+
+Files:
+http://dl.dropbox.com/u/3967849/sj144/bitarray.py
+http://dl.dropbox.com/u/3967849/sj144/cbitarray.pyx
+http://dl.dropbox.com/u/3967849/sj144/cbitarray_setup.py
+http://dl.dropbox.com/u/3967849/sj144/cbitarray.c
+
+=======================================================
+Numba -- Adds decorator that compiles to the CPU or GPU
+-------------------------------------------------------
+
+1. Install Anaconda:
+   http://continuum.io/downloads
+
+2. Add it to your path:
+   export PATH=~/anaconda/bin:$PATH
+
+3. Add the numba jit decorator to your code:
+   import numba
+   ...
+   @numba.jit('i8(i8)')
+
+4. Run it at C Speed:
+
+   $ python
+   >>> from numba_demo import sum_poly
+   >>> sum_poly(123)
+
+Files:
+ http://dl.dropbox.com/u/3967849/sj144/numba_demo.py
+
+
+====================================================
+How to write C Extensions
+----------------------------------------------------
+
+# Example of building your own C extension directly
+files:
+http://dl.dropbox.com/u/3967849/sj144/demo.c
+http://dl.dropbox.com/u/3967849/sj144/demo_setup.py
+
+To install the demo.c file:
+        $ python demo_setup.py install
+        $ python
+        >>> import demo
+        >>> demo.collatz(5)
+        16
+        >>> help(demo)
+
+# Example of how to wrap an C existing file
+Files:
+ http://dl.dropbox.com/u/3967849/sj144/pymytools.py
+http://dl.dropbox.com/u/3967849/sj144/mytools.c
+http://dl.dropbox.com/u/3967849/sj144/mytools_wrapper.c
+http://dl.dropbox.com/u/3967849/sj144/mytools_setup.py
+ http://dl.dropbox.com/u/3967849/sj144/test_mytools.py
+
+To install:
+        $ python mytools_setup.py install
+        $ python
+        >>> import mytools
+        >>> mytools.count_vowels('hello')
+        2
+
+
+====================================================================
+How to wrap code using SWIG
+--------------------------------------------------------------------
+1. Start with an existing C file such as project.c
+   that knows nothing about python.
+2. Create a project.i describing the function signatures
+3. Build wrappers:
+   $ swig -python project.i
+   The generated output is project.py and project_wrap.c
+4. Construct setup file such as project_setup:
+   ext_modules = [Extension('_project', sources = ['mytools.c', 'project_wrap.c'])])
+5. python project_setup.py install
+6. Run it:
+      $ python
+      >>> import project
+      >>> project.collatz(3)
+
+Files:
+http://dl.dropbox.com/u/3967849/sj144/project_setup.py
+http://dl.dropbox.com/u/3967849/sj144/project.i
+http://dl.dropbox.com/u/3967849/sj144/project.py
+http://dl.dropbox.com/u/3967849/sj144/project_wrap.c
+
+
+====================================================================
+How configure and use the logging module
+--------------------------------------------------------------------
+
+Basic configuration options:
+    filename (filename)
+    stream   (a currently open file)
+    level    (logging.INFO or  DEBUG WARN ERROR CRITICAL)
+    format   (format of the logging message)
+        %(levelname)s  %(levelno)s
+        %(modules)s    %(lineno)s
+        %(asctime)s   %(created)s
+
+import logging
+
+logging.basicConfig(
+    filename = 'sj_class.log',
+    level = logging.INFO,
+    format = 'We got a %(levelname)s message at %(asctime): %(message)'
+)
+logging.info('Finished task %s', 'X')
+
+
+====================================================================
+Resources and Suggested Readings
+--------------------------------------------------------------------
+* http://www.clemesha.org/blog/modern-python-hacker-tools-virtualenv-fabric-pip/
+* http://www.youlikeprogramming.com/2012/03/examples-reading-excel-xls-documents-using-pythons-xlrd/
+* http://pravin.insanitybegins.com/posts/writing-a-spider-in-10-mins-using-scrapy
+* http://pymotw.com/2/py-modindex.html
+* http://www.swig.org/tutorial.html
+* http://docs.python-requests.org/en/latest/index.html
+* http://pyvideo.org/category/33/pycon-us-2013
+* http://zguide.zeromq.org
+* http://jessenoller.com/blog/2009/02/05/ssh-programming-with-paramiko-completely-different
+* https://www.youtube.com/watch?v=AYjPIMe0BhA   # Richard Jone Web Framework Shootout
+* http://www.extremetech.com/extreme/188776-how-l1-and-l2-cpu-caches-work-and-why-theyre-an-essential-part-of-modern-chips
+* http://nedbatchelder.com/blog/200804/the_structure_of_pyc_files.html
+
+====================================================================
+Useful Links:
+--------------------------------------------------------------------
+    http://txt2re.com/           Builds regular expressions from examples
+    http://en.wikipedia.org/wiki/Open/closed_principle
+    http://golubenco.org/2009/09/19/understanding-the-code-inside-tornado-the-asynchronous-web-server-powering-friendfeed/
+    http://packages.python.org/dexml/
+
+
+====================================================================
+Daily Logs
+--------------------------------------------------------------------
+http://dl.dropbox.com/u/3967849/sj144/dayone.log
+http://dl.dropbox.com/u/3967849/sj144/daytwo.log
+http://dl.dropbox.com/u/3967849/sj144/daythree.log
+http://dl.dropbox.com/u/3967849/sj144/dayfour.log
+
+
+====================================================================
+Presentations and Slides
+--------------------------------------------------------------------
+http://dl.dropbox.com/u/3967849/shared/descriptors.pdf
+http://dl.dropbox.com/u/3967849/shared/FunWithNewerTools.pdf
+http://dl.dropbox.com/u/3967849/shared/CoreContainers.pdf
+http://dl.dropbox.com/u/3967849/shared/ArtOfSubclassing.pdf
+http://dl.dropbox.com/u/3967849/shared/unicode.pdf
+http://dl.dropbox.com/u/3967849/shared/using-gdb-pdb.pdf
+
+
+====================================================================
+Class Files
+--------------------------------------------------------------------
+http://dl.dropbox.com/u/3967849/shared/lru_cache.py
+ http://dl.dropbox.com/u/3967849/sj144/magic.txt
+ http://dl.dropbox.com/u/3967849/sj144/callables.py
+ http://dl.dropbox.com/u/3967849/sj144/regular_class.py
+ http://dl.dropbox.com/u/3967849/sj144/optimizations.txt
+ http://dl.dropbox.com/u/3967849/sj144/custom_formatting.py
+ http://dl.dropbox.com/u/3967849/sj144/dict_school.py
+ http://dl.dropbox.com/u/3967849/sj144/dict_class.py
+ http://dl.dropbox.com/u/3967849/sj144/function_class.py
+ http://dl.dropbox.com/u/3967849/sj144/cannon_fodder.py
+ http://dl.dropbox.com/u/3967849/sj144/class_class.py
+ http://dl.dropbox.com/u/3967849/sj144/how_timeit_works.py
+ http://dl.dropbox.com/u/3967849/sj144/module_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/module_demo_gone_wild.py
+ http://dl.dropbox.com/u/3967849/sj144/sample.py
+ http://dl.dropbox.com/u/3967849/sj144/lbyl_vs_eafp.py
+ http://dl.dropbox.com/u/3967849/sj144/setup.py
+ http://dl.dropbox.com/u/3967849/sj144/dexml_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/attrdict.py
+ http://dl.dropbox.com/u/3967849/sj144/how_the_dot_works.py
+ http://dl.dropbox.com/u/3967849/sj144/attrdict.py
+ http://dl.dropbox.com/u/3967849/sj144/attrdemo.py
+ http://dl.dropbox.com/u/3967849/sj144/cutedict.py
+ http://dl.dropbox.com/u/3967849/sj144/keywords.py
+ http://dl.dropbox.com/u/3967849/sj144/family.py
+ http://dl.dropbox.com/u/3967849/sj144/family.tpl
+ http://dl.dropbox.com/u/3967849/sj144/family.html
+ http://dl.dropbox.com/u/3967849/sj144/starks.html
+ http://dl.dropbox.com/u/3967849/sj144/map_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/list_mastery.py
+  http://dl.dropbox.com/u/3967849/sj144/functions_as_descriptors.py
+ http://dl.dropbox.com/u/3967849/sj144/many_ways.py
+ http://dl.dropbox.com/u/3967849/sj144/directory_analysis.py
+ http://dl.dropbox.com/u/3967849/shared/telnet_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/review_property.py
+ http://dl.dropbox.com/u/3967849/sj144/traverse.py
+ http://dl.dropbox.com/u/3967849/sj144/sympy_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/property_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/orm_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/bottle_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/gui_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/test_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/what_the_class_keyword_does.py
+ http://dl.dropbox.com/u/3967849/sj144/test_pow.py
+ http://dl.dropbox.com/u/3967849/sj144/bound_and_unbound.py
+ http://dl.dropbox.com/u/3967849/sj144/getattr_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/threading_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/threading_demo_badway_with_locks.py
+ http://dl.dropbox.com/u/3967849/sj144/psuedo_code_for_queue.py
+ http://dl.dropbox.com/u/3967849/sj144/rmp.py
+ http://dl.dropbox.com/u/3967849/sj144/jim.py
+ http://dl.dropbox.com/u/3967849/sj144/rf.py
+http://dl.dropbox.com/u/3967849/sj144/pricing_tool.py
+http://dl.dropbox.com/u/3967849/sj144/validators.py
+http://dl.dropbox.com/u/3967849/sj144/instrument.py
+ http://dl.dropbox.com/u/3967849/sj144/web_services_with_bottle.py
+ http://dl.dropbox.com/u/3967849/sj144/gagnum.css
+ http://dl.dropbox.com/u/3967849/sj144/pubsub_internals.py
+ http://dl.dropbox.com/u/3967849/sj144/pubsub_test.py
+ http://dl.dropbox.com/u/3967849/sj144/pubsub_web.py
+ http://dl.dropbox.com/u/3967849/sj144/subprocess_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/optimizing_search.py
+ http://dl.dropbox.com/u/3967849/sj144/which_dunder_method.py
+ http://dl.dropbox.com/u/3967849/sj144/subclassing_builtin_types.py
+ http://dl.dropbox.com/u/3967849/sj144/searching_example.py
+ http://dl.dropbox.com/u/3967849/sj144/callback_style_programming.py
+ http://dl.dropbox.com/u/3967849/shared/transform.py
+ http://dl.dropbox.com/u/3967849/sj144/transform_notes.txt
+ http://dl.dropbox.com/u/3967849/sj144/operator_class.py
+ http://dl.dropbox.com/u/3967849/sj144/dict_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/how_hashtables_work.py
+ http://dl.dropbox.com/u/3967849/sj144/hash_homomorphism.py
+http://dl.dropbox.com/u/3967849/sj144/bloomfilter.py
+http://dl.dropbox.com/u/3967849/sj144/spell_check.py
+ http://dl.dropbox.com/u/3967849/sj144/p_vs_np_1.py
+ http://dl.dropbox.com/u/3967849/sj144/p_vs_np_2.py
+ http://dl.dropbox.com/u/3967849/sj144/p_vs_np_3.py
+ http://dl.dropbox.com/u/3967849/sj144/p_vs_np_4.py
+ http://dl.dropbox.com/u/3967849/sj144/access_rest_api.py
+ http://dl.dropbox.com/u/3967849/sj144/github_rest_api_client.py
+ http://dl.dropbox.com/u/3967849/sj144/show_args.py
+ http://dl.dropbox.com/u/3967849/sj144/codegen_bottle.py
+http://dl.dropbox.com/u/3967849/sj144/codegen.py
+ http://dl.dropbox.com/u/3967849/sj144/pyparse_setup.py
+ http://dl.dropbox.com/u/3967849/sj144/pyparser.c
+ http://dl.dropbox.com/u/3967849/sj144/classvars.log
+ http://dl.dropbox.com/u/3967849/sj144/what_the_class_keyword_really_does.py
+ http://dl.dropbox.com/u/3967849/sj144/make_a_class_using_type.py
+ http://dl.dropbox.com/u/3967849/sj144/soldier_example.py
+ http://dl.dropbox.com/u/3967849/sj144/soldier_via_metaclass.py
+http://dl.dropbox.com/u/3967849/sj144/metaclass_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/class_keyword.py
+ http://dl.dropbox.com/u/3967849/sj144/test_math.py
+ http://dl.dropbox.com/u/3967849/sj144/emulate_deque.py
+ http://dl.dropbox.com/u/3967849/sj144/multiprocessing_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/inspect_class_keyword.py
+ http://dl.dropbox.com/u/3967849/sj144/internals.txt
+ http://dl.dropbox.com/u/3967849/sj144/regular_setup.py
+ http://dl.dropbox.com/u/3967849/sj144/event_loop.py
+ http://dl.dropbox.com/u/3967849/sj144/employee_example.py
+ http://dl.dropbox.com/u/3967849/sj144/dir_pie.py
+ http://dl.dropbox.com/u/3967849/sj144/spam_detector.py
+ http://dl.dropbox.com/u/3967849/sj144/simulate_swig.py
+ http://dl.dropbox.com/u/3967849/sj144/crypto_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/how_pyc_works.py
+ http://dl.dropbox.com/u/3967849/shared/mpl_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/pie_chart.py
+ http://dl.dropbox.com/u/3967849/sj144/how_the_dot_works.py
+ http://dl.dropbox.com/u/3967849/sj144/own_the_dot.py
+ http://dl.dropbox.com/u/3967849/sj144/newstyle_class.py
+ http://dl.dropbox.com/u/3967849/sj144/super_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/mro_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/slots_demo.py
+ http://dl.dropbox.com/u/3967849/sj144/descriptor_hook.py
+ http://dl.dropbox.com/u/3967849/sj144/real_descriptor.py
+ http://dl.dropbox.com/u/3967849/sj144/machine_learning.py
+ http://dl.dropbox.com/u/3967849/sj144/fabfile.py
+ http://dl.dropbox.com/u/3967849/sj144/play.yaml
+ http://dl.dropbox.com/u/3967849/sj144/rpc_server.py
+ http://dl.dropbox.com/u/3967849/sj144/rpc_client.py
+ http://dl.dropbox.com/u/3967849/sj144/attribute_dict.py
+
+
+=====================================================
+Sample Data
+-----------------------------------------------------
+http://dl.dropbox.com/u/3967849/shared/hamlet.txt
+http://dl.dropbox.com/u/3967849/shared/the_great_gatsby.txt
+http://dl.dropbox.com/u/3967849/shared/words.txt
+http://dl.dropbox.com/u/3967849/shared/CSDMC2010_SPAM.zip
+http://dl.dropbox.com/u/3967849/shared/big.txt
+http://dl.dropbox.com/u/3967849/shared/beautifulsoup4-4.1.0.tar.gz
+http://dl.dropbox.com/u/3967849/shared/proverbs_en.txt
+http://dl.dropbox.com/u/3967849/shared/proverbs_es.txt
+http://dl.dropbox.com/u/3967849/shared/ps_favicon.ico
+
+
+===========================================
+How to automatically generate documentation
+-------------------------------------------
+
+    $ python -m pydoc -w regular_class
+
+
+===========================================
+How to make a case insensitive dicitonary
+-------------------------------------------
+
+    class CIdict(dict):
+    'Case insensitive dictionary'
+    # note that dict.get() is unaffected
+    # because of the Open-Closed Principle
+
+    def __setitem__(self, key, value):
+        key = key.lower()
+        dict.__setitem__(self, key, value)
+
+    def __getitem__(self, key):
+        key = key.lower()
+        return dict.__getitem__(self, key)
+
+
+====================================================================
+Getting Set up Cython, Pip, and VirtualEnv
+--------------------------------------------------------------------
+
+    Starting point is working C compiler and build environment:
+        (ubuntu) apt-get install python-dev
+        (mac) AppStore and install XCode
+              Start Preferences:  Goto Downloads:  Install command-line tools
+
+    How to make a pyx:
+        copied bitarray.py cbitarray.pyx and then add annotations (int, str)
+
+    Building a pyx is done with setup.py:
+        cython cbitarray.pyx -> cbitarray.c -> cbitarray.o -> install .so to site-packages
+
+    $ python distribute_setup.py
+    $ python get-pip.py
+    $ pip install virtualenv
+    $ virtualenv myproj
+    $ source myproj/bin/activate
+    (myproj) $ pip install cython
+    (myproj) $ python cbitarray_setup.py install
+    (myproj) $ python
+    >>> import cbitarray
+    >>> ^D
+    (myproj) $ deactivate
+    $
+
+
+====================================================================
+Misc Notes
+--------------------------------------------------------------------
+
+How to make an iterator out of a function:
+------------------------------------------
+    f = open('tmp.dat')
+    for block in iter(partial(f.read, 10), ''):
+    print block
+
+Ways to make a callable:
+------------------------
+
+    def f(x):
+         return x*x
+    f = lambda x: x*x
+    f = functools.partial(pow, 2)
+    f = str.lower                       # unbound method
+    f = d.bark                          # bound method
+    f = operator.itemgetter(2,5)        # lambda r: (r[2], r[5])
+    f = operator.attrgetter('x', 'y')   # lambda r: (r.x, r.y)
+    class ItemGetter:
+    def __init__(self, x):
+             self.x = x
+    def __call__(self, r):
+         return r[self.x]
+
+Important special methods:
+--------------------------
+
+    d[k]      __getitem__
+                   ^------->    __missing__ or KeyError
+    d[k]=v    __setitem__
+    del d[k]  __delitem__
+
+
+    a.m       __getattribute__
+                    ^------>    __getattr__ or AttributeError
+    a.m = x   __setattr__
+    del a.m   __delattr__
+
+
+To make a fresh copy of Python (different from the one on your system):
+-----------------------------------------------------------------------
+
+    1. Download the tarball:
+        http://www.python.org/ftp/python/2.7.8/Python-2.7.8.tgz
+    2. $ tar xzvf
+    3. $ ./configure --prefix=~/mynewpy
+    4. $ make
+    5. $ ./python.exe
+
+Argument Packing and Unpacking:
+-------------------------------
+
+    Positional:
+        f(a, b, *t)           # Unpacks tuple t into separate positional arguments
+        def f(a, b, *t):...   # Packs variable length args into a tuple
+
+Keywords:
+        f(a, b, **d)          # Unpacks dict d into separate keyword arguments
+        def f(a, b, **kwds)   # Packs keywords args into a dictionary
+
+Accessing attributes whose name is known only by a string or variable:
+----------------------------------------------------------------------
+    a.x      <==>   getattr(a, 'x')
+    a.x=10   <==>   setattr(a, 'x', 10)
+    del a.x  <==>   delattr(a, 'x')
+
+Techniques for using lambda:
+----------------------------
+
+    Create anonymous in-line functions
+    ----------------------------------
+    100 + (lambda x, y:  3*x+y)(10, 20)
+
+    Trap global variables in a default argument
+    -------------------------------------------
+    w = Window('Debugger output')
+    for action in 'run shoot hide communicate surrender'.split():
+        b = Button(parent=w, callback=lambda action=action.upper(): do(action))
+
+    Delayed evaluation (promises, thunks, freeze/thaw):
+    ---------------------------------------------------
+    f = lambda : 2 ** 200 - 1      # prepare to do calculation
+    f()                            # now do the work
+
+How to install pip:
+-------------------
+
+ http://python-distribute.org/distribute_setup.py
+ http://raw.github.com/pypa/pip/master/contrib/get-pip.py
+
+    $ python distribute_setup.py
+    $ python get-pip.py
+
+How to install virtualEnv:
+--------------------------
+
+    http://pypi.python.org/pypi/virtualenv
+
+    $ pip install virtualenv
+    $ virtualenv myproj
+    $ source myproj/bin/activate
+    (myproj) $ pip install requests
+    (myproj) $ python
+    >>> import requests
+    >>> ^D
+    (myproj) $ deactivate
+    $ # back to normal
+
+
+How to get a C compiler for Mac OS/X:
+-------------------------------------
+In case the XCode tools aren't being found on the Mac,
+teach Mac OS X Lion where to the finder dev tools,
+by adding the following to the .bashrc or .bash_profile:
+
+    export PATH=/Developer/usr/bin:${PATH}
+
+AI Examples (unused):
+---------------------
+ http://dl.dropbox.com/u/3967849/sj144/eight_queens.py
+ http://dl.dropbox.com/u/3967849/sj144/sudoku.py
+ http://dl.dropbox.com/u/3967849/sj144/puzzle.py
+ http://dl.dropbox.com/u/3967849/sj144/alphametics.py
+ http://dl.dropbox.com/u/3967849/sj144/neural_net.py
+ http://dl.dropbox.com/u/3967849/sj144/jets.txt
+ http://dl.dropbox.com/u/3967849/shared/AI.pdf
+
+
+==============================================================================
+Using Cython on Windows
+-----------------------------------------------------------------------------
+1- download the right cython package for your python from here:
+
+   http://www.lfd.uci.edu/~gohlke/pythonlibs/#cython
+
+2- You may need to create this file: <HOME>\pydistutils.cfg with this contents:
+
+   [build_ext]
+   compiler=mingw32
+
+2.1 : This is how to find your home dir:
+
+    >>> import os
+    >>> os.path.expanduser('~')
+
+3. Building a Cython module using distutils
+
+Imagine a simple “hello world” script in a file hello.pyx:
+
+    def say_hello_to(name):
+        print("Hello %s!" % name)
+
+The following could be a corresponding setup.py script:
+
+   from distutils.core import setup
+   from distutils.extension import Extension
+   from Cython.Distutils import build_ext
+
+   ext_modules = [Extension("hello", ["hello.pyx"])]
+
+   setup(
+      name = 'Hello world app',
+      cmdclass = {'build_ext': build_ext},
+      ext_modules = ext_modules
+   )
+
+To build, run:
+
+   $ python setup.py build_ext --inplace
+
+   (add  --compiler= mingw32 if compiler could not be found)
+
+
+Then simply start a Python session and do from hello import say_hello_to and use
+the imported function as you see fit.
+
+Build your own Python:
+----------------------
+
+    Download the tar file:  https://www.python.org/ftp/python/2.7.8/Python-2.7.8.tgz
+    Untar the file:  tar -xzfv
+    $ ./configure
+    $ make
+    $ ./python.exe --version

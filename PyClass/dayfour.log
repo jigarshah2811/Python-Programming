@@ -1,0 +1,1461 @@
+Python 2.7.11 (v2.7.11:6d1b6a68f775, Dec  5 2015, 12:54:16) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "copyright", "credits" or "license()" for more information.
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+{'blue': 1, 'green': 2, 'red': 3}
+10
+>>> print c
+What this looks like
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+{'blue': 1, 'green': 2, 'red': 3}
+10
+>>> c
+CIDot()
+>>> class D(CIDot):
+	pass
+
+>>> d = D()
+>>> d
+D()
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+{'blue': 1, 'green': 2, 'red': 3}
+10
+CIDot()
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+{'blue': 1, 'green': 2, 'red': 3}
+<class '__main__.CIDot'> {}
+<class '__main__.CIDot'> {'x': 10}
+10
+CIDot()
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+{'blue': 1, 'green': 2, 'red': 3}
+Creating a new <class '__main__.CIDot'> with (10,)
+<class '__main__.CIDot'> {}
+<class '__main__.CIDot'> {'x': 10}
+10
+CIDot()
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+{'blue': 1, 'green': 2, 'red': 3}
+Creating a new <class '__main__.CIDot'> with (10,)
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py", line 88, in <module>
+    c.X = 10
+AttributeError: 'int' object has no attribute 'X'
+>>> CIDot(10)
+Creating a new <class '__main__.CIDot'> with (10,)
+42
+>>> 
+>>> 
+>>> 
+>>> class T(tuple):
+	def __init__(self, x):
+		self.x = x
+
+		
+>>> t = T()
+
+Traceback (most recent call last):
+  File "<pyshell#15>", line 1, in <module>
+    t = T()
+TypeError: __init__() takes exactly 2 arguments (1 given)
+>>> t = T(10)
+
+Traceback (most recent call last):
+  File "<pyshell#16>", line 1, in <module>
+    t = T(10)
+TypeError: 'int' object is not iterable
+>>> t = T('abc')
+>>> t
+('a', 'b', 'c')
+>>> t.x
+'abc'
+>>> class T(tuple):
+	def __new__(cls, x):
+		return tuple.__new__(cls, x.upper())
+
+	
+>>> t = T('abc')
+>>> t
+('A', 'B', 'C')
+>>> t[0] = 'a'
+
+Traceback (most recent call last):
+  File "<pyshell#24>", line 1, in <module>
+    t[0] = 'a'
+TypeError: 'T' object does not support item assignment
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+{'blue': 1, 'green': 2, 'red': 3}
+Creating a new <class '__main__.CIDot'> with (10,)
+<class '__main__.CIDot'> {}
+<class '__main__.CIDot'> {'x': 10}
+10
+CIDot()
+>>> c
+CIDot()
+>>> c(10, 20, 30)
+Called with (10, 20, 30)
+60
+>>> c.x
+10
+>>> c['x']
+
+Traceback (most recent call last):
+  File "<pyshell#28>", line 1, in <module>
+    c['x']
+TypeError: 'CIDot' object has no attribute '__getitem__'
+>>> 
+===== RESTART: /Users/raymond/Dropbox/Public/sj144/how_the_dot_works.py =====
+red
+{'blue': 1, 'green': 2, 'red': 3}
+Creating a new <class '__main__.CIDot'> with (10,)
+<class '__main__.CIDot'> {}
+<class '__main__.CIDot'> {'x': 10}
+10
+CIDot()
+>>> 
+>>> 
+>>> 
+>>> 
+>>> c = CIDot()         # Calling the CIDot class
+Creating a new <class '__main__.CIDot'> with ()
+
+Traceback (most recent call last):
+  File "<pyshell#33>", line 1, in <module>
+    c = CIDot()         # Calling the CIDot class
+TypeError: __init__() takes exactly 2 arguments (1 given)
+>>> 
+>>> 
+>>> c = CIDot(10)         # Calling the CIDot class
+Creating a new <class '__main__.CIDot'> with (10,)
+<class '__main__.CIDot'> {}
+<class '__main__.CIDot'> {'x': 10}
+>>> #                     ^-- Creates a new instance
+>>> c(10, 20, 30)
+Called with (10, 20, 30)
+60
+>>> #                    # Calls the instance
+>>> 
+>>> 
+>>> 
+>>> x = 10
+>>> globals()['x']
+10
+>>> x
+10
+>>> xyz
+
+Traceback (most recent call last):
+  File "<pyshell#46>", line 1, in <module>
+    xyz
+NameError: name 'xyz' is not defined
+>>> d = {}
+>>> d['xyz']
+
+Traceback (most recent call last):
+  File "<pyshell#48>", line 1, in <module>
+    d['xyz']
+KeyError: 'xyz'
+>>> class A:
+	pass
+
+>>> A.xyz
+
+Traceback (most recent call last):
+  File "<pyshell#52>", line 1, in <module>
+    A.xyz
+AttributeError: class A has no attribute 'xyz'
+>>> fspecs = [('lastname', str, 8), ('age', int, 4)]
+>>> [fname for fname, fkind, fwidth in fspecs]
+['lastname', 'age']
+>>> ['{0}={0}'.format(fname) for fname, fkind, fwidth in fspecs]
+['lastname=lastname', 'age=age']
+>>> pairs = ''.join(['{0}={0}'.format(fname) for fname, fkind, fwidth in fspecs])
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/codegen.py ==========
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+
+            age = int(data[i:i+4])
+            i += 4
+
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/codegen.py", line 66, in <module>
+    print dict_line.format(pairs=pairs)
+NameError: name 'dict_line' is not defined
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/codegen.py ==========
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+
+            age = int(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, lastname=lastnameage=age)
+
+            print dict(kind=kind, lastname=lastname, age=age)
+
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/codegen.py ==========
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+
+            age = int(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, lastname=lastname, age=age)
+
+            print dict(kind=kind, lastname=lastname, age=age)
+
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/codegen.py ==========
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+        elif kind == 'c':
+
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+
+            age = int(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, lastname=lastname, age=age)
+
+        elif kind == 'c':
+
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/codegen.py ==========
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+        elif kind == 'a':
+
+            hometown = str(data[i:i+20]).rstrip()
+            i += 20
+
+            pop_density = float(data[i:i+15])
+            i += 15
+
+            long = float(data[i:i+8])
+            i += 8
+
+            lat = float(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, hometown=hometown, pop_density=pop_density, long=long, lat=lat)
+
+        elif kind == 'c':
+
+            firstname = str(data[i:i+10]).rstrip()
+            i += 10
+
+            height = float(data[i:i+12])
+            i += 12
+
+            print dict(kind=kind, firstname=firstname, height=height)
+
+        elif kind == 'd':
+
+            coursename = str(data[i:i+20]).rstrip()
+            i += 20
+
+            coursenumber = int(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, coursename=coursename, coursenumber=coursenumber)
+
+        elif kind == 'n':
+
+            station_name = str(data[i:i+13]).rstrip()
+            i += 13
+
+            station_number = int(data[i:i+5])
+            i += 5
+
+            response_time = float(data[i:i+8])
+            i += 8
+
+            print dict(kind=kind, station_name=station_name, station_number=station_number, response_time=response_time)
+
+        elif kind == 'q':
+
+            military_id = str(data[i:i+12]).rstrip()
+            i += 12
+
+            blood_type = str(data[i:i+2]).rstrip()
+            i += 2
+
+            rank = int(data[i:i+2])
+            i += 2
+
+            print dict(kind=kind, military_id=military_id, blood_type=blood_type, rank=rank)
+
+        elif kind == 'p':
+
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+
+            age = int(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, lastname=lastname, age=age)
+
+        elif kind == 'c':
+
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/codegen.py ==========
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+def parse(data):
+    'Parse a variable length record format'
+    i = 0
+    while i < len(data):
+        kind = data[i]
+        i += 1
+        if 0:
+            pass
+
+        elif kind == 'a':
+
+            hometown = str(data[i:i+20]).rstrip()
+            i += 20
+
+            pop_density = float(data[i:i+15])
+            i += 15
+
+            long = float(data[i:i+8])
+            i += 8
+
+            lat = float(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, hometown=hometown, pop_density=pop_density, long=long, lat=lat)
+
+        elif kind == 'c':
+
+            firstname = str(data[i:i+10]).rstrip()
+            i += 10
+
+            height = float(data[i:i+12])
+            i += 12
+
+            print dict(kind=kind, firstname=firstname, height=height)
+
+        elif kind == 'd':
+
+            coursename = str(data[i:i+20]).rstrip()
+            i += 20
+
+            coursenumber = int(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, coursename=coursename, coursenumber=coursenumber)
+
+        elif kind == 'n':
+
+            station_name = str(data[i:i+13]).rstrip()
+            i += 13
+
+            station_number = int(data[i:i+5])
+            i += 5
+
+            response_time = float(data[i:i+8])
+            i += 8
+
+            print dict(kind=kind, station_name=station_name, station_number=station_number, response_time=response_time)
+
+        elif kind == 'q':
+
+            military_id = str(data[i:i+12]).rstrip()
+            i += 12
+
+            blood_type = str(data[i:i+2]).rstrip()
+            i += 2
+
+            rank = int(data[i:i+2])
+            i += 2
+
+            print dict(kind=kind, military_id=military_id, blood_type=blood_type, rank=rank)
+
+        elif kind == 'p':
+
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+
+            age = int(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, lastname=lastname, age=age)
+
+        else:
+            raise ValueError('Unknown kind: ' + kind)
+
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/codegen.py ==========
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+def parse(data):
+    'Parse a variable length record format'
+    i = 0
+    while i < len(data):
+        kind = data[i]
+        i += 1
+        if 0:
+            pass
+
+        elif kind == 'a':
+
+            hometown = str(data[i:i+20]).rstrip()
+            i += 20
+
+            pop_density = float(data[i:i+15])
+            i += 15
+
+            long = float(data[i:i+8])
+            i += 8
+
+            lat = float(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, hometown=hometown, pop_density=pop_density, long=long, lat=lat)
+
+        elif kind == 'c':
+
+            firstname = str(data[i:i+10]).rstrip()
+            i += 10
+
+            height = float(data[i:i+12])
+            i += 12
+
+            print dict(kind=kind, firstname=firstname, height=height)
+
+        elif kind == 'd':
+
+            coursename = str(data[i:i+20]).rstrip()
+            i += 20
+
+            coursenumber = int(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, coursename=coursename, coursenumber=coursenumber)
+
+        elif kind == 'n':
+
+            station_name = str(data[i:i+13]).rstrip()
+            i += 13
+
+            station_number = int(data[i:i+5])
+            i += 5
+
+            response_time = float(data[i:i+8])
+            i += 8
+
+            print dict(kind=kind, station_name=station_name, station_number=station_number, response_time=response_time)
+
+        elif kind == 'q':
+
+            military_id = str(data[i:i+12]).rstrip()
+            i += 12
+
+            blood_type = str(data[i:i+2]).rstrip()
+            i += 2
+
+            rank = int(data[i:i+2])
+            i += 2
+
+            print dict(kind=kind, military_id=military_id, blood_type=blood_type, rank=rank)
+
+        elif kind == 'p':
+
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+
+            age = int(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, lastname=lastname, age=age)
+
+        else:
+            raise ValueError('Unknown kind: ' + kind)
+
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/codegen.py ==========
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+def parse(data):
+    'Parse a variable length record format'
+    i = 0
+    while i < len(data):
+        kind = data[i]
+        i += 1
+        if 0:
+            pass
+
+        elif kind == 'a':
+
+            hometown = str(data[i:i+20]).rstrip()
+            i += 20
+
+            pop_density = float(data[i:i+15])
+            i += 15
+
+            long = float(data[i:i+8])
+            i += 8
+
+            lat = float(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, hometown=hometown, pop_density=pop_density, long=long, lat=lat)
+
+        elif kind == 'c':
+
+            firstname = str(data[i:i+10]).rstrip()
+            i += 10
+
+            height = float(data[i:i+12])
+            i += 12
+
+            print dict(kind=kind, firstname=firstname, height=height)
+
+        elif kind == 'd':
+
+            coursename = str(data[i:i+20]).rstrip()
+            i += 20
+
+            coursenumber = int(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, coursename=coursename, coursenumber=coursenumber)
+
+        elif kind == 'n':
+
+            station_name = str(data[i:i+13]).rstrip()
+            i += 13
+
+            station_number = int(data[i:i+5])
+            i += 5
+
+            response_time = float(data[i:i+8])
+            i += 8
+
+            print dict(kind=kind, station_name=station_name, station_number=station_number, response_time=response_time)
+
+        elif kind == 'q':
+
+            military_id = str(data[i:i+12]).rstrip()
+            i += 12
+
+            blood_type = str(data[i:i+2]).rstrip()
+            i += 2
+
+            rank = int(data[i:i+2])
+            i += 2
+
+            print dict(kind=kind, military_id=military_id, blood_type=blood_type, rank=rank)
+
+        elif kind == 'p':
+
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+
+            age = int(data[i:i+4])
+            i += 4
+
+            print dict(kind=kind, lastname=lastname, age=age)
+
+        else:
+            raise ValueError('Unknown kind: ' + kind)
+
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/codegen.py ==========
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+def parse(data):
+    'Parse a variable length record format'
+    i = 0
+    while i < len(data):
+        kind = data[i]
+        i += 1
+        if 0:
+            pass
+        elif kind == 'a':
+            hometown = str(data[i:i+20]).rstrip()
+            i += 20
+            pop_density = float(data[i:i+15])
+            i += 15
+            long = float(data[i:i+8])
+            i += 8
+            lat = float(data[i:i+4])
+            i += 4
+            print dict(kind=kind, hometown=hometown, pop_density=pop_density, long=long, lat=lat)
+        elif kind == 'c':
+            firstname = str(data[i:i+10]).rstrip()
+            i += 10
+            height = float(data[i:i+12])
+            i += 12
+            print dict(kind=kind, firstname=firstname, height=height)
+        elif kind == 'd':
+            coursename = str(data[i:i+20]).rstrip()
+            i += 20
+            coursenumber = int(data[i:i+4])
+            i += 4
+            print dict(kind=kind, coursename=coursename, coursenumber=coursenumber)
+        elif kind == 'n':
+            station_name = str(data[i:i+13]).rstrip()
+            i += 13
+            station_number = int(data[i:i+5])
+            i += 5
+            response_time = float(data[i:i+8])
+            i += 8
+            print dict(kind=kind, station_name=station_name, station_number=station_number, response_time=response_time)
+        elif kind == 'q':
+            military_id = str(data[i:i+12]).rstrip()
+            i += 12
+            blood_type = str(data[i:i+2]).rstrip()
+            i += 2
+            rank = int(data[i:i+2])
+            i += 2
+            print dict(kind=kind, military_id=military_id, blood_type=blood_type, rank=rank)
+        elif kind == 'p':
+            lastname = str(data[i:i+8]).rstrip()
+            i += 8
+            age = int(data[i:i+4])
+            i += 4
+            print dict(kind=kind, lastname=lastname, age=age)
+        else:
+            raise ValueError('Unknown kind: ' + kind)
+
+>>> 
+========== RESTART: /Users/raymond/Dropbox/Public/sj144/codegen.py ==========
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+{'lastname': 'Smith', 'age': 15, 'kind': 'p'}
+{'lastname': 'Jones', 'age': 9, 'kind': 'p'}
+{'kind': 'c', 'firstname': 'Raymond', 'height': 63.7}
+>>> import collections
+>>> collections.__file__
+'/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/collections.pyc'
+>>> import math
+>>> math.__file__
+'/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-dynload/math.so'
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+>>> portfolio[0].symbol
+'CSCO'
+>>> portfolio[0].kind
+'stock'
+>>> portfolio[0].midpoint
+30
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+>>> portfolio[0].midpoint
+30.5
+>>> portfolio[0].low = 30
+>>> portfolio[0].low
+30
+>>> portfolio[0].high
+35
+>>> portfolio[0].midpoint
+30.5
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+>>> portfolio[0].low = 30
+>>> portfolio[0].midpoint
+<bound method PriceRange.midpoint of <__main__.PriceRange object at 0x104239ad0>>
+>>> portfolio[0].midpoint()
+32.5
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+>>> portfolio[0].low = 30
+>>> portfolio[0].low
+30
+>>> portfolio[0].midpoint
+32.5
+>>> portfolio[0].high
+35
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+>>> portfolio
+[<__main__.PriceRange object at 0x104163b10>, <__main__.PriceRange object at 0x104163ad0>, <__main__.PriceRange object at 0x104163b50>, <__main__.PriceRange object at 0x104163b90>, <__main__.PriceRange object at 0x104163bd0>, <__main__.PriceRange object at 0x104163c10>, <__main__.PriceRange object at 0x104163c50>]
+>>> [1 for s in portfolio if s.kind == 'stock']
+[1, 1]
+>>> sum(1 for s in portfolio if s.kind == 'stock')
+2
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+>>> [s.kind for s in portfolio if s.symbol == 'HP']
+['bond']
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+>>> [s.kind for s in portfolio if s.symbol == 'HP']
+['bond']
+>>> [(s.kind, s.midpoint) for s in portfolio]
+[('stock', 30.5), ('option', 28.0), ('Stock', 39.0), ('stock', 23.509999999999998), ('option', 6.140000000000001), ('option', (22.5+17j)), ('bond', 366.0)]
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+>>> portfolio[0].__dict__
+{'high': 35, 'symbol': 'CSCO', '_kind': 'stock', 'low': 26}
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 30, in <module>
+    PriceRange('Stock', 'BOA', 32, 46),
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 8, in __init__
+    self.kind = kind
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 24, in kind
+    raise ValueError('Not an allowed kind')
+ValueError: Not an allowed kind
+>>> p = PriceRange('stock', 'CSCO', 26, 35)
+>>> p.kind = 'Stock'
+
+Traceback (most recent call last):
+  File "<pyshell#84>", line 1, in <module>
+    p.kind = 'Stock'
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 24, in kind
+    raise ValueError('Not an allowed kind')
+ValueError: Not an allowed kind
+>>> p.midpoint
+30.5
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 30, in <module>
+    PriceRange('Stock', 'BOA', 32, 46),
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 8, in __init__
+    self.kind = kind
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 24, in kind
+    raise ValueError('Not an allowed kind')
+ValueError: Not an allowed kind
+>>> p = PriceRange('stock', 'CSCO', 26, 35)
+>>> p.midpoint()
+30.5
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 30, in <module>
+    PriceRange('Stock', 'BOA', 32, 46),
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 8, in __init__
+    self.kind = kind
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 24, in kind
+    raise ValueError('Not an allowed kind')
+ValueError: Not an allowed kind
+>>> p = PriceRange('stock', 'CSCO', 26, 35)
+>>> p.midpoint
+30.5
+>>> 
+>>> 
+>>> 
+>>> class D(object):
+	def __get__(*args):
+		print 'D called with', args
+
+>>> class A(object):
+	d = D()
+
+	
+>>> a = A()
+>>> a.d
+D called with (<__main__.D object at 0x103972b10>, <__main__.A object at 0x103972dd0>, <class '__main__.A'>)
+>>> #  self=d    obj=a      objtype=A
+>>> A.D
+
+Traceback (most recent call last):
+  File "<pyshell#103>", line 1, in <module>
+    A.D
+AttributeError: type object 'A' has no attribute 'D'
+>>> A.d
+D called with (<__main__.D object at 0x103972b10>, None, <class '__main__.A'>)
+>>> # self=d     obj=None,   objtype=A
+>>> 
+>>> 
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/validators.py =========
+('stock', 'bond', 'option', 'currency', 'commodity')
+>>> options = ('stock', 'bond', 'option', 'currency', 'commodity')
+>>> 
+>>> 'currency' in options
+True
+>>> 'Ceurrency' in options
+False
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/validators.py =========
+('stock', 'bond', 'option', 'currency', 'commodity')
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/validators.py =========
+('stock', 'bond', 'option', 'currency', 'commodity')
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 6, in <module>
+    class PriceRange(object):
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 9, in PriceRange
+    symbol = String(minsize=2, maxsize=5, predicate=str.isupper)
+NameError: name 'String' is not defined
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+>>> p = PriceRange('Stock', 'CSCO', 15, 35)
+>>> vars(p)
+{'high': 35, 'symbol': 'CSCO', '_kind': 'Stock', 'low': 15}
+>>> p.kind
+'Stock'
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 4, in <module>
+    from validators import OneOf
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 18
+    
+    ^
+SyntaxError: invalid syntax
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 34, in <module>
+    PriceRange('stock', 'CSCO', 26, 35),
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 14, in __init__
+    self.kind = kind
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 12, in __set__
+    self.validate(value)
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 16, in validate
+    if value not in options:
+NameError: global name 'options' is not defined
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 36, in <module>
+    PriceRange('Stock', 'BOA', 32, 46),
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 14, in __init__
+    self.kind = kind
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 12, in __set__
+    self.validate(value)
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 17, in validate
+    raise ValueError('%r not a valid option.  should be one of: %r' % (value, self.options))
+ValueError: 'Stock' not a valid option.  should be one of: set(['currency', 'bond', 'option', 'commodity', 'stock'])
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 6, in <module>
+    class PriceRange(object):
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 8, in PriceRange
+    kind = OneOf('stock', 'bond', 'option', 'currency', 'commodity')
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 8, in __init__
+    self.private_name = '_OneOf_%d' % Validator.counter
+NameError: global name 'Validator' is not defined
+>>> 
+========= RESTART: /Users/raymond/Dropbox/Public/sj144/validators.py =========
+>>> p = PriceRange('Stock', 'CSCO', 15, 35)
+
+Traceback (most recent call last):
+  File "<pyshell#115>", line 1, in <module>
+    p = PriceRange('Stock', 'CSCO', 15, 35)
+NameError: name 'PriceRange' is not defined
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+>>> p = PriceRange('Stock', 'CSCO', 15, 35)
+
+Traceback (most recent call last):
+  File "<pyshell#116>", line 1, in <module>
+    p = PriceRange('Stock', 'CSCO', 15, 35)
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 14, in __init__
+    self.kind = kind
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 16, in __set__
+    self.validate(value)
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 21, in validate
+    raise ValueError('%r not a valid option.  should be one of: %r' % (value, self.options))
+ValueError: 'Stock' not a valid option.  should be one of: set(['currency', 'bond', 'option', 'commodity', 'stock'])
+>>> p = PriceRange('stock', 'CSCO', 15, 35)
+>>> vars(p)
+{'high': 35, 'symbol': 'CSCO', 'low': 15, '_OneOf_0': 'stock'}
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 35, in <module>
+    PriceRange('option', 'hp', 11, 45),
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 15, in __init__
+    self.symbol = symbol
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 38, in __set__
+    self.validate(value)
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 49, in validate
+    raise ValueError('Expected true from %r' % self.predicate)
+ValueError: Expected true from <method 'isupper' of 'str' objects>
+>>> '_OneOf_0'
+'_OneOf_0'
+
+>>> 
+>>> 
+>>> 
+>>> p = PriceRange('stock', 'CSCO', 15, 35)
+>>> vars(p)
+{'high': 35, '_String_0': 'CSCO', 'low': 15, '_OneOf_0': 'stock'}
+>>> p = PriceRange('stock', 'C', 15, 35)
+
+Traceback (most recent call last):
+  File "<pyshell#125>", line 1, in <module>
+    p = PriceRange('stock', 'C', 15, 35)
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 15, in __init__
+    self.symbol = symbol
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 38, in __set__
+    self.validate(value)
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 45, in validate
+    raise ValueError('String is too short, must be at least %d long' % self.minsize)
+ValueError: String is too short, must be at least 2 long
+>>> p = PriceRange('stock', 'CSCOCSCO', 15, 35)
+
+Traceback (most recent call last):
+  File "<pyshell#126>", line 1, in <module>
+    p = PriceRange('stock', 'CSCOCSCO', 15, 35)
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 15, in __init__
+    self.symbol = symbol
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 38, in __set__
+    self.validate(value)
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 47, in validate
+    raise ValueError('String is too long, must be no bigger than %d long' % self.minsize)
+ValueError: String is too long, must be no bigger than 2 long
+>>> 
+>>> 
+>>> 
+>>> p = PriceRange('stock', 'csco', 15, 35)
+
+Traceback (most recent call last):
+  File "<pyshell#130>", line 1, in <module>
+    p = PriceRange('stock', 'csco', 15, 35)
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 15, in __init__
+    self.symbol = symbol
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 38, in __set__
+    self.validate(value)
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 49, in validate
+    raise ValueError('Expected true from %r' % self.predicate)
+ValueError: Expected true from <method 'isupper' of 'str' objects>
+>>> p = str.isupper
+>>> 
+>>> p('CSCP')
+True
+>>> p('Csco')
+False
+>>> p('csco')
+False
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 35, in <module>
+    PriceRange('option', 'hp', 11, 45),
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 15, in __init__
+    self.symbol = symbol
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 38, in __set__
+    self.validate(value)
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 49, in validate
+    raise ValueError('Expected true from %r' % self.predicate)
+ValueError: Expected true from <method 'isupper' of 'str' objects>
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 38, in <module>
+    PriceRange('option', 'WLP', -1.87, 14.15),
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 16, in __init__
+    self.low = low
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 15, in __set__
+    self.validate(value)
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 60, in validate
+    raise ValueError('%r is too small.  Must be at least %r.' % (value, self.minvalue))
+ValueError: -1.87 is too small.  Must be at least 0.
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 39, in <module>
+    PriceRange('option', 'BOA', 34j, 45),
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 16, in __init__
+    self.low = low
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 15, in __set__
+    self.validate(value)
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 58, in validate
+    raise TypeError('Expected an int or float')
+TypeError: Expected an int or float
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+
+Traceback (most recent call last):
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 40, in <module>
+    PriceRange('bond', 'HP', 62, 670),
+  File "/Users/raymond/Dropbox/Public/sj144/pricing_tool.py", line 17, in __init__
+    self.high = high
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 15, in __set__
+    self.validate(value)
+  File "/Users/raymond/Dropbox/Public/sj144/validators.py", line 62, in validate
+    raise ValueError('%r is too big.  Must be no more than %r.' % (value, self.maxvalue))
+ValueError: 670 is too big.  Must be no more than 100.
+>>> 
+======== RESTART: /Users/raymond/Dropbox/Public/sj144/pricing_tool.py ========
+>>> vars(portfolio[0])
+{'_Number_3': 35, '_String_1': 'CSCO', '_Number_2': 26, '_OneOf_0': 'stock'}
+>>> 
+>>> 
+>>> 
+>>> def f(*args):
+	print *args
+	
+SyntaxError: invalid syntax
+>>> 
+>>> def f(*args):
+	print args
+
+	
+>>> f(10, 20, 30)
+(10, 20, 30)
+>>> f.__call__(10, 20, 30)
+(10, 20, 30)
+>>> type(f)
+<type 'function'>
+>>> f.__class__
+<type 'function'>
+>>> f.__dict__
+{}
+>>> f.x = 10
+>>> f.x
+10
+>>> 
+>>> 
+>>> 
+>>> def f(*args):
+	print args
+
+	
+>>> f.__class__
+<type 'function'>
+>>> f.__dict__
+{}
+>>> f.__name__
+'f'
+>>> g = f
+>>> g.__name__
+'f'
+>>> g.__name__ = 'g'
+>>> f.__name__
+'g'
+>>> 
+>>> 
+>>> 
+>>> def f(*args):
+	print args
+
+	
+>>> f.__class__
+<type 'function'>
+>>> f.__dict__
+{}
+>>> f.__name__
+'f'
+>>> f.__doc__ is None
+True
+>>> f.__code__.co_code
+'|\x00\x00GHd\x00\x00S'
+>>> map(ord, f.__code__.co_code)
+[124, 0, 0, 71, 72, 100, 0, 0, 83]
+>>> from dis import dis
+>>> dis(f)
+  2           0 LOAD_FAST                0 (args)
+              3 PRINT_ITEM          
+              4 PRINT_NEWLINE       
+              5 LOAD_CONST               0 (None)
+              8 RETURN_VALUE        
+>>> 
+>>> f.__call__(10, 20, 30)
+(10, 20, 30)
+>>> class A:
+	def f(*args):
+		print args
+
+		
+>>> A.__dict__['f']
+<function f at 0x10397f0c8>
+>>> A.f
+<unbound method A.f>
+>>> a = A()
+>>> a.f
+<bound method A.f of <__main__.A instance at 0x1038d1e60>>
+>>> 
+>>> dir(f)
+['__call__', '__class__', '__closure__', '__code__', '__defaults__', '__delattr__', '__dict__', '__doc__', '__format__', '__get__', '__getattribute__', '__globals__', '__hash__', '__init__', '__module__', '__name__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'func_closure', 'func_code', 'func_defaults', 'func_dict', 'func_doc', 'func_globals', 'func_name']
+>>> 
+>>> 
+>>> class A(object):
+	pass
+
+>>> a = A()
+>>> a.__class__
+<class '__main__.A'>
+>>> a.__dict__
+{}
+>>> import sys
+>>> sys.getsizeof({})
+280
+>>> class A(object):
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
+
+		
+>>> a = A(10, 20)
+>>> vars(a)
+{'y': 20, 'x': 10}
+>>> t = (10, 20)
+>>> sys.getsizeof(t)
+72
+>>> class A(object):
+	__slots__ = ['x', 'y']
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
+
+		
+>>> a = A(10, 20)
+>>> a.x
+10
+>>> a.y
+20
+>>> vars(a)
+
+Traceback (most recent call last):
+  File "<pyshell#212>", line 1, in <module>
+    vars(a)
+TypeError: vars() argument must have __dict__ attribute
+>>> #  refcnt  type*toA   gc   __x___  __y__
+>>> v.z = 30
+
+Traceback (most recent call last):
+  File "<pyshell#214>", line 1, in <module>
+    v.z = 30
+NameError: name 'v' is not defined
+>>> v.x
+
+Traceback (most recent call last):
+  File "<pyshell#215>", line 1, in <module>
+    v.x
+NameError: name 'v' is not defined
+>>> dir(A)
+['__class__', '__delattr__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__slots__', '__str__', '__subclasshook__', 'x', 'y']
+>>> A.__dict__['x']
+<member 'x' of 'A' objects>
+>>> A.__dict__['y']
+<member 'y' of 'A' objects>
+>>> dir(x)
+
+Traceback (most recent call last):
+  File "<pyshell#219>", line 1, in <module>
+    dir(x)
+NameError: name 'x' is not defined
+>>> A.__dict__['x']
+<member 'x' of 'A' objects>
+>>> dir(A.__dict__['x'])
+['__class__', '__delattr__', '__delete__', '__doc__', '__format__', '__get__', '__getattribute__', '__hash__', '__init__', '__name__', '__new__', '__objclass__', '__reduce__', '__reduce_ex__', '__repr__', '__set__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__']
+>>> class A(object):
+	__slots__ = ['x', 'y']
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
+
+		
+>>> a = A(10, 20)
+>>> a.x
+10
+>>> a.__class__.__dict__['x'].__get__(a, A)
+10
+>>> a.__class__.__dict__['y'].__get__(a, A)
+20
+>>> class A(object):
+	__slots__ = ['x', 'y']
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
+
+		
+>>> a = A(10, 20)
+>>> b = A(15, 25)
+>>> 
+>>> a.x
+10
+>>> b.x
+15
+>>> 
+>>> # 3:22
+>>> 
+
+>>> sumpoly = lambda x:  sum(3*x**2 + 2*x - 5 for i in range(n))
+>>> sumpoly(6)
+
+Traceback (most recent call last):
+  File "<pyshell#241>", line 1, in <module>
+    sumpoly(6)
+  File "<pyshell#240>", line 1, in <lambda>
+    sumpoly = lambda x:  sum(3*x**2 + 2*x - 5 for i in range(n))
+NameError: global name 'n' is not defined
+>>> sumpoly = lambda n:  sum(3*x**2 + 2*x - 5 for x in range(n))
+>>> sumpoly(6)
+165
+>>> sumpoly(100)
+994450
+>>> 
+======= RESTART: /Users/raymond/Dropbox/Public/sj144/metaclass_demo.py =======
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Soldier(rank='Captain', lastname='America')
+The General is running
+Cadet Battle is shooting
+Hey you back!
+I don't know how to 'surrender'
+>>> sumpoly = lambda n:  sum(3*x**2 + 2*x - 5 for x in range(n))
+>>> 
+>>> 
+>>> 
+>>> s = Soldier('Sergeant', 'Short')
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+>>> s.play
+I don't know how to 'play'
+>>> s('Please come')
+Please come back!
+>>> s
+Soldier(rank='Sergeant', lastname='Short')
+>>> s.run()
+The Sergeant is running
+>>> s.shoot()
+Sergeant Short is shooting
+>>> 
+>>> 
+>>> 
+>>> 
+>>> Soldier
+<class '__main__.Soldier'>
+>>> 
+======= RESTART: /Users/raymond/Dropbox/Public/sj144/metaclass_demo.py =======
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Soldier(rank='Captain', lastname='America')
+The General is running
+Cadet Battle is shooting
+Hey you back!
+I don't know how to 'surrender'
+>>> s = Soldier2('Sergeant', 'Short')
+Making a new instance <<Class 'Soldier2'>>
+Initializing a new soldier instance
+>>> s.run()
+The Sergeant is running
+>>> 
+>>> Soldier2
+<<Class 'Soldier2'>>
+>>> Soldier2
+<<Class 'Soldier2'>>
+>>> 
+======= RESTART: /Users/raymond/Dropbox/Public/sj144/metaclass_demo.py =======
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Soldier(rank='Captain', lastname='America')
+The General is running
+Cadet Battle is shooting
+Hey you back!
+I don't know how to 'surrender'
+>>> Soldier('Captain', 'America')
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Soldier(rank='Captain', lastname='America')
+>>> Soldier('General', 'Nuisance')
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Soldier(rank='General', lastname='Nuisance')
+>>> 
+>>> 
+>>> 
+>>> Soldier3('Captain', 'America')
+Making a new instance <class '__main__.Soldier3'>
+Initializing a new soldier instance
+Soldier3(rank='Captain', lastname='America')
+>>> Soldier3('General', 'Nuisance')
+Making a new instance <class '__main__.Soldier3'>
+Initializing a new soldier instance
+Soldier3(rank='General', lastname='Nuisance')
+>>> instances
+set([Soldier3(rank='Captain', lastname='America'), Soldier3(rank='General', lastname='Nuisance')])
+>>> s = Soldier3('Captain', 'America')
+Making a new instance <class '__main__.Soldier3'>
+Initializing a new soldier instance
+>>> t = Soldier3('Captain', 'America')
+Making a new instance <class '__main__.Soldier3'>
+Initializing a new soldier instance
+>>> s
+Soldier3(rank='Captain', lastname='America')
+>>> t
+Soldier3(rank='Captain', lastname='America')
+>>> id(s)
+4355209360
+>>> id(t)
+4355208976
+>>> 
+======= RESTART: /Users/raymond/Dropbox/Public/sj144/metaclass_demo.py =======
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Soldier(rank='Captain', lastname='America')
+The General is running
+Cadet Battle is shooting
+Hey you back!
+I don't know how to 'surrender'
+>>> 
+>>> 
+>>> 
+>>> t = Soldier4('Captain', 'America')
+Making a new instance <class '__main__.Soldier4'>
+Initializing a new soldier instance
+>>> t = Soldier4('General', 'Nuisance')
+Making a new instance <class '__main__.Soldier4'>
+Initializing a new soldier instance
+>>> 
+>>> 
+>>> singletons
+{('Soldier4', ('Captain', 'America')): Soldier4(rank='Captain', lastname='America'), ('Soldier4', ('General', 'Nuisance')): Soldier4(rank='General', lastname='Nuisance')}
+>>> from pprint import pprint
+>>> pprint(singletons)
+{('Soldier4', ('Captain', 'America')): Soldier4(rank='Captain', lastname='America'),
+ ('Soldier4', ('General', 'Nuisance')): Soldier4(rank='General', lastname='Nuisance')}
+>>> 
+======= RESTART: /Users/raymond/Dropbox/Public/sj144/metaclass_demo.py =======
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Soldier(rank='Captain', lastname='America')
+The General is running
+Cadet Battle is shooting
+Hey you back!
+I don't know how to 'surrender'
+>>> t = Soldier4('Captain', 'America')
+Making a new instance <class '__main__.Soldier4'>
+Initializing a new soldier instance
+>>> u = Soldier4('General', 'Nuisance')
+Making a new instance <class '__main__.Soldier4'>
+Initializing a new soldier instance
+>>> v = Soldier4('Captain', 'America')
+>>> t is v
+True
+>>> 
+======= RESTART: /Users/raymond/Dropbox/Public/sj144/metaclass_demo.py =======
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Soldier(rank='Captain', lastname='America')
+The General is running
+Cadet Battle is shooting
+Hey you back!
+I don't know how to 'surrender'
+>>> Soldier.x
+
+Traceback (most recent call last):
+  File "<pyshell#293>", line 1, in <module>
+    Soldier.x
+AttributeError: type object 'Soldier' has no attribute 'x'
+>>> Soldier5.x
+10
+>>> Soldier5.now
+'Thu May 26 17:43:27 2016'
+>>> Soldier5.now
+'Thu May 26 17:43:30 2016'
+>>> Soldier5.now
+'Thu May 26 17:43:34 2016'
+>>> # class CombinedMeta(DynamicAttributeMeta, CuteReprMeta):
+>>> 
+======= RESTART: /Users/raymond/Dropbox/Public/sj144/metaclass_demo.py =======
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Making a new instance <class '__main__.Soldier'>
+Initializing a new soldier instance
+Soldier(rank='Captain', lastname='America')
+The General is running
+Cadet Battle is shooting
+Hey you back!
+I don't know how to 'surrender'
+>>> Soldier6.creation_time
+'Thu May 26 17:48:34 2016'
+>>> 
+>>> class SuperSoldier(Soldier6):
+	pass
+
+>>> Soldier6.creation_time
+'Thu May 26 17:48:34 2016'
+>>> SuperSoldier.creation_time
+'Thu May 26 17:49:05 2016'
+>>> 
+>>> 
+>>> 
+>>> 
