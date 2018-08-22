@@ -20,31 +20,36 @@
     Fifth Floor, Boston, MA  02110-1301  USA
 """
 
+
 from threading_cleanup import *
+import random
 
 
 class Shared:
-    def __init__(self, end=10):
-        self.counter = 0
-        self.end = end
-        self.array = [0] * self.end
+    def __init__(self, start=5):
+        self.cokes = start
 
 
-def child_code(shared):
-    while True:
-        if shared.counter >= shared.end: break
-        shared.array[shared.counter] += 1
-        shared.counter += 1
+def consume(shared):
+    shared.cokes -= 1
+    print shared.cokes
 
 
-class Histogram(dict):
-    def __init__(self, seq=[]):
-        for item in seq:
-            self[item] = self.get(item, 0) + 1
+def produce(shared):
+    shared.cokes += 1
+    print shared.cokes
 
-numThreads = 2
-shared = Shared(1000000)
-children = [Thread(child_code, shared) for i in range(numThreads)]
-for child in children:
-    child.join()
-print Histogram(shared.array)
+
+def loop(shared, f, mu=1):
+    for i in range(100):
+        t = random.expovariate(1.0/mu)
+        time.sleep(t)
+        f(shared)
+
+
+shared = Shared()
+fs = [consume]*2 + [produce]*2
+threads = [Thread(loop, shared, f) for f in fs]
+for thread in threads:
+    thread.join()
+print "Final Value: {0}".format(shared.cokes)

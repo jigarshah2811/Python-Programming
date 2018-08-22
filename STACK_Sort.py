@@ -1,13 +1,15 @@
 from STACK import Stack
 
-def sortStack(source):
-    dest = Stack()
-    while not source.isEmpty():
-        ele = source.pop()
-        while not dest.isEmpty() and ele < dest.peek():
-            source.push(dest.pop())
-        dest.push(ele)
-    return dest
+
+def sort_stack(src):
+    result = Stack()
+
+    while not src.isEmpty():
+        item = src.pop()
+        while not result.isEmpty() and item > result.peek():
+            src.push(result.pop())
+        result.push(item)
+    return result
 
 
 def main():
@@ -18,9 +20,9 @@ def main():
     for val in vals:
         source.push(val)
 
-    dest = sortStack(source)
-    for i in range(dest.size()):
-        print dest.pop()
+    result = sort_stack(source)
+    for i in xrange(result.size()):
+        print result.pop()
 
 if __name__ == "__main__":
     main()

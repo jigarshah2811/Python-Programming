@@ -42,9 +42,8 @@ class Histogram(dict):
         for item in seq:
             self[item] = self.get(item, 0) + 1
 
-numThreads = 2
 shared = Shared(1000000)
-children = [Thread(child_code, shared) for i in range(numThreads)]
+children = [Thread(child_code, shared) for i in range(2)]
 for child in children:
     child.join()
 print Histogram(shared.array)

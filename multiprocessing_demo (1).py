@@ -120,7 +120,7 @@ def mymap(func, iterable):
 
 # Everything shared should be done before Pool() to use COW (copy on write)
 pool = Pool(20)
-pprint(zip(sites, imap(len, imap(get_site, sites))))
+#pprint(zip(sites, imap(len, imap(get_site, sites))))
 
 for site, size in pool.imap_unorderd(get_site, sites): # imap_unordered generates a generator
     print size, site

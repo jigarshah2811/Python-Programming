@@ -28,16 +28,21 @@ import random
 class Shared:
     def __init__(self, start=5):
         self.cokes = start
+        self.mutex = Semaphore(1)
 
 
 def consume(shared):
+    shared.mutex.wait()
     shared.cokes -= 1
     print shared.cokes
+    shared.mutex.signal()
 
 
 def produce(shared):
+    shared.mutex.wait()
     shared.cokes += 1
     print shared.cokes
+    shared.mutex.signal()
 
 
 def loop(shared, f, mu=1):

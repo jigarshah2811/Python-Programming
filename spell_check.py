@@ -1,5 +1,5 @@
 from pprint import pprint
-from bloom_filter_optimized import BloomFilter
+from DS_bloom_filter_optimized import BloomFilter
 import re
 
 try:
