@@ -1,5 +1,4 @@
-from pprint import pprint
-from bloomfilter import BloomFilter
+from DS_bloom_filter_optimized import BloomFilter
 import re
 
 try:
@@ -7,29 +6,47 @@ try:
 except ImportError:
     import pickle
 
+
 def make_checker():
-    try:
-        with open('words.pcl', 'rb') as f:
-            return pickle.load(f)
-    except IOError:
-        pass
+    print ("Creating a pickle of BloomFilter")
     with open('notes3/words.txt') as f:
         words = f.read().lower().split()
-    bf = BloomFilter(words, population=4000000, probes=10)
-    with open('words.pcl', 'wb') as f:
-        pickle.dump(bf, f)
-    return bf
 
-def spell_check(text, checker):
+    bfCaching = BloomFilter(words, population=4000000, probe=10)
+
+    with open('words.pcl', 'wb') as f:
+        pickle.dump(bfCaching, f)
+
+    # print "abacinatinn" in bfCaching    # Now we can check if word is in dictionary
+    return True
+
+
+def spell_check(text):
+    """
+    Let's optimize this"
+    IO Operations using Pickle
+    """
+    try:
+        with open('words.pcl', 'rb') as f:
+            print 'Reading pickle - words.pcl'
+            checker = pickle.load(f)
+    except IOError:
+        raise IOError("Pickle {0} is not created".format('words.pcl'))
+
+    """ Get all words to check against dict """
+    words = re.findall(r"[a-z\'\-]+", text.lower())
+
+    print 'Spell check on words:'
+    print '-----------'
+    print words
+
     print 'Misspelled:'
     print '-----------'
-    words = re.findall(r"[a-z\'\-]+", text.lower())
     for word in words:
         if word not in checker:
             print word
 
 if __name__ == '__main__':
-
     known_words = '''
         a aid all an army assistance bad be
         beautiful by child children come country
@@ -44,5 +61,5 @@ if __name__ == '__main__':
             ayd of thur country and city.
     '''
 
-    correct_words = make_checker()
-    spell_check(text, correct_words)
+    make_checker()
+    spell_check(text)

@@ -1,0 +1,33 @@
+"""
+https://leetcode.com/problems/reaching-points/
+
+PATTERN: DP-REVERSE bottom-up!!
+Explaination: https://leetcode.com/problems/reaching-points/solution/
+"""
+
+
+class Solution(object):
+    def reachingPoints(self, sx, sy, tx, ty):
+        """
+        :type sx: int
+        :type sy: int
+        :type tx: int
+        :type ty: int
+        :rtype: bool
+        """
+        while tx >= sx and ty >= sy:
+            # Success?
+            if tx == sx and ty == sy:
+                return True
+            if tx > ty:
+                tx -= ty
+            else:
+                ty -= tx
+            # print("tx={0}, ty={1}".format(tx,ty))
+
+        return tx == sx and ty == sy
+
+
+assert(Solution().reachingPoints(3,3,12,9) == True)
+assert(Solution().reachingPoints(1,2,3,8) == True)
+assert(Solution().reachingPoints(1,1,1000000,1) == True)

@@ -88,4 +88,3 @@ if __name__ == '__main__':
     for line in mapper(download, targets):
         print line
     etags.close()
-

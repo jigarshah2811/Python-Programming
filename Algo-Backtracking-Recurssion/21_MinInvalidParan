@@ -1,0 +1,54 @@
+from typing import List
+
+class Solution:
+    def removeInvalidParentheses(self, s: str) -> List[str]:
+
+        # PHASE 1: Find # of Invalid ( and )
+        left, right = 0, 0
+        for c in s:
+            if c == '(':
+                left += 1
+            elif c == ')':
+                if left > 0:
+                    left -= 1
+                else:
+                    right += 1
+
+        print("# of Invalid Paran, Left={}, right={}".format(left, right))
+
+        # PHASE 2: Generate Paran. Choose only valid based on left,right,pair
+        def backtrack(index, left, right, pair, res):
+            print(res)
+            # 1) BAse Case: Take only valid res
+            if index >= len(s):
+                print("Result: ", res)
+                if left == 0 and right == 0 and pair == 0:
+                    print("Result: ", res)
+                    finalRes.add(res)
+                return
+
+            # 2) Breath --> 3) IfSafe
+            print("Processing: ", s[index])
+            if s[index] != '(' and s[index] != ')':
+                backtrack(index + 1, left, right, pair, res + s[index])
+
+            elif s[index] == '(':
+                if left > 0:  # Invalid, skip to consume
+                    backtrack(index + 1, left - 1, right, pair, res)
+                # Valid, consume
+                backtrack(index + 1, left, right, pair + 1, res + '(')
+
+            elif s[index] == ')':
+                if right > 0:  # Invalid, skip to consume
+                    backtrack(index + 1, left, right - 1, pair, res)
+                # Valid, Consume
+                if pair > 0:
+                    backtrack(index + 1, left, right, pair - 1, res + ')')
+
+        finalRes = set()
+        backtrack(index=0, left=left, right=right, pair=0, res="")
+        return list(finalRes)
+
+
+s = Solution()
+print(s.removeInvalidParentheses("(a)())()("))

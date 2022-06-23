@@ -1,0 +1,23 @@
+str = "aaa b cc ddddd"
+WrapSpace = 5
+row = 0
+res = [""]*10
+
+strs = str.split(' ')
+for str in strs:
+    if len(str) > WrapSpace:
+        # Can't fit, goto next row
+        row += 1
+        WrapSpace = 5
+    # Write the str
+    res[row] += str
+    WrapSpace -= len(str)
+
+    # Can space be accomodated for next str?
+    if WrapSpace > 0:
+        res[row] += " "
+        WrapSpace -= 1
+
+
+for i in xrange(row):
+    print res

@@ -1,0 +1,87 @@
+"""======================      1ST TELEPHONIC INTERVIEW ============================"""
+
+#
+# Coding: Find relationship between 2 objects
+# Solution : https://leetcode.com/discuss/interview-question/174848/Jane-Street-Software-Engineering-Intern%3A-Unit-Conversion/
+#
+# Example:
+# set(A, B) = A > B
+# set(B, C) = B > C
+# set(C, D) = C > D
+# set(E, F) = E > F
+#
+# compare(A, B)
+# ">"  # A -> B (Edge from Src to Dest)
+# compare(A, C)
+# ">"
+# compare(D, C)
+# "<"  # D <- C (Edge from Dest to Src)
+# compare(A, A)
+# "="  # A -> A (Edge from vertex to same vertex)
+# compare(D, E)
+# "?"  # D ? E (No edge)
+#
+#
+# HashMap:
+# GRAPH: Object1 --> Object2 - --> Object3
+#
+# dict:
+# {
+#     object1 --> [object2, object2]
+# }
+
+
+from collections import defaultdict
+
+class Graph(object):
+    def __init__(self):
+        self.graph = defaultdict(list)
+
+    # Directed graph
+    def set(self, src, dest):
+        self.graph[src].append(dest)
+
+    def compare(self, src, dest):
+        if src == dest:
+            return "="
+
+        elif self.visit(src, dest, {}):
+                return ">"
+
+        elif self.visit(dest, src, {}):
+            return "<"
+
+        else:
+            return "?"
+
+    def visit(self, src, dest, visited):
+        # PreOrder: Mark this node visited
+        visited[src] = True
+
+        # Children: Recursively visit all children of this node
+        for conn in self.graph[src]:
+            if conn == dest:
+                return True
+
+            if conn not in visited or not visited[conn]:
+                self.visit(conn, dest, visited)
+                return True
+
+        return False
+
+g = Graph()
+g.set('A', 'B') # = A > B
+g.set('B', 'C') # = B > C
+g.set('C', 'D') # = C > D
+g.set('E', 'F') # = E > F
+
+print(g.compare('A', 'B'))
+">"  # A -> B (Edge from Src to Dest)
+print(g.compare('A', 'C'))
+">"
+print(g.compare('D', 'C'))
+"<"  # D <- C (Edge from Dest to Src)
+print(g.compare('A', 'A'))
+"="  # A -> A (Edge from vertex to same vertex)
+print(g.compare('D', 'E'))
+"?"  # D ? E (No edge)
