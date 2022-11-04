@@ -26,7 +26,7 @@ class Solution:
 
         print(("Starting rotten from q:", q))
 
-        def DFS():
+        def BFS():
             nonlocal good                                   # Python3: How to use enclosed var scope in local fun
             nonlocal totalTime
             while q:
@@ -45,7 +45,7 @@ class Solution:
 
                 # At this level, made all conn rotten
                 totalTime += 1
-        DFS()
+        BFS()
         return max(0, totalTime - 1) if good == 0 else -1
 
 

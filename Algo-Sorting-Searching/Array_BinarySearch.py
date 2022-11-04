@@ -7,26 +7,17 @@ Regular Binday Search
 
 class Solution(object):
     def binsearch(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: int
-        """
+        low, high = 0, len(nums)-1
 
-        low = 0
-        high = len(nums) - 1
-
-        while low <= high:
+        while low < high:
             mid = (low + high) >> 1
-            if target == nums[mid]:
-                return mid
+            if target == nums[mid]:     # Check if target is HERE
+                return mid              # FOUND Target, Bingo
 
-            elif target > nums[mid]:
-                # Target must be on Right side
-                low = mid + 1
-            else:
-                # Target must be on left side
-                high = mid - 1
+            elif target > nums[mid]:    # Target is HIGHER?                                        
+                low = mid + 1       # Search on R ----->
+            else:                       # Target is LOWER?                                        
+                high = mid - 1      # Search on <------- L
         return -1
 
     def binsearch_nolen(self, nums, target):
@@ -52,69 +43,29 @@ class Solution(object):
                 high = mid
         return -1
 
-
-def BinarySearch(array, valueToFind):
-    low = 0
-    high = len(array) - 1
-    while low < high:
-        mid = (low + high) / 2 # mid = (low+hign)<<1
-        if array[mid] == valueToFind:
-            print("Found value {0} at index: {1}".format(valueToFind, mid))
-            return mid
-        elif array[mid] < valueToFind:
-            print("search in RIGHT half")
-            low = mid + 1
-        else:
-            print("search in LEFT half")
-            high = mid - 1
-    print("Value {0} not found".format(valueToFind))
-    return -1   # not found
-
-
 """Tweaked Binday Search:
 
-If multiple values are same as valueToFind, 
+If multiple values are same as target, 
 return the lowest index instead of 1st hit in binary search
 
 """
-def BinarySearch_LowestIndex(array, valueToFind):
-    low = 0
-    high = len(array) - 1
-    result = -1 # not found by default
+def BinarySearch_LowestIndex(nums, target):
+    low, high = 0, len(nums)-1
 
+    result = -1     # Not found by default
     while low < high:
-        mid = (low + high) / 2
-        if array[mid] == valueToFind:
-            print("Found value {0} at index: {1}... Still searching lower index".format(valueToFind, mid))
+        mid = (low + high) >> 1
+        if target == nums[mid]:
+            # Trick: This can be one of the dup, we still want to find the first occurance 
             result = mid
-            high = mid - 1              ###### TIP: tweak BS: CONTINUE SEARCHING ON LEFT HALF
-        elif array[mid] < valueToFind:
-            print("search in right half")
+            high = mid - 1 # Keep searching on <------ L side
+        elif target > nums[mid]:    # Target is Higher, must be on R ---> side
             low = mid + 1
-        else:
-            print("search in left half")
+        else:                       # Target is Lower, must be on <------ L side
             high = mid - 1
+
     return result
-
-
-def BinarySearch_HighestIndex(array, valueToFind):
-    low = 0
-    high = len(array) - 1
-    result = -1  # not found by default
-
-    while low < high:
-        mid = (low + high) / 2  # mid = (low+hign)<<1
-        if array[mid] == valueToFind:
-            print("Found value {0} at index: {1}... Still searching higher index".format(valueToFind, mid))
-            result = mid
-            low = mid + 1  ###### TIP: tweak BS: CONTINUE SEARCHING ON RIGHT HALF
-        elif array[mid] < valueToFind:
-            print("search in right half")
-            low = mid + 1
-        else:
-            print("search in left half")
-            high = mid - 1
-    return result  # not found
+    """ Follow Up: Can you write BS for Last Occurance? """
 
 
 """
@@ -130,24 +81,24 @@ Example 2:
 Input: nums = [4,5,6,7,0,1,2], target = 3
 Output: -1
 """
-def BinarySearch_SortedRotatedArray(array, valueToFind):
+def BinarySearch_SortedRotatedArray(nums, target):
     low = 0
-    high = len(array)-1
+    high = len(nums)-1
 
     while low <= high:
         mid = (low + high) >> 1
-        if array[mid] == valueToFind:
+        if nums[mid] == target:
             return mid
 
-        if array[low] <= array[mid]:
+        if nums[low] <= nums[mid]:
             # LEFT half is Sorted. Perform regular ops
-            if array[low] <= valueToFind <= array[mid]:
-                high = mid - 1
+            if nums[low] <= target <= nums[mid]:
+                high = mid - 1          # <----- L Search Left Half
             else:
-                low = mid + 1
+                low = mid + 1           # ---->  R Search Right Half
         else:
             # RIGHT half is sorted. Perform regular ops but inverted
-            if array[mid] <= valueToFind <= array[high]:
+            if nums[mid] <= target <= nums[high]:
                 low = mid + 1
             else:
                 high = mid - 1
@@ -161,24 +112,24 @@ def BinarySearch_SortedRotatedArray(array, valueToFind):
 def main():
     """
     a = [1, 3, 5, 6, 8, 10, 10, 10, 12]
-    valueToFind = 10
-    result = BinarySearch(a, valueToFind)
+    target = 10
+    result = BinarySearch(a, target)
     if result == -1:
-        print "Value {0} Not found".format(valueToFind)
+        print "Value {0} Not found".format(target)
     else:
-        print "Found {0} at location Index {1}".format(valueToFind, result)
+        print "Found {0} at location Index {1}".format(target, result)
 
-    result = BinarySearch_LowestIndex(a, valueToFind)
+    result = BinarySearch_LowestIndex(a, target)
     if result == -1:
-        print "Value {0} Not found".format(valueToFind)
+        print "Value {0} Not found".format(target)
     else:
-        print "Found {0} at location Index {1}".format(valueToFind, result)
+        print "Found {0} at location Index {1}".format(target, result)
 
-    result = BinarySearch_HighestIndex(a, valueToFind)
+    result = BinarySearch_HighestIndex(a, target)
     if result == -1:
-        print "Value {0} Not found".format(valueToFind)
+        print "Value {0} Not found".format(target)
     else:
-        print "Found {0} at location Index {1}".format(valueToFind, result)
+        print "Found {0} at location Index {1}".format(target, result)
 
     sumToFind = 14
     low, high = FindPairWithSum(a, sumToFind, 0, len(a)-1)

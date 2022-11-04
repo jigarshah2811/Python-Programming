@@ -1,7 +1,31 @@
+from typing import List, Tuple
+
 """
 STRATEGY: Map, Modify as you go...
 """
-class Solution(object):
+class Solution:
+    def insertionSort(nums):
+        for i, num in enumerate(nums):
+    
+            # Move elements of arr[0..i-1], that are
+            # greater than key, to one position ahead
+            # of their current position
+            j = i-1
+            while j >=0 and num < nums[j] :
+                    nums[j+1] = nums[j]
+                    j -= 1
+            nums[j+1] = num
+        return nums
+
+    def firstTwoMaxNums(self, nums: List) -> tuple():
+        firstMax, secondMax = float('-inf'), float('-inf')
+        for i, num in enumerate(nums):
+            if num > firstMax:  # Found bigger firstMax
+                secondMax = firstMax       # Backup previous firstMax as secondMax
+                firstMax = num             # New firstMax
+
+        
+        return (firstMax, secondMax)
     """
     https://www.geeksforgeeks.org/sieve-of-eratosthenes/
     """
@@ -42,17 +66,29 @@ class Solution(object):
         print(d)
 
         # Walk through dict key to find num with freq=1 and with min index
-        resIndex = maxint
+        resIndex = float('inf')
         for num, (freq, index) in list(d.items()):    # OPTIMIZE: Iterate only on keys not the entire nums array again!!!
             if freq == 1: # Non repeating number
                 resIndex = min(resIndex, index) # First non repeating number
 
         print(resIndex)
-        return nums[resIndex] if resIndex == maxint else -1
+        return nums[resIndex] if resIndex == float('inf') else -1
 
 
 s = Solution()
+
+print("First two maximum numbers from the array")
+nums = []
+print(s.firstTwoMaxNums(nums))
+nums = [1]
+print(s.firstTwoMaxNums(nums))
+nums = [1, 2]
+print(s.firstTwoMaxNums(nums))
+nums = [3, 6, 1, 4, 2]  
+print(s.firstTwoMaxNums(nums))
 nums = [0,1,0,3,12]
+print(s.firstTwoMaxNums(nums))
+
 #print ("Total prime numbers till value: {0}, are: {1}".format(50, s.countPrimes(50)))
 #print ("Total prime numbers till value: {0}, are: {1}".format(50, s.countPrimes(9999999)))
 

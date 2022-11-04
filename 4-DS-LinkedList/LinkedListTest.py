@@ -1,12 +1,6 @@
 from LinkedList import LinkedList
 
-l = LinkedList()
-print("Creating list with 5 values")
-for i in range(5):
-    l.__append__(i+1)
-l.__print__()
-
-print("Creating list with 5 values")
+print("Creating a list with 5 values")
 newl = LinkedList()
 for i in range(5):
     newl.__append__(i+1)

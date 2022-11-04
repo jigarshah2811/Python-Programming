@@ -1,8 +1,18 @@
 """
+DS: Associative Map   d{sChar: tChar}  # meaning of sChar in S is equivalent to tChar in T
+
 https://leetcode.com/problems/isomorphic-strings/submissions/
-"""
-"""
+Pattern:    {sChar --> CommonVal <---  tChar}
+Pattern:    {sChar --> tChar} AND {tChar ---> sChar}
+
 https://leetcode.com/problems/linked-list-random-node/
+Pattern:    {oldNode: newNode}
+Algorithm:  newNode.next = NewMap[oldNode.next], newNode.random = NewMap[oldNode.random]
+
+https://leetcode.com/problems/clone-graph/
+Pattern:    {oldNode: newNode}
+Algorithm:  newNode.Conn = NewMap[oldNode.Conn]     for all conns!
+
 """
 
 from collections import defaultdict
@@ -35,16 +45,27 @@ class Solution:
         print(commonMap)
         return True
 
+    """DS: Bi-Directional Map
+    Sorce ---> maps to expected Target
+    Target --> maps to expected Source
+
+    Old maps to New AND New maps to Old values!
+    """
     def isIsomorphicTwoMaps(self, S: str, T: str) -> bool:
-        sMap, tMap = defaultdict(int), defaultdict(int)
+        sMap, tMap = defaultdict(str), defaultdict(str)
+
         for s, t in zip(S, T):
-            if (s in sMap and sMap[s] != t) or (t in tMap and tMap[t] != s):
-                return False
+            # A key is seen! Verify it maps to the right val (Dest Key!)
+            if s in sMap or t in tMap:
+                if sMap[s] != t or tMap[t] != s:
+                    return False
+            
+            # A key is NOT seen, Store Association from s --> t char!
             sMap[s] = t
             tMap[t] = s
-        
-        print(sMap, tMap)
+
         return True
+
 
 solution = Solution()
 
@@ -56,3 +77,4 @@ print(solution.isIsomorphicTwoMaps(s, t)) # Expected False
 
 s = "paper"; t = "title"
 print(solution.isIsomorphicTwoMaps(s, t)) # Expected True
+

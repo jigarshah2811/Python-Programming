@@ -29,9 +29,7 @@ class Solution():
             graph.add_edge(src, dest)
 
             # Building indegree #dict{Vertex: Indegree} #= number of dependancies before this can resolve}
-            if src not in indegree:
-                indegree[src] = 0
-            indegree[dest] = indegree[src]+1
+            indegree[dest] += 1
         print(("InDegree: {0}".format(indegree)))
 
         # BFS: TOPOLOGICAL Order.... Node with indegree=0 to be visited. All other nodes (dependants) indegree to be reduced

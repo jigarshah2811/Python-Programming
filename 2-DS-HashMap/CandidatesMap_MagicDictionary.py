@@ -1,40 +1,38 @@
 import collections
-class MagicDictionary(object):
-    def __init__(self):
-        self.mySet = set()
-        self.myDict = dict()
 
-    def _candidates(self, word):
-        for i in range(len(word)-1):
-            candidate = word[:i] + "*" + word[i+1:]
-            print(candidate)
-            yield candidate
+class MagicDictionary:
+    def __init__(self) -> None:
+        self.md = collections.defaultdict(str)
+    
+    def addWord(self, word):
+        self.md[word] = True
+        word = list(word)
+        for i, _ in enumerate(word):
+            wildCardWord = word
+            wildCardWord[i] = "*"
+            self.md[str(wildCardWord)] = True
 
-    def buildDict(self, words):
+    def addWords(self, words):
         for word in words:
-            self.mySet.add(word)
-            for cand in self._candidates(word):
-                try:
-                    self.myDict[cand] += 1
-                except:
-                    self.myDict[cand] = 1
-
-    def search(self, word):
-        for cand in self._candidates(word):
-            if cand in self.myDict:
-                count = self.myDict[cand]
-                any (count > 1 or
-                    count == 1 and word not in self.mySet)
+            self.addWord(word)
+    
+    def searchWord(self, word):
+        if self.md[word]:
+            return True
+            
+        word = list(word)
+        for i, _ in enumerate(word):
+            wildCardWord = word
+            wildCardWord[i] = "*"
+            if str(wildCardWord) in self.md:
+                return True
+        
         return False
-
-
-md = MagicDictionary()
-md.buildDict(["apple, leetcode"])
-print(md.search("apply"))
-
-"""
-md.buildDict(["apple, apply, leetcode"])
-print md.search("apply")
-md.buildDict(["hello, leetcode"])
-print md.search("yello")
-"""
+    
+magicDict = MagicDictionary()
+words = ["apple", "code"]
+magicDict.addWords(words)
+print(magicDict.searchWord("apple"))    # True Explanation: self word
+print(magicDict.searchWord("apply"))   # True  Explaination: apple will have appl* that matches with apply
+print(magicDict.searchWord("lode"))    # True  Explanation:  code will have  *ode  that matches with lode
+print(magicDict.searchWord("god"))     # False

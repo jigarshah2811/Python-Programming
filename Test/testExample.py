@@ -5,7 +5,7 @@ class Solution:
 import unittest
 
 class TestSolution(unittest.TestCase):
-    def setUp(self):
+    def setUp(self):    
         # Load test data
         self.s = Solution()
 

@@ -13,7 +13,7 @@ class DirectedGraph:
             self.graph[src].append(dest)
 
     def dfs(self) -> set:
-        def visit(node):
+        def dfs_recur(node):
             visitingStack.append(node)
 
             print("visiting node: {}".format(node))
@@ -22,7 +22,7 @@ class DirectedGraph:
                     print("CYCLE from node: {} to conn: {}, stack: {}".format(node, conn, visitingStack))
                     break
                 elif conn not in visited:
-                    visit(conn)
+                    dfs_recur(conn)
 
             visitingStack.pop()
             visited.add(node)
@@ -32,7 +32,7 @@ class DirectedGraph:
         # Disconnected Graph
         for root in list(self.graph.keys()):
             if root not in visited:
-                visit(root)
+                dfs_recur(root)
         return visited
 
 class DirectedWeightedGraph:
@@ -46,7 +46,7 @@ class DirectedWeightedGraph:
             self.graph[node].append((conn, weight))
 
     def dfs(self) -> set:
-        def visit(node):
+        def dfs_recur(node):
             print("visiting node: {}".format(node))
             visitingStack.append(node)
 
@@ -56,7 +56,7 @@ class DirectedWeightedGraph:
                     continue
                 elif conn not in visited:
                     print("Visiting conn: {} from node: {} weight: {}".format(conn, node, weight))
-                    visit(conn)
+                    dfs_recur(conn)
 
             # All conns of this node is now visited (on stack), so this node is COMPLETELY visited
             visitingStack.pop()
@@ -68,11 +68,11 @@ class DirectedWeightedGraph:
         # Disconnected Graph
         for root in list(self.graph.keys()):
             if root not in visited:
-                visit(root)
+                dfs_recur(root)
         return visited
 
     def allPaths(self, src, target) -> float:
-        def visit(node, total):
+        def dfs_recur(node, total):
             print("visiting node: {}".format(node))
             visitingStack.append(node)
 
@@ -90,7 +90,7 @@ class DirectedWeightedGraph:
                     print("CYCLE from node: {} to conn: {}, stack: {}".format(node, conn, visitingStack))
                     continue
                 elif conn not in visited:
-                    visit(conn, total)
+                    dfs_recur(conn, total)
 
             # All conns of this node is now visited (on stack), so this node is COMPLETELY visited
             visitingStack.pop()
@@ -101,7 +101,7 @@ class DirectedWeightedGraph:
 
         # Disconnected Graph
         self.minTotal = float('inf')
-        visit(src, total=0)
+        dfs_recur(src, total=0)
         return self.minTotal
 
 """ DIRECTED GRAPH Example """

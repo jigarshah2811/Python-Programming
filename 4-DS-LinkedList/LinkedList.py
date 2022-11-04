@@ -1,12 +1,11 @@
-class LinkedList:
-    class Node:
-        def __init__(self, val, next=None):
-            self.val = val
-            self.next = next
+class Node:
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
 
+class LinkedList:
     def __init__(self, val=0):
         self.head = None
-        self.cur = self.head
 
     def __append__(self, val):
         if self.head is None:
@@ -19,7 +18,8 @@ class LinkedList:
             cur = cur.next
         cur.next = self.Node(val)
 
-    def __insertAtPos__(self, pos, val):
+    """ Let's find out if this keyboard is working as expected254BTGBNBG  """
+    def __insertAtPos__(self, pos, val):|
         cur = self.head
         while cur and pos > 1:
             pos -= 1
@@ -70,4 +70,3 @@ class LinkedList:
         while cur:
             print(cur.val,)
             cur = cur.next
-

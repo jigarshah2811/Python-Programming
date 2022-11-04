@@ -1,5 +1,11 @@
-"""
-Top K Frequent numbers/Strings
+""" Q: Top K Frequent numbers/Strings
+
+DS: FreqMap and FreqBucket (Pattern: Bucket Sort)
+DS: Counter                (Pattern: Built in method most_common() on Python Dict!)
+DS: MinHeap                (Pattern: (freq, num) in minHeap, remove (N-K) min freqs)
+DS: MinHeap                (Pattern: (freq, num) size:K minHeap, keep removing exessive min freq leaving top K freq starting (minFreq, num) to (maxFreq, num))
+DS: MaxHeap                (Pattern: (-freq, num) in maxHeap, first entry will be highest freq and descending order)
+DS: MaxHeap                (Pattern: (-freq, num) size: K maxHeap, keep removing last entry if less then new entry.)
 """
 import collections
 import heapq
@@ -36,24 +42,35 @@ class TopKFreqHeap:
         return res
 
 
-s = TopKFreqHeap()
-nums = [5, 7, 5, 7, 4, 5]
-print((s.topKFreq(nums, 1)))
-print((s.topKFreq(nums, 2)))
-print((s.topKFreq(nums, 3)))
+# s = TopKFreqHeap()
+# nums = [5, 7, 5, 7, 4, 5]
+# print((s.topKFreq(nums, 1)))
+# print((s.topKFreq(nums, 2)))
+# print((s.topKFreq(nums, 3)))
 
 
 class Solution(object):
-    def topKFrequent(self, nums, k):
-        frq = collections.defaultdict(list)
-        for key, cnt in list(collections.Counter(nums).items()):
-            frq[cnt].append(key)
+    """ Using FreqMap and FreqBucket (Bucket Sort)"""
+    def topKFrequentWords_FreqMap(self, words, k):
+        # Step 1) Create Freq Map  {word: count}
+        freq = collections.defaultdict(int)
+        maxCount = 0
+        for word in words:
+            freq[word] += 1
+            maxCount = max(maxCount, freq[word])
+        print(freq)
 
-        print(("frq: {0}".format(frq)))
+        # Step 2) Sort by Freq (Bucket Sort)
+        buckets = [[] for i in range(maxCount+1)]
+        for word, count in freq.items():
+            buckets[count].append(word)
+ 
+        print(buckets)
+
+        # Step 3) Traverse from reverse to find the ones with most count
         res = []
-        for times in reversed(list(range(len(nums) + 1))):
-            res.extend(frq[times])
-            if len(res) >= k: return res[:k]
+        for i in range(maxCount, -1, -1):
+            res.extend(buckets[i])
 
         return res[:k]
 
@@ -76,13 +93,10 @@ class Solution(object):
 
         return result[:k]
 
-    """ Using Heap!! """
+    """ 
+    DS: MinHeap!!  Pattern: Store freq of nums, remove first (N-K) small freq leaving TOP K freq numbers
+    """
     def topKFrequent_Heap(self, nums, k):
-        """
-        :type nums: List[int]
-        :type k: int
-        :rtype: List[int]
-        """
         freqMap = collections.defaultdict(int)
         for i, num in enumerate(nums):
             freqMap[num] += 1
@@ -105,8 +119,56 @@ class Solution(object):
         return topkResult
         # return heapq.nlargest(k, count.keys(), key=count.get)
 
+    """ 
+    DS: MinHeap!!  Pattern: K size Heap!
+    Pattern: Keep storing (freq, num), keep size K by removing excess MIN (freq, num) leaving K entries
+    (lowestFreq, num) will be on top so give result from reverse heap[::-1]
     """
-    Approach 3: build-in FreqMap counter methods
+    def topKFrequent_MinHeapKSize(self, nums, k):
+        # Step 1) Create Freq Map
+        freqMap = collections.defaultdict(int)
+        for word in words:
+            freqMap[word] += 1
+
+        # Step 2) Heap Sort: using MAXHEAP: (-freq, word) so highest freq will be on top
+        minHeap = []
+        for word, freq in freqMap.items():
+            heapq.heappush(minHeap, (freq, word))    # MAXHEAP
+            while len(minHeap) > k:
+                heapq.heappop(minHeap)     # Remove LOWER elements
+
+        # Step 3) MinHeap has values in ASCENDING order so capture TOP K from reverse
+        res = []
+        for _, (freq, word) in enumerate(minHeap[::-1]):
+            res.append(word)
+        return res
+
+    """ 
+    DS: MaxHeap!!  Pattern: Store (-1*Freq, Num) in Heap, 
+    Multiply with (-1) will keep the HIGEST Frequency numbers on Top
+    """
+    def topKFrequent_Heap(self, nums, k):
+        # Step 1) Create Freq Map
+        freqMap = collections.defaultdict(int)
+        for word in words:
+            freqMap[word] += 1
+
+        # Step 2) Heap Sort: using MAXHEAP: (-freq, word) so highest freq will be on top
+        maxHeap = []
+        for word, freq in freqMap.items():
+            heapq.heappush(maxHeap, (freq*-1, word))    # MAXHEAP
+
+        # Step 3) get the TOP K from MAXHEAP
+        res = []
+        for i in range(k):
+            (freq, word) = heapq.heappop(maxHeap)
+            res.append(word)
+
+        return res
+
+
+    """
+    Approach 3: build-in FreqMap counter methods -- TOP K in MAP!
     """
     def topKFrequent_Counter(self, nums, k):
         """
@@ -120,7 +182,19 @@ class Solution(object):
         return [element for element, count in k_most_common]  # [1, 2]
 
 
+# s = Solution()
+# queries = ["hi", "hello", "hello", "hi", "hello2", "hi"]
+# # print((s.topKFrequent(queries, 2)))
+# print((s.topKFrequent_Heap(queries, 2)))
+
 s = Solution()
-queries = ["hi", "hello", "hello", "hi", "hello2", "hi"]
-# print((s.topKFrequent(queries, 2)))
-print((s.topKFrequent_Heap(queries, 2)))
+words = ["i", "love", "leetcode", "love", "i"]
+print(s.topKFrequentWords_FreqMap(words, 1))
+print(s.topKFrequentWords_FreqMap(words, 2))
+print(s.topKFrequentWords_FreqMap(words, 3))
+
+
+words = ["i", "love", "leetcode", "love", "i"]
+print(s.topKFrequent_MinHeapKSize(words, 1))
+print(s.topKFrequent_MinHeapKSize(words, 2))
+print(s.topKFrequent_MinHeapKSize(words, 3))

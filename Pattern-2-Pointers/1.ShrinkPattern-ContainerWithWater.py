@@ -1,8 +1,13 @@
 """
-https://leetcode.com/problems/container-with-most-water/
+Pattern: 2-Pointers Shrink  L -----> & <------- R 
+
+L ---> if L is less height
+R <--- if R is less height
+MaxHeight so MaxWaterCanBeFilled at L & R
+area = height * width --- Keep track of maxArea!
+
 Look at: https://leetcode.com/problems/container-with-most-water/solution/
 """
-
 class Solution:
     def maxArea(self, height: List[int]) -> int:
         # 2-pointers shrink pattern
@@ -25,4 +30,5 @@ class Solution:
                 l += 1
         
         return maxArea
+                
                 
